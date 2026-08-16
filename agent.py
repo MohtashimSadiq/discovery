@@ -18,28 +18,28 @@ class ProgramItem(BaseModel):
     
     # 8 Taxonomy Categories
     type_tag: Literal["grant", "accelerator", "incubator", "vc"] = Field(
-        description="Program Structure: grant (non-dilutive payout), accelerator (cohort-based), incubator (open-ended support/lab), vc (venture capital equity fund)"
+        description="Program Structure: grant, accelerator, incubator, or vc"
     )
     funding_tag: Literal["equity-free", "zero-equity", "equity", "subsidy"] = Field(
-        description="Funding Mechanics: equity-free (cash/stipend no shares), zero-equity (mentorship/credits only), equity (shares/SAFE/convertible), subsidy (reimbursement/matching)"
+        description="Funding Mechanics: equity-free, zero-equity, equity, or subsidy"
     )
     stage_tag: Literal["pre-seed", "seed", "scale"] = Field(
-        description="Startup Stage: pre-seed (idea/MVP/prototyping), seed (working product/early traction), scale (post-revenue expansion)"
+        description="Startup Stage: pre-seed, seed, or scale"
     )
     eligibility_tag: Literal["de-academic", "de-entity", "international"] = Field(
-        description="Eligibility: de-academic (German university students/graduates/researchers), de-entity (registered German UG/GmbH required), international (open to foreign founders)"
+        description="Eligibility: de-academic, de-entity, or international"
     )
     backing_tag: Literal["public", "ppp", "private"] = Field(
-        description="Backing Capital: public (tax money), ppp (public-private partnership like HTGF), private (corporate/private VC)"
+        description="Backing Capital: public, ppp, or private"
     )
     bmwk_tag: Literal["direct", "mandated", "none"] = Field(
-        description="BMWK Affiliation: direct (direct ministry initiative e.g. EXIST, Digital Hub), mandated (heavily backed e.g. HTGF), none (independent/regional state)"
+        description="BMWK Affiliation: direct, mandated, or none"
     )
     exist_tag: Literal["grant", "partner", "none"] = Field(
-        description="EXIST Ecosystem: grant (actual EXIST federal grant), partner (university incubator/network sponsor), none (outside EXIST)"
+        description="EXIST Ecosystem: grant, partner, or none"
     )
     focus_tags: List[Literal["software", "electronics", "ai", "deeptech"]] = Field(
-        description="Technology Focus: software (SaaS/cloud), electronics (hardware/embedded/IoT/sensors), ai (ML/LLMs/analytics), deeptech (high-risk R&D). Omit physics/chem/math."
+        description="Technology Focus array subset of software, electronics, ai, deeptech"
     )
 
 class ProgramList(BaseModel):
@@ -92,7 +92,6 @@ class ProgramDatabase:
                 ))
             return True
         except sqlite3.IntegrityError:
-            # Duplicate URL caught by UNIQUE constraint
             return False
 
     def list_all_programs(self):
@@ -117,27 +116,15 @@ class GermanEcosystemAgent:
     def search_and_categorize(self, search_query: str):
         print(f"\n🔍 Searching web: '{search_query}'...")
 
-        # Step 1: Live web search targeting the German startup ecosystem
-        search_response = self.tavily.search(query=search_query, max_results=7)
+        search_response = self.tavily.search(query=search_query, max_results=5)
         web_context = "\n\n".join([
             f"Source URL: {res['url']}\nContent: {res['content']}"
             for res in search_response.get("results", [])
         ])
 
-        # Step 2: Parse and categorize using Gemini 2.5
         prompt = f"""
         Analyze the web content below to discover grants, accelerators, incubators, and VC programs in Germany.
-        For each valid opportunity, extract its details and categorize it strictly using the provided schema.
-
-        Taxonomy Rules:
-        - type: grant, accelerator, incubator, or vc
-        - funding: equity-free, zero-equity, equity, or subsidy
-        - stage: pre-seed, seed, or scale
-        - eligibility: de-academic, de-entity, or international
-        - backing: public, ppp, or private
-        - bmwk: direct (e.g. EXIST, Digital Hub), mandated (e.g. HTGF), or none
-        - exist: grant (actual stipend/grant), partner (university incubator sponsor), or none
-        - focus: array subset of ["software", "electronics", "ai", "deeptech"]
+        Extract details and categorize strictly using the provided schema.
 
         Web Context:
         {web_context}
@@ -155,11 +142,10 @@ class GermanEcosystemAgent:
 
         extracted_data: ProgramList = response.parsed
         
-        # Step 3: Append new programs / Skip existing list duplicates
         added, duplicates = 0, 0
         for program in extracted_data.programs:
             if self.db.insert_program(program):
-                tags_str = f"type:{program.type_tag} | funding:{program.funding_tag} | stage:{program.stage_tag} | eligibility:{program.eligibility_tag} | bmwk:{program.bmwk_tag} | exist:{program.exist_tag}"
+                tags_str = f"type:{program.type_tag} | funding:{program.funding_tag} | stage:{program.stage_tag} | bmwk:{program.bmwk_tag} | exist:{program.exist_tag}"
                 print(f"  ✅ Appended: {program.name} ({program.provider})")
                 print(f"     Tags -> [{tags_str}]")
                 added += 1
@@ -170,7 +156,6 @@ class GermanEcosystemAgent:
         print(f"Query Finished. Added: {added} | Skipped Duplicates: {duplicates}")
 
     def run(self):
-        # Target queries covering the German innovation pipeline
         target_queries = [
             "German startup grants EXIST Gründungsstipendium Forschungstransfer 2026",
             "BMWK Digital Hub Initiative accelerators incubators Germany",
@@ -182,32 +167,8 @@ class GermanEcosystemAgent:
         for query in target_queries:
             self.search_and_categorize(query)
 
-# -------------------------------------------------------------------
-# Execution & Summary Display
-# -------------------------------------------------------------------
-if __name__ == "__main__":
-    agent = GermanEcosystemAgent()
-    agent.run()
-
-    print("\n" + "="*80)
-    print("Compiled Database Summary (With 8 Taxonomy Tags)")
-    print("="*80)
-    
-    all_programs = agent.db.list_all_programs()
-    for row in all_programs:
-        print(f"\n• {row[0]}")
-        print(f"  Tags: type:{row[1]} | funding:{row[2]} | stage:{row[3]} | eligibility:{row[4]} | backing:{row[5]} | bmwk:{row[6]} | exist:{row[7]} | focus:{row[8]}")
-        print(f"  URL:  {row[9]}")
-
-
-
-
-
-class GermanEcosystemAgent:
-    # ... keep existing __init__, search_and_categorize, run ...
-
     def export_to_json(self, json_path="grants.json"):
-        """Exports SQLite database to grants.json for GitHub Pages."""
+        """Exports SQLite records to grants.json for GitHub Pages."""
         programs = self.db.list_all_programs()
         data = []
         for row in programs:
@@ -225,9 +186,12 @@ class GermanEcosystemAgent:
             })
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        print(f"🌐 Exported {len(data)} programs to {json_path} for web dashboard.")
+        print(f"\n🌐 Exported {len(data)} programs to '{json_path}' for web dashboard.")
 
+# -------------------------------------------------------------------
+# Execution & Export
+# -------------------------------------------------------------------
 if __name__ == "__main__":
     agent = GermanEcosystemAgent()
     agent.run()
-    agent.export_to_json()  # Generates grants.json
+    agent.export_to_json()
