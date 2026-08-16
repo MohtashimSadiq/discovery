@@ -144,7 +144,7 @@ class GermanEcosystemAgent:
         """
 
         response = self.ai.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.1-flash-lite",
             contents=prompt,
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
