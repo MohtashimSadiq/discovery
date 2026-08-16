@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>German Startup Funding & Ecosystem Directory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-slate-900 mb-2">German Startup Program Finder</h1>
+      <p class="text-slate-600">Automated directory of active grants, accelerators, incubators, and VC funds.</p>
+    </header>
+
+    <!-- Filters Bar -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-8 space-y-4">
+      <input type="text" id="search" placeholder="Search by program name..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <select id="filter-type" class="p-2 border border-slate-300 rounded-lg text-sm">
+          <option value="">All Types (Grants, Accelerators...)</option>
+          <option value="grant">type:grant</option>
+          <option value="accelerator">type:accelerator</option>
+          <option value="incubator">type:incubator</option>
+          <option value="vc">type:vc</option>
+        </select>
+
+        <select id="filter-funding" class="p-2 border border-slate-300 rounded-lg text-sm">
+          <option value="">All Funding Types</option>
+          <option value="equity-free">funding:equity-free</option>
+          <option value="zero-equity">funding:zero-equity</option>
+          <option value="equity">funding:equity</option>
+          <option value="subsidy">funding:subsidy</option>
+        </select>
+
+        <select id="filter-stage" class="p-2 border border-slate-300 rounded-lg text-sm">
+          <option value="">All Stages</option>
+          <option value="pre-seed">stage:pre-seed</option>
+          <option value="seed">stage:seed</option>
+          <option value="scale">stage:scale</option>
+        </select>
+
+        <select id="filter-bmwk" class="p-2 border border-slate-300 rounded-lg text-sm">
+          <option value="">BMWK Affiliation</option>
+          <option value="direct">bmwk:direct</option>
+          <option value="mandated">bmwk:mandated</option>
+          <option value="none">bmwk:none</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+
+  <script>
+    let programs = [];
+
+    async function loadPrograms() {
+      try {
+        const res = await fetch('grants.json');
+        programs = await res.json();
+        render();
+      } catch (err) {
+        document.getElementById('grid').innerHTML = '<p class="text-red-500">Run the GitHub Action agent first to generate grants.json.</p>';
+      }
+    }
+
+    function render() {
+      const search = document.getElementById('search').value.toLowerCase();
+      const type = document.getElementById('filter-type').value;
+      const funding = document.getElementById('filter-funding').value;
+      const stage = document.getElementById('filter-stage').value;
+      const bmwk = document.getElementById('filter-bmwk').value;
+
+      const filtered = programs.filter(p => {
+        const matchesSearch = p.name.toLowerCase().includes(search);
+        const matchesType = !type || p.type === type;
+        const matchesFunding = !funding || p.funding === funding;
+        const matchesStage = !stage || p.stage === stage;
+        const matchesBmwk = !bmwk || p.bmwk === bmwk;
+        return matchesSearch && matchesType && matchesFunding && matchesStage && matchesBmwk;
+      });
+
+      const grid = document.getElementById('grid');
+      grid.innerHTML = filtered.map(p => `
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-lg text-slate-900 mb-2">${p.name}</h3>
+            <div class="flex flex-wrap gap-1.5 mb-4 text-xs font-medium">
+              <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded">type:${p.type}</span>
+              <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded">funding:${p.funding}</span>
+              <span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded">stage:${p.stage}</span>
+              <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded">bmwk:${p.bmwk}</span>
+              <span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded">exist:${p.exist}</span>
+            </div>
+          </div>
+          <a href="${p.url}" target="_blank" class="mt-4 block text-center bg-slate-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-slate-800">View Details & Apply ↗</a>
+        </div>
+      `).join('');
+    }
+
+    ['search', 'filter-type', 'filter-funding', 'filter-stage', 'filter-bmwk'].forEach(id => {
+      document.getElementById(id).addEventListener('input', render);
+    });
+
+    loadPrograms();
+  </script>
+</body>
+</html>
