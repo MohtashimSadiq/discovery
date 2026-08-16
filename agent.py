@@ -198,3 +198,36 @@ if __name__ == "__main__":
         print(f"\n• {row[0]}")
         print(f"  Tags: type:{row[1]} | funding:{row[2]} | stage:{row[3]} | eligibility:{row[4]} | backing:{row[5]} | bmwk:{row[6]} | exist:{row[7]} | focus:{row[8]}")
         print(f"  URL:  {row[9]}")
+
+
+
+
+
+class GermanEcosystemAgent:
+    # ... keep existing __init__, search_and_categorize, run ...
+
+    def export_to_json(self, json_path="grants.json"):
+        """Exports SQLite database to grants.json for GitHub Pages."""
+        programs = self.db.list_all_programs()
+        data = []
+        for row in programs:
+            data.append({
+                "name": row[0],
+                "type": row[1],
+                "funding": row[2],
+                "stage": row[3],
+                "eligibility": row[4],
+                "backing": row[5],
+                "bmwk": row[6],
+                "exist": row[7],
+                "focus": row[8].split(",") if row[8] else [],
+                "url": row[9]
+            })
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print(f"🌐 Exported {len(data)} programs to {json_path} for web dashboard.")
+
+if __name__ == "__main__":
+    agent = GermanEcosystemAgent()
+    agent.run()
+    agent.export_to_json()  # Generates grants.json
