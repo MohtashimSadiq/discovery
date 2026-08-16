@@ -1,0 +1,28 @@
+name: Run Grant Discovery Agent
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Runs automatically every day at 08:00 UTC
+  workflow_dispatch:      # Enables manual "Run workflow" button in GitHub
+
+jobs:
+  run-grant-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Discovery Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: python agent.py
