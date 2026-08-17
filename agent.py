@@ -146,8 +146,9 @@ class ProgramDatabase:
 
             cursor.execute("PRAGMA table_info(programs)")
             columns = [info[1] for info in cursor.fetchall()]
-            if columns and "clean_name" not in columns:
-                print("🔄 Updating SQLite schema (programs)...")
+            required_columns = {"clean_name", "clean_provider", "path_stem"}
+            if columns and not required_columns.issubset(set(columns)):
+                print("🔄 Updating SQLite schema (programs) — missing columns detected, rebuilding table...")
                 cursor.execute("DROP TABLE programs")
 
             conn.execute("""
