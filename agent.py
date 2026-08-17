@@ -34,15 +34,35 @@ def get_domain(normalized_url: str) -> str:
         return normalized_url.split("://", 1)[1].split("/", 1)[0]
     return normalized_url.split("/", 1)[0]
 
-def fuzzy_match(a: str, b: str, threshold: int = 80) -> bool:
-    if HAS_RAPIDFUZZ:
-        return fuzz.token_set_ratio(a, b) >= threshold
-    return a in b or b in a  # fallback
+LOCALE_SEGMENTS = {
+    "en", "de", "en-us", "en-gb", "de-de", "en-en",
+    "index", "index.html", "index.php", "home"
+}
+
+def get_path_stem(normalized_url: str) -> str:
+    """Extract the identity-bearing path, stripping locale/noise segments
+    (e.g. /laisf/en and /laisf/de both reduce to 'entrepreneurship/laisf')."""
+    if "://" in normalized_url:
+        parts = normalized_url.split("://", 1)[1].split("/", 1)
+        path = parts[1] if len(parts) > 1 else ""
+    else:
+        parts = normalized_url.split("/", 1)
+        path = parts[1] if len(parts) > 1 else ""
+
+    segments = [s for s in path.split("/") if s]
+    while segments and segments[-1].lower() in LOCALE_SEGMENTS:
+        segments.pop()
+    return "/".join(segments).lower()
 
 def fuzzy_score(a: str, b: str) -> int:
+    if not a or not b:
+        return 0
     if HAS_RAPIDFUZZ:
         return fuzz.token_set_ratio(a, b)
     return 100 if (a in b or b in a) else 0
+
+def fuzzy_match(a: str, b: str, threshold: int = 80) -> bool:
+    return fuzzy_score(a, b) >= threshold
 
 # -------------------------------------------------------------------
 # 2. Pydantic Schema (Taxonomy) — includes "loan" tag options
@@ -102,7 +122,6 @@ PROGRAM_TYPES = ["grant", "accelerator", "incubator", "loan"]
 SECTOR_MODIFIERS = ["deep tech", "AI", "cleantech", "life sciences", "hardware startup"]
 
 def build_seed_queries():
-    """State x program-type cross product (primary seed), sector modifiers layered in lightly."""
     seeds = []
     for state in BUNDESLAENDER:
         for ptype in PROGRAM_TYPES:
@@ -137,8 +156,10 @@ class ProgramDatabase:
                     name TEXT NOT NULL,
                     clean_name TEXT NOT NULL,
                     provider TEXT,
+                    clean_provider TEXT,
                     url TEXT,
                     normalized_url TEXT,
+                    path_stem TEXT,
                     description TEXT,
                     type_tag TEXT,
                     funding_tag TEXT,
@@ -192,35 +213,68 @@ class ProgramDatabase:
                     pass
             print(f"🌱 Seeded query_pool with {len(seeds)} queries.")
 
-    # ---- Program dedup / insert ----
+    # -----------------------------------------------------------
+    # Fingerprint-based dedup
+    # -----------------------------------------------------------
     def is_duplicate(self, prog: ProgramItem) -> bool:
         norm_url = normalize_url(prog.url)
         norm_domain = get_domain(norm_url)
+        norm_stem = get_path_stem(norm_url)
         norm_name = clean_string(prog.name)
+        norm_provider = clean_string(prog.provider)
 
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-
-            # 1. Exact normalized URL match
-            cursor.execute("SELECT id FROM programs WHERE normalized_url = ?", (norm_url,))
-            if cursor.fetchone():
-                return True
-
-            # 2. Compare against ALL existing programs (not tag-filtered —
-            #    tags can vary slightly across extraction passes for the
-            #    same real program, so filtering on them risks missing dupes)
-            cursor.execute("SELECT clean_name, normalized_url FROM programs")
+            cursor.execute("""
+                SELECT clean_name, clean_provider, normalized_url, path_stem,
+                       type_tag, funding_tag, stage_tag, bmwk_tag, exist_tag
+                FROM programs
+            """)
             all_rows = cursor.fetchall()
 
-            for existing_name, existing_url in all_rows:
-                existing_domain = get_domain(existing_url) if existing_url else ""
-                same_domain = bool(norm_domain) and norm_domain == existing_domain
-                name_score = fuzzy_score(norm_name, existing_name)
+        for (existing_name, existing_provider, existing_url, existing_stem,
+             e_type, e_funding, e_stage, e_bmwk, e_exist) in all_rows:
 
-                if same_domain and name_score >= 60:
-                    return True  # same org domain + weak name overlap = same program
-                if name_score >= 80:
-                    return True  # strong name match regardless of domain
+            existing_domain = get_domain(existing_url) if existing_url else ""
+            same_domain = bool(norm_domain) and norm_domain == existing_domain
+            same_stem = same_domain and norm_stem == (existing_stem or "") and norm_stem != ""
+
+            name_score = fuzzy_score(norm_name, existing_name)
+            provider_score = fuzzy_score(norm_provider, existing_provider)
+
+            # Field agreement: how many taxonomy tags match exactly
+            tag_pairs = [
+                (prog.type_tag, e_type), (prog.funding_tag, e_funding),
+                (prog.stage_tag, e_stage), (prog.bmwk_tag, e_bmwk),
+                (prog.exist_tag, e_exist),
+            ]
+            tag_matches = sum(1 for a, b in tag_pairs if a == b)
+
+            # --- Tier 1: same domain + same path stem = structurally the
+            # same page family (e.g. /laisf/en vs /laisf/de). Name is just
+            # a sanity floor here, not the primary signal.
+            if same_stem and name_score >= 50:
+                return True
+
+            # --- Tier 2: field-fingerprint match — name is reasonably close
+            # AND provider matches AND at least 4/5 taxonomy tags agree.
+            # This is the language/domain-independent check: catches
+            # exist.de vs exist.com, or a program mirrored on an aggregator
+            # site, purely from extracted facts rather than URL shape.
+            if name_score >= 70 and provider_score >= 70 and tag_matches >= 4:
+                return True
+
+            # --- Tier 3: same domain, DIFFERENT path stem = siblings from
+            # the same org (e.g. laisf vs ai-academy vs incubator-ignition).
+            # Domain gives no bonus here — require a high name bar so
+            # distinct sibling programs don't get merged.
+            if same_domain and not same_stem and name_score >= 88:
+                return True
+
+            # --- Tier 4: different domain entirely, name similarity only.
+            if not same_domain and name_score >= 80:
+                return True
+
         return False
 
     def insert_program(self, prog: ProgramItem) -> bool:
@@ -229,18 +283,20 @@ class ProgramDatabase:
 
         norm_url = normalize_url(prog.url)
         norm_name = clean_string(prog.name)
+        norm_provider = clean_string(prog.provider)
+        stem = get_path_stem(norm_url)
 
         with sqlite3.connect(self.db_path) as conn:
             conn.execute("""
                 INSERT INTO programs (
-                    name, clean_name, provider, url, normalized_url, description,
-                    type_tag, funding_tag, stage_tag, eligibility_tag,
-                    backing_tag, bmwk_tag, exist_tag, focus_tags
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    name, clean_name, provider, clean_provider, url, normalized_url,
+                    path_stem, description, type_tag, funding_tag, stage_tag,
+                    eligibility_tag, backing_tag, bmwk_tag, exist_tag, focus_tags
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
-                prog.name, norm_name, prog.provider, prog.url, norm_url, prog.description,
-                prog.type_tag, prog.funding_tag, prog.stage_tag, prog.eligibility_tag,
-                prog.backing_tag, prog.bmwk_tag, prog.exist_tag,
+                prog.name, norm_name, prog.provider, norm_provider, prog.url, norm_url,
+                stem, prog.description, prog.type_tag, prog.funding_tag, prog.stage_tag,
+                prog.eligibility_tag, prog.backing_tag, prog.bmwk_tag, prog.exist_tag,
                 ",".join(prog.focus_tags)
             ))
         return True
@@ -316,26 +372,54 @@ class ProgramDatabase:
             print("=" * 80)
             print(f"  • Purged {deleted} stray duplicate record(s)." if deleted else "  • Database clean.")
 
-    def fuzzy_deduplicate_database(self, threshold=80):
-        """Full pairwise fuzzy sweep across all programs. Keeps the earliest-
-        discovered row of each cluster, deletes later duplicates."""
+    def fuzzy_deduplicate_database(self, name_threshold=80, tag_match_min=4):
+        """Full pairwise sweep using the same fingerprint logic (name +
+        provider + tag agreement + path stem), applied retroactively across
+        the whole table. Keeps the earliest-discovered row of each cluster."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT id, clean_name FROM programs ORDER BY discovered_at ASC")
+            cursor.execute("""
+                SELECT id, clean_name, clean_provider, normalized_url, path_stem,
+                       type_tag, funding_tag, stage_tag, bmwk_tag, exist_tag
+                FROM programs ORDER BY discovered_at ASC
+            """)
             rows = cursor.fetchall()
 
         to_delete = set()
         n = len(rows)
         for i in range(n):
-            id_a, name_a = rows[i]
+            (id_a, name_a, prov_a, url_a, stem_a,
+             type_a, fund_a, stage_a, bmwk_a, exist_a) = rows[i]
             if id_a in to_delete:
                 continue
             for j in range(i + 1, n):
-                id_b, name_b = rows[j]
+                (id_b, name_b, prov_b, url_b, stem_b,
+                 type_b, fund_b, stage_b, bmwk_b, exist_b) = rows[j]
                 if id_b in to_delete:
                     continue
-                score = fuzzy_score(name_a, name_b)
-                if score >= threshold:
+
+                domain_a, domain_b = get_domain(url_a or ""), get_domain(url_b or "")
+                same_domain = bool(domain_a) and domain_a == domain_b
+                same_stem = same_domain and (stem_a or "") == (stem_b or "") and stem_a
+
+                name_score = fuzzy_score(name_a, name_b)
+                provider_score = fuzzy_score(prov_a, prov_b)
+                tag_matches = sum(1 for x, y in [
+                    (type_a, type_b), (fund_a, fund_b), (stage_a, stage_b),
+                    (bmwk_a, bmwk_b), (exist_a, exist_b)
+                ] if x == y)
+
+                is_dupe = False
+                if same_stem and name_score >= 50:
+                    is_dupe = True
+                elif name_score >= 70 and provider_score >= 70 and tag_matches >= tag_match_min:
+                    is_dupe = True
+                elif same_domain and not same_stem and name_score >= 88:
+                    is_dupe = True
+                elif not same_domain and name_score >= name_threshold:
+                    is_dupe = True
+
+                if is_dupe:
                     to_delete.add(id_b)
 
         if to_delete:
@@ -348,8 +432,6 @@ class ProgramDatabase:
         return len(to_delete)
 
     def maybe_run_fuzzy_sweep(self, interval_days=0, force=False):
-        """interval_days=0 means always run. Bump to e.g. 3 once the DB is
-        large enough that the O(n^2) sweep gets slow on every run."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT value FROM meta WHERE key = 'last_fuzzy_sweep'")
@@ -433,8 +515,9 @@ class GermanEcosystemAgent:
         Task: Extract active German startup grants, accelerators, incubators, loans, and VC programs
         from the web context below. Categorize each program strictly according to the schema.
         Write a clear, informative one-sentence description for each program suitable for public
-        display on a directory website. If no valid programs are present, return an empty list —
-        do not invent entries.
+        display on a directory website. If the same organization runs multiple distinct programs,
+        list each as a separate entry with its own specific URL. If no valid programs are present,
+        return an empty list — do not invent entries.
 
         Tavily AI Executive Summary:
         {tavily_answer}
@@ -470,7 +553,6 @@ class GermanEcosystemAgent:
         return added
 
     def trigger_mutation_cycle(self):
-        """When the active pool is empty, mutate every exhausted query into a sub-program query."""
         exhausted = self.db.get_all_exhausted()
         if not exhausted:
             print("⚠️  No exhausted queries to mutate — pool is genuinely empty.")
@@ -514,11 +596,6 @@ class GermanEcosystemAgent:
                     print(f"  🌿 Mutated ({category}): '{orig_query}' -> '{mutation.mutated_query}'")
 
     def run_until_novel_target(self, target_new=5, max_batches=15, batch_size=5):
-        """
-        Keeps running batches (pulling lowest hit_count queries, mutating when
-        the pool exhausts) until at least `target_new` unique programs have been
-        added, or `max_batches` is hit (safety valve against unlimited API spend).
-        """
         total_new = 0
         batches_run = 0
 
