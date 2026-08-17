@@ -1,3 +1,4 @@
 google-genai
 tavily-python
 pydantic
+rapidfuzz
