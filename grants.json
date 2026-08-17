@@ -1,5 +1,23 @@
 [
   {
+    "name": "INVEST – Grant for Venture Capital",
+    "provider": "BMWK",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
+    "description": "A federal grant program that reimburses business angels for a portion of their investment in innovative startups."
+  },
+  {
     "name": "B# (be sharp)",
     "provider": "IBB Ventures",
     "type": "vc",
