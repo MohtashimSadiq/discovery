@@ -1,5 +1,113 @@
 [
   {
+    "name": "GRW Supplementary Loan Mecklenburg-Vorpommern",
+    "provider": "State of Mecklenburg-Vorpommern",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.grantbite.com/en/funding/grw-supplementary-loan-mecklenburg-vorpommern",
+    "description": "This program provides project-specific loans of up to €5 million for commercial and infrastructure ventures that meet regional development criteria."
+  },
+  {
+    "name": "ERP Start-up Loan Universell",
+    "provider": "KfW",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
+    "description": "A federal financing track offering up to €25 million in low-interest loans for larger-scale start-up projects and expansion."
+  },
+  {
+    "name": "Triathlon Incubator",
+    "provider": "Saarland University",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "deeptech",
+      "ai",
+      "software"
+    ],
+    "url": "https://www.uds-triathlon.de/en/start-ups",
+    "description": "A comprehensive on-campus incubator providing tech founders with intensive coaching, patent support, and infrastructure to convert research into spin-offs."
+  },
+  {
+    "name": "L-Booster",
+    "provider": "southwestX",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "software"
+    ],
+    "url": "https://www.southwestx.eu",
+    "description": "A three-month growth sprint for early-stage startups offering intensive validation support and up to €25,000 in non-dilutive funding."
+  },
+  {
+    "name": "Startup Launchpad Saar",
+    "provider": "southwestX",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "ai"
+    ],
+    "url": "https://www.southwestx.eu",
+    "description": "A structured founder program designed to guide early-stage teams from initial idea to a validated venture concept."
+  },
+  {
+    "name": "Saarland Transformation Fund",
+    "provider": "Saarland Investment and Credit Bank (SIKB)",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "electronics",
+      "ai"
+    ],
+    "url": "https://www.hks.harvard.edu/centers/wiener/programs/economy/policyworks/case-study-saarland-transformation-fund",
+    "description": "An equity-based startup fund providing seed capital and venture support to emerging companies driving industrial and technological change in Saarland."
+  },
+  {
     "name": "Sozialinnovator Hessen",
     "provider": "Hessian Ministry of Economics",
     "type": "grant",
