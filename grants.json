@@ -1,5 +1,133 @@
 [
   {
+    "name": "Gründung innovativ",
+    "provider": "Investitionsbank des Landes Brandenburg (ILB)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/gruendung-innovativ/",
+    "description": "This program provides grants to support innovative start-ups and social enterprises in Brandenburg with costs related to consulting, personnel, and equipment."
+  },
+  {
+    "name": "ProFit Brandenburg",
+    "provider": "Investitionsbank des Landes Brandenburg (ILB)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/profit-brandenburg/",
+    "description": "ProFit Brandenburg supports innovative R&D projects and market launches for SMEs and research institutions through a combination of grants and loans."
+  },
+  {
+    "name": "Berlin Start",
+    "provider": "Investitionsbank Berlin (IBB)",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ibb.de/en/foerderprogramme/berlin-start.html",
+    "description": "Berlin Start offers favorable, low-interest loans to SMEs and start-ups in the Berlin region, often combined with a guarantee from the Bürgschaftsbank."
+  },
+  {
+    "name": "GuW Thüringen",
+    "provider": "Thuringian Ministry of Economic Affairs",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.aufbaubank.de/",
+    "description": "A dedicated loan scheme for Thuringian startups and growth-stage companies offering up to 100% financing for investment and operating costs."
+  },
+  {
+    "name": "ERP Start-Up Loan Startgeld",
+    "provider": "KfW Bank",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gr%C3%BCndung-Nachfolge/F%C3%B6rderprodukte/KfW-StartGeld-(067-068)/",
+    "description": "A low-interest loan program providing up to €100,000 to support small-scale startups and young companies in their initial years."
+  },
+  {
+    "name": "Gründungszuschuss",
+    "provider": "Federal Employment Agency",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.arbeitsagentur.de/",
+    "description": "A grant program supporting recipients of unemployment benefits who are transitioning into self-employment."
+  },
+  {
+    "name": "ERP Venture Capital Programme",
+    "provider": "KfW Bank",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de/",
+    "description": "A program assisting SMEs and venture capital companies by providing fresh venture capital for innovative growth projects."
+  },
+  {
     "name": "ego.-START",
     "provider": "Investitionsbank Sachsen-Anhalt",
     "type": "grant",
