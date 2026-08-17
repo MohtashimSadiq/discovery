@@ -1,5 +1,137 @@
 [
   {
+    "name": "Sozialinnovator Hessen",
+    "provider": "Hessian Ministry of Economics",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://sozialinnovator.de/",
+    "description": "A six-month curriculum and funding program providing up to €2,500 per month to support the launch or scaling of social enterprises in Hesse."
+  },
+  {
+    "name": "Hessen Ideen Scholarship",
+    "provider": "University of Kassel and TU Darmstadt",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://hessen-ideen.de/english",
+    "description": "A six-month scholarship program providing €2,500 monthly and coaching for university-based early-stage, knowledge-based business ideas."
+  },
+  {
+    "name": "Hessen10",
+    "provider": "Hessian Ministry of Economics",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://hessen10.de/",
+    "description": "A five-month growth program designed to help the region’s most promising startups scale faster through intensive support."
+  },
+  {
+    "name": "TQ Accelerator Impact",
+    "provider": "TechQuartier",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://techquartier.com/",
+    "description": "A six-day intensive program for late-stage impact-oriented founders in Frankfurt to strengthen investor readiness and networks."
+  },
+  {
+    "name": "AI Startup Rising",
+    "provider": "hessian.AI",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://hessian.ai/entrepreneurship",
+    "description": "An AI-focused acceleration track for research-based startups providing market-entry support and access to EXIST funding."
+  },
+  {
+    "name": "Accelerator Frankfurt",
+    "provider": "Accelerator Frankfurt",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://acceleratorfrankfurt.com/",
+    "description": "An independent go-to-market program providing strategic guidance for startups in fintech, cybersecurity, and B2B digital sectors."
+  },
+  {
+    "name": "PANDO. Ventures",
+    "provider": "PANDO. Ventures",
+    "type": "accelerator",
+    "funding": "equity",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics"
+    ],
+    "url": "https://pando.ventures/",
+    "description": "An accelerator and company builder providing hands-on guidance and seed capital for early-stage founders in internet and network security."
+  },
+  {
+    "name": "AI NATION Accelerator",
+    "provider": "AI NATION",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ai-nation.de/accelerator",
+    "description": "A six-month growth program for high-potential AI teams focusing on product-market fit, go-to-market strategies, and scaling."
+  },
+  {
     "name": "Berlin Startup Scholarship",
     "provider": "Startup Incubator Berlin (HWR Berlin)",
     "type": "incubator",
