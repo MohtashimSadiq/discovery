@@ -1,405 +1,101 @@
 [
   {
-    "name": "BayTOU",
-    "provider": "Bavarian State Ministry of Economic Affairs",
+    "name": "ego.-START",
+    "provider": "Investitionsbank Sachsen-Anhalt",
     "type": "grant",
-    "funding": "subsidy",
+    "funding": "equity-free",
     "stage": "pre-seed",
-    "eligibility": "de-entity",
+    "eligibility": "de-academic",
     "backing": "public",
     "bmwk": "none",
-    "exist": "none",
+    "exist": "partner",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ib-sachsen-anhalt.de",
+    "description": "A state-funded grant program in Saxony-Anhalt providing non-repayable support for personnel and operational costs for technology-based startups during the pre-launch phase."
+  },
+  {
+    "name": "ego.-Gründungstransfer",
+    "provider": "Investitionsbank Sachsen-Anhalt",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "partner",
     "focus": [
       "deeptech",
-      "ai",
-      "electronics"
-    ],
-    "url": "https://www.gruenderland.bayern/en/support-for-your-idea/findfinancing",
-    "description": "A technology-oriented grant program supporting innovative projects and the establishment of new tech businesses in Bavaria."
-  },
-  {
-    "name": "ERP-Gründerkredit - StartGeld",
-    "provider": "KfW",
-    "type": "loan",
-    "funding": "loan",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "none",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.kfw.de/",
-    "description": "A nationwide loan program providing up to 125,000 euros to support founders and young companies in their early stages."
-  },
-  {
-    "name": "Digitalbonus Bayern",
-    "provider": "Bavarian State Ministry of Economic Affairs",
-    "type": "grant",
-    "funding": "subsidy",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
       "ai"
     ],
-    "url": "https://www.digitalbonus.bayern/",
-    "description": "A funding program supporting small businesses in Bavaria with the implementation of digital hardware, software, and IT security projects."
+    "url": "https://www.ib-sachsen-anhalt.de",
+    "description": "A specialized funding stream designed to facilitate the transfer of research results from universities into market-ready companies in Saxony-Anhalt."
   },
   {
-    "name": "Start-up-Kredit Bayern",
-    "provider": "LfA Förderbank Bayern",
-    "type": "loan",
-    "funding": "loan",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.lfa.de/",
-    "description": "A low-interest loan program for Bavarian startups and SMEs to support investments and working capital with state-backed credit risk coverage."
-  },
-  {
-    "name": "Gründungswerft",
-    "provider": "Gründungswerft e.V.",
+    "name": "ego.-INKUBATOR",
+    "provider": "Investitionsbank Sachsen-Anhalt",
     "type": "incubator",
     "funding": "equity-free",
     "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "private",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://incubatorlist.com/grndungswerft",
-    "description": "A non-profit initiative founded by regional entrepreneurs providing coworking space, coaching, and community events for startups in Mecklenburg-Vorpommern."
-  },
-  {
-    "name": "TechnoStartup MV",
-    "provider": "Technology and Startup Centers of Mecklenburg-Western Pomerania",
-    "type": "accelerator",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
+    "eligibility": "de-academic",
     "backing": "public",
     "bmwk": "none",
-    "exist": "none",
+    "exist": "partner",
     "focus": [
-      "software",
-      "electronics",
-      "deeptech"
+      "deeptech",
+      "software"
     ],
-    "url": "https://startupoekosystem.com/listing/technostartup-mv",
-    "description": "A collaborative initiative offering a tailor-made training program to support young companies during their initial years of operation."
+    "url": "https://www.ib-sachsen-anhalt.de",
+    "description": "An incubator program focused on supporting the development of innovative startups originating from Saxony-Anhalt's academic institutions."
   },
   {
-    "name": "RIGZ Rostock Innovation and Business Incubator",
-    "provider": "RIGZ",
-    "type": "incubator",
-    "funding": "equity",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "electronics",
-      "deeptech"
-    ],
-    "url": "https://www.invest-in-mv.com/location-mv/business-oriented-research",
-    "description": "A large-scale campus providing startup consulting, patent information, and on-site venture capital services for technology-focused companies."
-  },
-  {
-    "name": "Next Commerce Accelerator",
-    "provider": "NCA",
-    "type": "accelerator",
-    "funding": "equity",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "private",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "ai"
-    ],
-    "url": "https://vestbee.com/insights/articles/best-startup-accelerators-and-incubators-in-germany",
-    "description": "A six-month acceleration program focused on commerce-related startups, providing corporate testing, coaching, and industry networking."
-  },
-  {
-    "name": "Saxony Loan Universal",
-    "provider": "Sächsische Aufbaubank (SAB)",
-    "type": "loan",
-    "funding": "loan",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.grantbite.com/en/funding/saxony-loan-universal-funding",
-    "description": "A flexible loan product for startups and established firms that can be combined with repayment subsidies for investment or working capital."
-  },
-  {
-    "name": "Innovation Capital Saxony",
-    "provider": "Sächsische Aufbaubank (SAB) and KfW",
+    "name": "MBG Silent and Open Participations",
+    "provider": "MBG Sachsen-Anhalt",
     "type": "vc",
     "funding": "equity",
-    "stage": "scale",
+    "stage": "seed",
     "eligibility": "de-entity",
     "backing": "ppp",
     "bmwk": "none",
     "exist": "none",
     "focus": [
+      "deeptech",
       "software",
-      "ai",
-      "deeptech"
+      "electronics"
     ],
-    "url": "https://www.kfw.de/About-KfW/Newsroom/Latest-News/News-Details_849088.html",
-    "description": "Equity-type financing for growth-oriented companies with innovative digital, environmental, or social business models."
+    "url": "https://www.mbg-sachsen-anhalt.de",
+    "description": "Provides equity-substitute financing through silent or open participations ranging from 25,000 to 2.5 million euros for startups and growth-stage companies."
   },
   {
-    "name": "SAB Starter-Grant",
+    "name": "Technology Start-up Grant (Saxony)",
     "provider": "Sächsische Aufbaubank (SAB)",
     "type": "grant",
     "funding": "equity-free",
     "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.futuresax.de/en/start-ups/start-up-support-in-saxony",
-    "description": "A grant of up to €20,000 for founders in the first five years of operation to support company foundation or strengthening."
-  },
-  {
-    "name": "Gründung Innovativ",
-    "provider": "Investitionsbank des Landes Brandenburg (ILB)",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/gruendung-innovativ/",
-    "description": "Provides non-repayable grants for innovative startups in Brandenburg to cover production facilities, consulting, and personnel costs."
-  },
-  {
-    "name": "ProFit Brandenburg",
-    "provider": "Ministry of Economics, Labour and Energy of Brandenburg",
-    "type": "grant",
-    "funding": "subsidy",
-    "stage": "seed",
-    "eligibility": "de-entity",
+    "eligibility": "de-academic",
     "backing": "public",
     "bmwk": "none",
     "exist": "none",
     "focus": [
       "deeptech",
-      "ai",
-      "electronics"
-    ],
-    "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/profit-brandenburg/",
-    "description": "Supports innovative SMEs and research institutions with project-based financing for R&D and market-launch activities."
-  },
-  {
-    "name": "AI.STARTUP.HUB",
-    "provider": "AI for Hamburg GmbH",
-    "type": "accelerator",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "ai",
-      "software"
-    ],
-    "url": "https://www.aistartuphub.com/en/accelerator-program",
-    "description": "A six-month accelerator program for AI startups in Northern Germany providing mentorship, research access, and financing."
-  },
-  {
-    "name": "NCA Hamburg Accelerator",
-    "provider": "NCA",
-    "type": "accelerator",
-    "funding": "equity",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "private",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
+      "electronics",
       "ai"
     ],
-    "url": "https://nca.vc",
-    "description": "A multi-corporate innovation network and accelerator providing seed funding and corporate partnership opportunities."
+    "url": "https://www.futuresax.de",
+    "description": "A grant program for science-based startups in Saxony to support the establishment of innovative companies in promising technology sectors."
   },
   {
-    "name": "ESA Business Accelerator Germany",
-    "provider": "ESA / DLR",
-    "type": "accelerator",
-    "funding": "equity-free",
+    "name": "GuW-BW Start-up and Growth Financing",
+    "provider": "L-Bank",
+    "type": "loan",
+    "funding": "loan",
     "stage": "seed",
     "eligibility": "de-entity",
     "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "deeptech",
-      "electronics"
-    ],
-    "url": "https://esa-ba.de",
-    "description": "A six-month space-tech program linking startups with ESA and DLR resources for commercial expansion."
-  },
-  {
-    "name": "German Accelerator",
-    "provider": "German Accelerator",
-    "type": "accelerator",
-    "funding": "equity-free",
-    "stage": "scale",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "none",
-    "focus": [
-      "software",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.germanaccelerator.com",
-    "description": "A scaling program supporting German startups in expanding to international markets like the US and Asia."
-  },
-  {
-    "name": "Startupbootcamp Hamburg",
-    "provider": "Startupbootcamp",
-    "type": "accelerator",
-    "funding": "equity",
-    "stage": "pre-seed",
-    "eligibility": "international",
-    "backing": "private",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "ai"
-    ],
-    "url": "https://startupbootcamp.org",
-    "description": "Sector-focused accelerator tracks for fintech, insurtech, and smart-city startups."
-  },
-  {
-    "name": "INVEST – Grant for Venture Capital",
-    "provider": "BMWK",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "none",
-    "focus": [
-      "software",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
-    "description": "A federal grant program that reimburses business angels for a portion of their investment in innovative startups."
-  },
-  {
-    "name": "B# (be sharp)",
-    "provider": "IBB Ventures",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://bsharp.vc/",
-    "description": "A pre-seed fund providing convertible bonds to early-stage deep tech startups in Berlin."
-  },
-  {
-    "name": "ProFIT",
-    "provider": "Investitionsbank Berlin (IBB) / WFBB",
-    "type": "grant",
-    "funding": "subsidy",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "deeptech",
-      "software",
-      "electronics"
-    ],
-    "url": "https://www.ibb.de/de/foerderprogramme/profit.html",
-    "description": "A joint state grant and loan scheme for technology-oriented R&D projects from idea to market launch."
-  },
-  {
-    "name": "GründungsBONUS Plus",
-    "provider": "IBB Business Team GmbH",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "deeptech"
-    ],
-    "url": "https://www.ibb-business-team.de/en/gruendungsbonus-plus",
-    "description": "A cost subsidy program for innovative and sustainable startups based in Berlin during their first two years."
-  },
-  {
-    "name": "Berlin Start",
-    "provider": "Investitionsbank Berlin (IBB)",
-    "type": "grant",
-    "funding": "subsidy",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
+    "bmwk": "mandated",
     "exist": "none",
     "focus": [
       "software",
@@ -407,115 +103,34 @@
       "ai",
       "deeptech"
     ],
-    "url": "https://www.ibb.de/de/foerderprogramme/berlin-start.html",
-    "description": "A loan program for Berlin-based startups providing favorable financing in conjunction with bank guarantees."
+    "url": "https://www.grantbite.com/en/funding/guw-bw-start-up-growth-financing",
+    "description": "This program provides interest-subsidized loans to support business start-ups, acquisitions, and expansion projects for companies and freelancers in Baden-Württemberg."
   },
   {
     "name": "Start-up BW Pre-Seed",
     "provider": "L-Bank",
     "type": "grant",
-    "funding": "subsidy",
+    "funding": "equity-free",
     "stage": "pre-seed",
     "eligibility": "de-entity",
     "backing": "public",
     "bmwk": "none",
     "exist": "none",
     "focus": [
+      "software",
+      "electronics",
+      "ai",
       "deeptech"
     ],
-    "url": "https://www.l-bank.de/produkte/unternehmensfinanzierung/start-up-bw-pre-seed.html",
-    "description": "Interest-free, partly forgivable loans for innovative, growth-oriented startups in Baden-Württemberg requiring a co-investor."
+    "url": "https://campusfounders.de/startups/pre-seed-bw",
+    "description": "A financial support program for innovative, growth-focused startups in Baden-Württemberg that offers interest-free funding with potential for equity conversion."
   },
   {
-    "name": "Junge Innovatoren",
+    "name": "Start-up BW Venture",
     "provider": "State of Baden-Württemberg",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "deeptech"
-    ],
-    "url": "https://www.gruenden.uni-freiburg.de/wordpress/en/angebote/foerderung/junge-innovatoren",
-    "description": "Grant supporting young researchers from universities and research institutions to develop proof-of-concept projects."
-  },
-  {
-    "name": "CyberLab Accelerator",
-    "provider": "CyberLab Karlsruhe",
-    "type": "accelerator",
-    "funding": "zero-equity",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "partner",
-    "focus": [
-      "software",
-      "ai",
-      "electronics"
-    ],
-    "url": "https://www.cyberlab-karlsruhe.de/en/startup-support/cyberlab-accelerator",
-    "description": "Free-of-charge nine-month accelerator program for IT, AI, IT-security, and smart production startups."
-  },
-  {
-    "name": "Start-up BW Innovation Fonds",
-    "provider": "MBG / L-Bank",
     "type": "vc",
     "funding": "equity",
     "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "ppp",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "software",
-      "deeptech"
-    ],
-    "url": "https://www.startupbw.de/finanzierung/beteiligungsfinanzierung",
-    "description": "Venture capital fund investing in high-tech startups in life sciences, digital transformation, and industrial innovation."
-  },
-  {
-    "name": "AI Startup Rising (AISR)",
-    "provider": "Hessian Centre for Artificial Intelligence (hessian.AI)",
-    "type": "accelerator",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "grant",
-    "focus": [
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://hessian.ai",
-    "description": "A comprehensive platform supporting AI startups from research ideation through incubation and acceleration."
-  },
-  {
-    "name": "Lean AI Startup Funding (LAISF)",
-    "provider": "hessian.AI",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "grant",
-    "focus": [
-      "ai"
-    ],
-    "url": "https://hessian.ai/category/ai-startup-rising",
-    "description": "Early-stage funding providing up to 35,000 EUR to help AI startup teams validate their business ideas."
-  },
-  {
-    "name": "HessenFonds",
-    "provider": "WIBank",
-    "type": "vc",
-    "funding": "subsidy",
-    "stage": "scale",
     "eligibility": "de-entity",
     "backing": "public",
     "bmwk": "none",
@@ -526,77 +141,23 @@
       "ai",
       "deeptech"
     ],
-    "url": "https://www.wibank.de",
-    "description": "Loan-based financing instrument designed to support the liquidity and scaling needs of Hesse-based founders."
+    "url": "https://www.startupbw.de/international/invest-in-the-start-up-laend",
+    "description": "A co-investment fund designed to support venture capitalists investing in local Baden-Württemberg startups."
   },
   {
-    "name": "FLÜGGE",
-    "provider": "Bavarian State Ministry of Economic Affairs, Regional Development and Energy",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "deeptech"
-    ],
-    "url": "https://www.bayern-innovativ.de/en/geschaeftsfelder/projekttraeger/project-sponsor-bavaria/fluegge/fluegge-requirements",
-    "description": "A Bavarian state-wide grant supporting university-based startups in innovation, research, and technology sectors."
-  },
-  {
-    "name": "Bayern Kapital",
-    "provider": "LfA Förderbank Bayern",
-    "type": "vc",
+    "name": "ESA BIC BW Convertible Loan",
+    "provider": "ESA BIC BW",
+    "type": "incubator",
     "funding": "equity",
-    "stage": "seed",
+    "stage": "pre-seed",
     "eligibility": "de-entity",
     "backing": "public",
     "bmwk": "none",
     "exist": "none",
     "focus": [
-      "software",
-      "ai",
       "deeptech"
     ],
-    "url": "https://bayernkapital.de/en/",
-    "description": "A state-backed venture capital firm providing equity financing to innovative high-tech startups and scale-ups in Bavaria."
-  },
-  {
-    "name": "EXIST Business Startup Grant",
-    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "grant",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://exist.de/en",
-    "description": "A federal grant supporting knowledge-intensive startup projects from universities and research institutions to develop business plans and prepare for market entry."
-  },
-  {
-    "name": "Berliner Startup Stipendium",
-    "provider": "Science & Startups (Berlin University Alliance)",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "partner",
-    "focus": [
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.science-startups.berlin/programs/exist-startup-grant",
-    "description": "A scholarship program for research-driven startup teams from Berlin universities to develop scalable ventures in strategic technology fields."
+    "url": "https://www.esa-bic-bw.de/network/investments",
+    "description": "An investment program for innovative startups in Baden-Württemberg providing convertible loans of up to 200,000 Euro."
   }
 ]
