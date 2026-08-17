@@ -1,5 +1,116 @@
 [
   {
+    "name": "Saxony Loan Universal",
+    "provider": "Sächsische Aufbaubank (SAB)",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.grantbite.com/en/funding/saxony-loan-universal-funding",
+    "description": "A flexible loan product for startups and established firms that can be combined with repayment subsidies for investment or working capital."
+  },
+  {
+    "name": "Innovation Capital Saxony",
+    "provider": "Sächsische Aufbaubank (SAB) and KfW",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de/About-KfW/Newsroom/Latest-News/News-Details_849088.html",
+    "description": "Equity-type financing for growth-oriented companies with innovative digital, environmental, or social business models."
+  },
+  {
+    "name": "SAB Starter-Grant",
+    "provider": "Sächsische Aufbaubank (SAB)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.futuresax.de/en/start-ups/start-up-support-in-saxony",
+    "description": "A grant of up to €20,000 for founders in the first five years of operation to support company foundation or strengthening."
+  },
+  {
+    "name": "Gründung Innovativ",
+    "provider": "Investitionsbank des Landes Brandenburg (ILB)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/gruendung-innovativ/",
+    "description": "Provides non-repayable grants for innovative startups in Brandenburg to cover production facilities, consulting, and personnel costs."
+  },
+  {
+    "name": "ProFit Brandenburg",
+    "provider": "Ministry of Economics, Labour and Energy of Brandenburg",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "ai",
+      "electronics"
+    ],
+    "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/profit-brandenburg/",
+    "description": "Supports innovative SMEs and research institutions with project-based financing for R&D and market-launch activities."
+  },
+  {
+    "name": "EXIST Start-up Grant",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "deeptech",
+      "ai",
+      "software"
+    ],
+    "url": "https://www.exist.de/",
+    "description": "Supports innovative startup projects originating from German universities and research institutions to facilitate the transition to self-employment."
+  },
+  {
     "name": "AI.STARTUP.HUB",
     "provider": "AI for Hamburg GmbH",
     "type": "accelerator",
