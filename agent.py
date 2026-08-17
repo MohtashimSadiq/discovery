@@ -2,6 +2,8 @@ import os
 import re
 import json
 import sqlite3
+import random
+from datetime import datetime
 from typing import List, Literal
 from urllib.parse import urlparse
 from pydantic import BaseModel, Field
@@ -9,34 +11,43 @@ from google import genai
 from google.genai import types
 from tavily import TavilyClient
 
+try:
+    from rapidfuzz import fuzz
+    HAS_RAPIDFUZZ = True
+except ImportError:
+    HAS_RAPIDFUZZ = False
+    print("⚠️  rapidfuzz not installed — falling back to substring dedup. Run: pip install rapidfuzz")
+
 # -------------------------------------------------------------------
 # 1. Helper Functions for String Normalization & Fuzzy Deduplication
 # -------------------------------------------------------------------
 def clean_string(text: str) -> str:
-    """Removes spaces, special characters, and casing for fuzzy matching."""
     return re.sub(r'[^a-zA-Z0-9]', '', text).lower()
 
 def normalize_url(url: str) -> str:
-    """Extracts base domain and clean path without trailing slashes or www."""
     parsed = urlparse(url.lower().strip())
     netloc = parsed.netloc.replace("www.", "")
     return f"{parsed.scheme}://{netloc}{parsed.path}".rstrip("/")
 
+def fuzzy_match(a: str, b: str, threshold: int = 85) -> bool:
+    if HAS_RAPIDFUZZ:
+        return fuzz.token_sort_ratio(a, b) >= threshold
+    return a in b or b in a  # fallback
+
 # -------------------------------------------------------------------
-# 2. Pydantic Schema Enforcing Your 8 Taxonomy Dimensions
+# 2. Pydantic Schema (Taxonomy) — added "loan" to type/funding tags
 # -------------------------------------------------------------------
 class ProgramItem(BaseModel):
     name: str = Field(description="Official name of the program, grant, accelerator, or entity")
     provider: str = Field(description="Managing organization, university, state agency, or fund")
     url: str = Field(description="Direct official link to the program or application page")
     description: str = Field(description="Brief single-sentence overview of the offer")
-    
-    # 8 Taxonomy Categories
-    type_tag: Literal["grant", "accelerator", "incubator", "vc"] = Field(
-        description="Program Structure: grant, accelerator, incubator, or vc"
+
+    type_tag: Literal["grant", "accelerator", "incubator", "vc", "loan"] = Field(
+        description="Program Structure: grant, accelerator, incubator, vc, or loan"
     )
-    funding_tag: Literal["equity-free", "zero-equity", "equity", "subsidy"] = Field(
-        description="Funding Mechanics: equity-free, zero-equity, equity, or subsidy"
+    funding_tag: Literal["equity-free", "zero-equity", "equity", "subsidy", "loan"] = Field(
+        description="Funding Mechanics: equity-free, zero-equity, equity, subsidy, or loan"
     )
     stage_tag: Literal["pre-seed", "seed", "scale"] = Field(
         description="Startup Stage: pre-seed, seed, or scale"
@@ -60,8 +71,42 @@ class ProgramItem(BaseModel):
 class ProgramList(BaseModel):
     programs: List[ProgramItem]
 
+class QueryMutation(BaseModel):
+    mutated_query: str = Field(description="A more specific, sub-program-level version of the base query")
+
+class MutationBatch(BaseModel):
+    mutations: List[QueryMutation]
+
 # -------------------------------------------------------------------
-# 3. Composite SQLite Database Engine with Automated Housekeeping
+# 3. Seed Taxonomy — cross-product instead of 5 hardcoded strings
+# -------------------------------------------------------------------
+BUNDESLAENDER = [
+    "Baden-Württemberg", "Bavaria", "Berlin", "Brandenburg", "Bremen",
+    "Hamburg", "Hesse", "Mecklenburg-Vorpommern", "Lower Saxony",
+    "North Rhine-Westphalia", "Rhineland-Palatinate", "Saarland",
+    "Saxony", "Saxony-Anhalt", "Schleswig-Holstein", "Thuringia"
+]
+
+PROGRAM_TYPES = ["grant", "accelerator", "incubator", "loan"]
+
+SECTOR_MODIFIERS = ["deep tech", "AI", "cleantech", "life sciences", "hardware startup"]
+
+def build_seed_queries():
+    """State x program-type cross product (primary seed), sector modifiers layered in lightly."""
+    seeds = []
+    for state in BUNDESLAENDER:
+        for ptype in PROGRAM_TYPES:
+            seeds.append((f"state:{state}", f"{state} startup {ptype} program Germany"))
+    # A handful of sector-first queries, not a full cross product (keeps pool sane at start)
+    for sector in SECTOR_MODIFIERS:
+        seeds.append((f"sector:{sector}", f"Germany {sector} startup funding program"))
+    # National/high-profile programs, seeded once — pool mechanics handle repeats & cooldown
+    seeds.append(("national:EXIST", "EXIST Gründungsstipendium Forschungstransfer 2026"))
+    seeds.append(("national:BMWK", "BMWK German federal startup grant program"))
+    return seeds
+
+# -------------------------------------------------------------------
+# 4. Composite SQLite Database Engine
 # -------------------------------------------------------------------
 class ProgramDatabase:
     def __init__(self, db_path="german_startup_programs.db"):
@@ -71,11 +116,11 @@ class ProgramDatabase:
     def init_db(self):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            # Upgrade database structure if using an older schema version
+
             cursor.execute("PRAGMA table_info(programs)")
             columns = [info[1] for info in cursor.fetchall()]
             if columns and "clean_name" not in columns:
-                print("🔄 Updating SQLite database schema to support clean name indexing...")
+                print("🔄 Updating SQLite schema (programs)...")
                 cursor.execute("DROP TABLE programs")
 
             conn.execute("""
@@ -99,29 +144,60 @@ class ProgramDatabase:
                 )
             """)
 
+            conn.execute("""
+                CREATE TABLE IF NOT EXISTS query_pool (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    query_text TEXT UNIQUE,
+                    category TEXT,
+                    hit_count INTEGER DEFAULT 0,
+                    threshold INTEGER DEFAULT 3,
+                    novelty_last_run INTEGER DEFAULT -1,
+                    consecutive_zero_novelty INTEGER DEFAULT 0,
+                    status TEXT DEFAULT 'active',
+                    last_searched_at TIMESTAMP
+                )
+            """)
+
+    def seed_pool_if_empty(self):
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM query_pool")
+            count = cursor.fetchone()[0]
+            if count > 0:
+                return
+            seeds = build_seed_queries()
+            for category, query_text in seeds:
+                # National/high-profile queries get a lower threshold so they
+                # don't dominate search budget; regional gets a slightly higher one
+                threshold = 2 if category.startswith("national:") else 3
+                try:
+                    conn.execute(
+                        "INSERT INTO query_pool (query_text, category, threshold) VALUES (?, ?, ?)",
+                        (query_text, category, threshold)
+                    )
+                except sqlite3.IntegrityError:
+                    pass
+            print(f"🌱 Seeded query_pool with {len(seeds)} queries.")
+
+    # ---- Program dedup / insert ----
     def is_duplicate(self, prog: ProgramItem) -> bool:
-        """Checks if a program exists by normalized URL OR name + taxonomy fingerprint."""
         norm_url = normalize_url(prog.url)
         norm_name = clean_string(prog.name)
 
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            
-            # 1. Exact Normalized URL Match
             cursor.execute("SELECT id FROM programs WHERE normalized_url = ?", (norm_url,))
             if cursor.fetchone():
                 return True
 
-            # 2. Name & Taxonomy Fingerprint Overlap Match
             cursor.execute("""
-                SELECT clean_name FROM programs 
+                SELECT clean_name FROM programs
                 WHERE type_tag = ? AND stage_tag = ? AND bmwk_tag = ?
             """, (prog.type_tag, prog.stage_tag, prog.bmwk_tag))
-            
-            for (existing_clean_name,) in cursor.fetchall():
-                if norm_name in existing_clean_name or existing_clean_name in norm_name:
-                    return True
 
+            for (existing_clean_name,) in cursor.fetchall():
+                if fuzzy_match(norm_name, existing_clean_name):
+                    return True
         return False
 
     def insert_program(self, prog: ProgramItem) -> bool:
@@ -146,44 +222,91 @@ class ProgramDatabase:
             ))
         return True
 
-    def deduplicate_database(self):
-        """Automated Housekeeping: Purges stray duplicate records from SQLite."""
+    # ---- Query pool mechanics ----
+    def get_next_batch(self, n=5):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                DELETE FROM programs 
-                WHERE id NOT IN (
-                    SELECT MIN(id) 
-                    FROM programs 
-                    GROUP BY clean_name
+                SELECT id, query_text, category, hit_count, threshold
+                FROM query_pool
+                WHERE status = 'active'
+                ORDER BY hit_count ASC, RANDOM()
+                LIMIT ?
+            """, (n,))
+            return cursor.fetchall()
+
+    def update_pool_stats(self, query_id, added_count):
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT hit_count, threshold, consecutive_zero_novelty FROM query_pool WHERE id = ?", (query_id,))
+            hit_count, threshold, zero_streak = cursor.fetchone()
+
+            hit_count += 1
+            zero_streak = zero_streak + 1 if added_count == 0 else 0
+
+            # Exhaust if threshold hit OR two consecutive dead runs (novelty exhaustion)
+            status = 'active'
+            if hit_count >= threshold or zero_streak >= 2:
+                status = 'exhausted'
+
+            conn.execute("""
+                UPDATE query_pool
+                SET hit_count = ?, novelty_last_run = ?, consecutive_zero_novelty = ?,
+                    status = ?, last_searched_at = ?
+                WHERE id = ?
+            """, (hit_count, added_count, zero_streak, status, datetime.utcnow().isoformat(), query_id))
+
+    def count_active(self) -> int:
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM query_pool WHERE status = 'active'")
+            return cursor.fetchone()[0]
+
+    def get_all_exhausted(self):
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, query_text, category FROM query_pool WHERE status = 'exhausted'")
+            return cursor.fetchall()
+
+    def insert_mutated_query(self, query_text, category, threshold=2):
+        with sqlite3.connect(self.db_path) as conn:
+            try:
+                conn.execute(
+                    "INSERT INTO query_pool (query_text, category, threshold) VALUES (?, ?, ?)",
+                    (query_text, category, threshold)
                 )
+                return True
+            except sqlite3.IntegrityError:
+                return False  # already exists, skip
+
+    def deduplicate_database(self):
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                DELETE FROM programs
+                WHERE id NOT IN (SELECT MIN(id) FROM programs GROUP BY clean_name)
             """)
-            deleted_count = cursor.rowcount
+            deleted = cursor.rowcount
             print("\n" + "=" * 80)
             print("🧹 AUTOMATED HOUSEKEEPING REPORT")
             print("=" * 80)
-            if deleted_count > 0:
-                print(f"  • Purged {deleted_count} stray duplicate record(s) from SQLite database.")
-            else:
-                print("  • Database is clean. 0 duplicates found.")
+            print(f"  • Purged {deleted} stray duplicate record(s)." if deleted else "  • Database clean.")
 
     def list_all_programs(self):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                SELECT name, provider, type_tag, funding_tag, stage_tag, eligibility_tag, 
+                SELECT name, provider, type_tag, funding_tag, stage_tag, eligibility_tag,
                        backing_tag, bmwk_tag, exist_tag, focus_tags, url, description
                 FROM programs ORDER BY discovered_at DESC
             """)
             return cursor.fetchall()
 
     def print_terminal_summary(self):
-        """Prints full database contents directly to stdout console."""
         programs = self.list_all_programs()
         print("\n" + "=" * 80)
         print(f"📊 LIVE DATABASE DIRECTORY ({len(programs)} TOTAL ACTIVE PROGRAMS)")
         print("=" * 80)
-        
         for idx, row in enumerate(programs, 1):
             name, provider, type_tag, funding_tag, stage_tag, eligibility_tag, backing_tag, bmwk_tag, exist_tag, focus, url, desc = row
             tags_str = f"type:{type_tag} | funding:{funding_tag} | stage:{stage_tag} | bmwk:{bmwk_tag} | exist:{exist_tag} | focus:{focus}"
@@ -193,19 +316,27 @@ class ProgramDatabase:
             print(f"    Info: {desc}")
         print("\n" + "=" * 80)
 
+    def print_pool_summary(self):
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT status, COUNT(*) FROM query_pool GROUP BY status")
+            rows = cursor.fetchall()
+        print("\n📦 QUERY POOL STATUS:", dict(rows))
+
 # -------------------------------------------------------------------
-# 4. Discovery Engine with Regional Query Angles & Deep Parsing
+# 5. Discovery Engine
 # -------------------------------------------------------------------
 class GermanEcosystemAgent:
     def __init__(self):
         self.db = ProgramDatabase()
+        self.db.seed_pool_if_empty()
         self.ai = genai.Client()  # Uses GEMINI_API_KEY
         self.tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
-    def search_and_categorize(self, search_query: str, angle_label: str):
+    def search_and_categorize(self, search_query: str, angle_label: str) -> int:
+        """Returns number of NEW (non-duplicate) programs added."""
         print(f"\n🔍 Searching [{angle_label}]: '{search_query}'...")
 
-        # Deeper search limit (max_results=10) with AI summary
         search_response = self.tavily.search(
             query=search_query,
             search_depth="basic",
@@ -221,9 +352,10 @@ class GermanEcosystemAgent:
 
         prompt = f"""
         System Role: You are an expert German Venture Capital & Innovation Ecosystem Analyst.
-        
-        Task: Extract active German startup grants, accelerators, incubators, and VC programs from the web context below.
-        Categorize each program strictly according to the schema.
+
+        Task: Extract active German startup grants, accelerators, incubators, loans, and VC programs
+        from the web context below. Categorize each program strictly according to the schema.
+        If no valid programs are present, return an empty list — do not invent entries.
 
         Tavily AI Executive Summary:
         {tavily_answer}
@@ -238,12 +370,12 @@ class GermanEcosystemAgent:
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
                 response_schema=ProgramList,
-                temperature=0.0  # Zero temperature for deterministic tagging
+                temperature=0.0
             )
         )
 
         extracted_data: ProgramList = response.parsed
-        
+
         added, duplicates = 0, 0
         for program in extracted_data.programs:
             if self.db.insert_program(program):
@@ -252,65 +384,126 @@ class GermanEcosystemAgent:
                 print(f"     Tags -> [{tags_str}]")
                 added += 1
             else:
-                print(f"  ⏭️ Skipped (Duplicate Match): {program.name}")
+                print(f"  ⏭️ Skipped (Duplicate): {program.name}")
                 duplicates += 1
 
-        print(f"  --> Results for '{angle_label}': {added} Added | {duplicates} Duplicates Skipped")
+        print(f"  --> '{angle_label}': {added} added | {duplicates} duplicates")
+        return added
 
-    def run(self):
-        # Targeted Regional & Sector Query Rotation Angles
-        target_queries = [
-            ("National / BMWK", "German startup grants EXIST Gründungsstipendium Forschungstransfer 2026"),
-            ("Bavaria (South)", "Bavaria university startup grant FLÜGGE LfA Bayern Innovativ Bayern Kapital"),
-            ("Hesse (Central)", "Hesse AI startup funding hessian.ai WIBank AI Startup Rising StartUpSecure"),
-            ("Baden-Württemberg", "Baden-Württemberg startup grant L-Bank Junge Innovatoren CyberLab VCBW"),
-            ("Berlin / Capital", "Berlin Brandenburg startup subsidy IBB Ventures ProFIT Innovation Seed")
-        ]
+    def trigger_mutation_cycle(self):
+        """When the active pool is empty, mutate every exhausted query into a sub-program query."""
+        exhausted = self.db.get_all_exhausted()
+        if not exhausted:
+            print("⚠️  No exhausted queries to mutate — pool is genuinely empty.")
+            return
+
+        print(f"\n🧬 MUTATION CYCLE: expanding {len(exhausted)} exhausted queries...")
+
+        # Batch these to Gemini in groups to keep prompts manageable
+        BATCH_SIZE = 10
+        for i in range(0, len(exhausted), BATCH_SIZE):
+            chunk = exhausted[i:i + BATCH_SIZE]
+            base_list = "\n".join([f"- ({cat}) {q}" for _, q, cat in chunk])
+
+            prompt = f"""
+            You are refining a German startup-funding search query pool.
+            Below are BASE queries that have been fully searched and exhausted (returning no new results).
+            For EACH base query, write exactly ONE more specific, sub-program-level search query —
+            target a specific sub-initiative, target group (women, migrants, students), funding round,
+            or 2026 cohort rather than repeating the general topic.
+            Return one mutation per base query, in the same order.
+
+            Base queries:
+            {base_list}
+            """
+
+            response = self.ai.models.generate_content(
+                model="gemini-3.1-flash-lite",
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    response_schema=MutationBatch,
+                    temperature=0.7
+                )
+            )
+
+            mutation_data: MutationBatch = response.parsed
+            for (qid, orig_query, category), mutation in zip(chunk, mutation_data.mutations):
+                inserted = self.db.insert_mutated_query(
+                    mutation.mutated_query, f"{category}:mutated", threshold=2
+                )
+                if inserted:
+                    print(f"  🌿 Mutated ({category}): '{orig_query}' -> '{mutation.mutated_query}'")
+
+    def run_until_novel_target(self, target_new=5, max_batches=15, batch_size=5):
+        """
+        Keeps running batches (pulling lowest hit_count queries, mutating when
+        the pool exhausts) until at least `target_new` unique programs have been
+        added, or `max_batches` is hit (safety valve against unlimited API spend).
+        """
+        total_new = 0
+        batches_run = 0
 
         print("\n🚀 STARTING GERMAN STARTUP PROGRAM DISCOVERY ENGINE...")
         print("=" * 80)
 
-        for angle_label, query in target_queries:
-            self.search_and_categorize(query, angle_label)
+        while total_new < target_new and batches_run < max_batches:
+            batch = self.db.get_next_batch(n=batch_size)
+
+            if not batch:
+                if self.db.count_active() == 0:
+                    self.trigger_mutation_cycle()
+                    batch = self.db.get_next_batch(n=batch_size)
+                if not batch:
+                    print("🏁 Pool truly exhausted — no more queries to try.")
+                    break
+
+            for query_id, query_text, category, hit_count, threshold in batch:
+                added = self.search_and_categorize(query_text, category)
+                total_new += added
+                self.db.update_pool_stats(query_id, added)
+
+                if total_new >= target_new:
+                    break
+
+            batches_run += 1
+            print(f"\n— Batch {batches_run} complete. Running total: {total_new}/{target_new} new programs —")
+
+        print("\n" + "=" * 80)
+        if total_new >= target_new:
+            print(f"✅ TARGET MET: {total_new} new programs added across {batches_run} batch(es).")
+        else:
+            print(f"⚠️  STOPPED at max_batches ({max_batches}). Only {total_new}/{target_new} new programs found.")
+            print("    This may mean the pool is genuinely near-exhausted — check pool status below.")
+        print("=" * 80)
+
+        self.db.print_pool_summary()
+        return total_new
 
     def export_to_json(self, json_path="grants.json"):
-        """Exports SQLite database to grants.json for GitHub Pages."""
         programs = self.db.list_all_programs()
         data = []
         for row in programs:
             name, provider, type_tag, funding_tag, stage_tag, eligibility_tag, backing_tag, bmwk_tag, exist_tag, focus, url, desc = row
             data.append({
-                "name": name,
-                "provider": provider,
-                "type": type_tag,
-                "funding": funding_tag,
-                "stage": stage_tag,
-                "eligibility": eligibility_tag,
-                "backing": backing_tag,
-                "bmwk": bmwk_tag,
-                "exist": exist_tag,
+                "name": name, "provider": provider, "type": type_tag, "funding": funding_tag,
+                "stage": stage_tag, "eligibility": eligibility_tag, "backing": backing_tag,
+                "bmwk": bmwk_tag, "exist": exist_tag,
                 "focus": focus.split(",") if focus else [],
-                "url": url,
-                "description": desc
+                "url": url, "description": desc
             })
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         print(f"🌐 Web Dashboard Export: Written {len(data)} unique record(s) to '{json_path}'.")
 
 # -------------------------------------------------------------------
-# Execution & Terminal Output Reporting
+# Execution
 # -------------------------------------------------------------------
 if __name__ == "__main__":
     agent = GermanEcosystemAgent()
-    
-    # 1. Execute Regional Discovery
-    agent.run()
-    
-    # 2. Execute Automated Housekeeping
+
+    agent.run_until_novel_target(target_new=5, max_batches=15, batch_size=5)
+
     agent.db.deduplicate_database()
-    
-    # 3. Export to Web Dashboard JSON
     agent.export_to_json()
-    
-    # 4. Print Complete Directory Summary Directly to Terminal Logs
     agent.db.print_terminal_summary()
