@@ -29,13 +29,23 @@ def normalize_url(url: str) -> str:
     netloc = parsed.netloc.replace("www.", "")
     return f"{parsed.scheme}://{netloc}{parsed.path}".rstrip("/")
 
-def fuzzy_match(a: str, b: str, threshold: int = 85) -> bool:
+def get_domain(normalized_url: str) -> str:
+    if "://" in normalized_url:
+        return normalized_url.split("://", 1)[1].split("/", 1)[0]
+    return normalized_url.split("/", 1)[0]
+
+def fuzzy_match(a: str, b: str, threshold: int = 80) -> bool:
     if HAS_RAPIDFUZZ:
-        return fuzz.token_sort_ratio(a, b) >= threshold
+        return fuzz.token_set_ratio(a, b) >= threshold
     return a in b or b in a  # fallback
 
+def fuzzy_score(a: str, b: str) -> int:
+    if HAS_RAPIDFUZZ:
+        return fuzz.token_set_ratio(a, b)
+    return 100 if (a in b or b in a) else 0
+
 # -------------------------------------------------------------------
-# 2. Pydantic Schema (Taxonomy) — added "loan" to type/funding tags
+# 2. Pydantic Schema (Taxonomy) — includes "loan" tag options
 # -------------------------------------------------------------------
 class ProgramItem(BaseModel):
     name: str = Field(description="Official name of the program, grant, accelerator, or entity")
@@ -78,7 +88,7 @@ class MutationBatch(BaseModel):
     mutations: List[QueryMutation]
 
 # -------------------------------------------------------------------
-# 3. Seed Taxonomy — cross-product instead of 5 hardcoded strings
+# 3. Seed Taxonomy — cross-product instead of hardcoded strings
 # -------------------------------------------------------------------
 BUNDESLAENDER = [
     "Baden-Württemberg", "Bavaria", "Berlin", "Brandenburg", "Bremen",
@@ -97,10 +107,8 @@ def build_seed_queries():
     for state in BUNDESLAENDER:
         for ptype in PROGRAM_TYPES:
             seeds.append((f"state:{state}", f"{state} startup {ptype} program Germany"))
-    # A handful of sector-first queries, not a full cross product (keeps pool sane at start)
     for sector in SECTOR_MODIFIERS:
         seeds.append((f"sector:{sector}", f"Germany {sector} startup funding program"))
-    # National/high-profile programs, seeded once — pool mechanics handle repeats & cooldown
     seeds.append(("national:EXIST", "EXIST Gründungsstipendium Forschungstransfer 2026"))
     seeds.append(("national:BMWK", "BMWK German federal startup grant program"))
     return seeds
@@ -158,6 +166,13 @@ class ProgramDatabase:
                 )
             """)
 
+            conn.execute("""
+                CREATE TABLE IF NOT EXISTS meta (
+                    key TEXT PRIMARY KEY,
+                    value TEXT
+                )
+            """)
+
     def seed_pool_if_empty(self):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -167,8 +182,6 @@ class ProgramDatabase:
                 return
             seeds = build_seed_queries()
             for category, query_text in seeds:
-                # National/high-profile queries get a lower threshold so they
-                # don't dominate search budget; regional gets a slightly higher one
                 threshold = 2 if category.startswith("national:") else 3
                 try:
                     conn.execute(
@@ -182,22 +195,32 @@ class ProgramDatabase:
     # ---- Program dedup / insert ----
     def is_duplicate(self, prog: ProgramItem) -> bool:
         norm_url = normalize_url(prog.url)
+        norm_domain = get_domain(norm_url)
         norm_name = clean_string(prog.name)
 
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
+
+            # 1. Exact normalized URL match
             cursor.execute("SELECT id FROM programs WHERE normalized_url = ?", (norm_url,))
             if cursor.fetchone():
                 return True
 
-            cursor.execute("""
-                SELECT clean_name FROM programs
-                WHERE type_tag = ? AND stage_tag = ? AND bmwk_tag = ?
-            """, (prog.type_tag, prog.stage_tag, prog.bmwk_tag))
+            # 2. Compare against ALL existing programs (not tag-filtered —
+            #    tags can vary slightly across extraction passes for the
+            #    same real program, so filtering on them risks missing dupes)
+            cursor.execute("SELECT clean_name, normalized_url FROM programs")
+            all_rows = cursor.fetchall()
 
-            for (existing_clean_name,) in cursor.fetchall():
-                if fuzzy_match(norm_name, existing_clean_name):
-                    return True
+            for existing_name, existing_url in all_rows:
+                existing_domain = get_domain(existing_url) if existing_url else ""
+                same_domain = bool(norm_domain) and norm_domain == existing_domain
+                name_score = fuzzy_score(norm_name, existing_name)
+
+                if same_domain and name_score >= 60:
+                    return True  # same org domain + weak name overlap = same program
+                if name_score >= 80:
+                    return True  # strong name match regardless of domain
         return False
 
     def insert_program(self, prog: ProgramItem) -> bool:
@@ -244,7 +267,6 @@ class ProgramDatabase:
             hit_count += 1
             zero_streak = zero_streak + 1 if added_count == 0 else 0
 
-            # Exhaust if threshold hit OR two consecutive dead runs (novelty exhaustion)
             status = 'active'
             if hit_count >= threshold or zero_streak >= 2:
                 status = 'exhausted'
@@ -277,9 +299,11 @@ class ProgramDatabase:
                 )
                 return True
             except sqlite3.IntegrityError:
-                return False  # already exists, skip
+                return False
 
+    # ---- Cleanup ----
     def deduplicate_database(self):
+        """Exact clean_name matches only — fast pass."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
@@ -288,9 +312,62 @@ class ProgramDatabase:
             """)
             deleted = cursor.rowcount
             print("\n" + "=" * 80)
-            print("🧹 AUTOMATED HOUSEKEEPING REPORT")
+            print("🧹 AUTOMATED HOUSEKEEPING REPORT (exact match)")
             print("=" * 80)
             print(f"  • Purged {deleted} stray duplicate record(s)." if deleted else "  • Database clean.")
+
+    def fuzzy_deduplicate_database(self, threshold=80):
+        """Full pairwise fuzzy sweep across all programs. Keeps the earliest-
+        discovered row of each cluster, deletes later duplicates."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, clean_name FROM programs ORDER BY discovered_at ASC")
+            rows = cursor.fetchall()
+
+        to_delete = set()
+        n = len(rows)
+        for i in range(n):
+            id_a, name_a = rows[i]
+            if id_a in to_delete:
+                continue
+            for j in range(i + 1, n):
+                id_b, name_b = rows[j]
+                if id_b in to_delete:
+                    continue
+                score = fuzzy_score(name_a, name_b)
+                if score >= threshold:
+                    to_delete.add(id_b)
+
+        if to_delete:
+            with sqlite3.connect(self.db_path) as conn:
+                placeholders = ",".join("?" * len(to_delete))
+                conn.execute(f"DELETE FROM programs WHERE id IN ({placeholders})", tuple(to_delete))
+            print(f"🧹 Fuzzy sweep: removed {len(to_delete)} near-duplicate program(s).")
+        else:
+            print("🧹 Fuzzy sweep: no near-duplicates found.")
+        return len(to_delete)
+
+    def maybe_run_fuzzy_sweep(self, interval_days=0, force=False):
+        """interval_days=0 means always run. Bump to e.g. 3 once the DB is
+        large enough that the O(n^2) sweep gets slow on every run."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT value FROM meta WHERE key = 'last_fuzzy_sweep'")
+            row = cursor.fetchone()
+
+        if not force and interval_days > 0 and row:
+            last_run = datetime.fromisoformat(row[0])
+            if (datetime.utcnow() - last_run).total_seconds() < interval_days * 86400:
+                print(f"⏭️  Fuzzy sweep skipped (last ran {row[0]}, interval={interval_days}d).")
+                return 0
+
+        removed = self.fuzzy_deduplicate_database()
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute("""
+                INSERT INTO meta (key, value) VALUES ('last_fuzzy_sweep', ?)
+                ON CONFLICT(key) DO UPDATE SET value = excluded.value
+            """, (datetime.utcnow().isoformat(),))
+        return removed
 
     def list_all_programs(self):
         with sqlite3.connect(self.db_path) as conn:
@@ -355,7 +432,9 @@ class GermanEcosystemAgent:
 
         Task: Extract active German startup grants, accelerators, incubators, loans, and VC programs
         from the web context below. Categorize each program strictly according to the schema.
-        If no valid programs are present, return an empty list — do not invent entries.
+        Write a clear, informative one-sentence description for each program suitable for public
+        display on a directory website. If no valid programs are present, return an empty list —
+        do not invent entries.
 
         Tavily AI Executive Summary:
         {tavily_answer}
@@ -399,7 +478,6 @@ class GermanEcosystemAgent:
 
         print(f"\n🧬 MUTATION CYCLE: expanding {len(exhausted)} exhausted queries...")
 
-        # Batch these to Gemini in groups to keep prompts manageable
         BATCH_SIZE = 10
         for i in range(0, len(exhausted), BATCH_SIZE):
             chunk = exhausted[i:i + BATCH_SIZE]
@@ -504,6 +582,7 @@ if __name__ == "__main__":
 
     agent.run_until_novel_target(target_new=5, max_batches=15, batch_size=5)
 
-    agent.db.deduplicate_database()
+    agent.db.deduplicate_database()               # exact clean_name matches
+    agent.db.maybe_run_fuzzy_sweep(interval_days=0)  # 0 = always run for now
     agent.export_to_json()
     agent.db.print_terminal_summary()
