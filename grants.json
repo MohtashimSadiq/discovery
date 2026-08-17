@@ -1,5 +1,91 @@
 [
   {
+    "name": "AI.STARTUP.HUB",
+    "provider": "AI for Hamburg GmbH",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "software"
+    ],
+    "url": "https://www.aistartuphub.com/en/accelerator-program",
+    "description": "A six-month accelerator program for AI startups in Northern Germany providing mentorship, research access, and financing."
+  },
+  {
+    "name": "NCA Hamburg Accelerator",
+    "provider": "NCA",
+    "type": "accelerator",
+    "funding": "equity",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://nca.vc",
+    "description": "A multi-corporate innovation network and accelerator providing seed funding and corporate partnership opportunities."
+  },
+  {
+    "name": "ESA Business Accelerator Germany",
+    "provider": "ESA / DLR",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "electronics"
+    ],
+    "url": "https://esa-ba.de",
+    "description": "A six-month space-tech program linking startups with ESA and DLR resources for commercial expansion."
+  },
+  {
+    "name": "German Accelerator",
+    "provider": "German Accelerator",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.germanaccelerator.com",
+    "description": "A scaling program supporting German startups in expanding to international markets like the US and Asia."
+  },
+  {
+    "name": "Startupbootcamp Hamburg",
+    "provider": "Startupbootcamp",
+    "type": "accelerator",
+    "funding": "equity",
+    "stage": "pre-seed",
+    "eligibility": "international",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://startupbootcamp.org",
+    "description": "Sector-focused accelerator tracks for fintech, insurtech, and smart-city startups."
+  },
+  {
     "name": "INVEST – Grant for Venture Capital",
     "provider": "BMWK",
     "type": "grant",
