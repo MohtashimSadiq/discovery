@@ -1,6 +1,42 @@
 [
   {
-    "name": "Gründungszuschuss",
+    "name": "B# (be sharp)",
+    "provider": "IBB Ventures",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://bsharp.vc/",
+    "description": "A pre-seed fund providing convertible bonds to early-stage deep tech startups in Berlin."
+  },
+  {
+    "name": "ProFIT",
+    "provider": "Investitionsbank Berlin (IBB) / WFBB",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "software",
+      "electronics"
+    ],
+    "url": "https://www.ibb.de/de/foerderprogramme/profit.html",
+    "description": "A joint state grant and loan scheme for technology-oriented R&D projects from idea to market launch."
+  },
+  {
+    "name": "GründungsBONUS Plus",
+    "provider": "IBB Business Team GmbH",
     "type": "grant",
     "funding": "equity-free",
     "stage": "pre-seed",
@@ -9,176 +45,187 @@
     "bmwk": "none",
     "exist": "none",
     "focus": [
-      "software"
+      "software",
+      "deeptech"
     ],
-    "url": "https://www.foerderdatenbank.de"
+    "url": "https://www.ibb-business-team.de/en/gruendungsbonus-plus",
+    "description": "A cost subsidy program for innovative and sustainable startups based in Berlin during their first two years."
   },
   {
-    "name": "High-Tech Gründerfonds",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "pre-seed",
+    "name": "Berlin Start",
+    "provider": "Investitionsbank Berlin (IBB)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
     "eligibility": "de-entity",
-    "backing": "ppp",
-    "bmwk": "direct",
+    "backing": "public",
+    "bmwk": "none",
     "exist": "none",
     "focus": [
-      "deeptech",
+      "software",
       "electronics",
-      "ai"
-    ],
-    "url": "https://www.htgf.de"
-  },
-  {
-    "name": "Startup Incubator Berlin (SIB)",
-    "type": "incubator",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "mandated",
-    "exist": "partner",
-    "focus": [
-      "software",
-      "ai"
-    ],
-    "url": "https://www.startup-incubator.berlin/category/exist-en?lang=en"
-  },
-  {
-    "name": "DeepTech & Climate Fonds (DTCF)",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "scale",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
+      "ai",
       "deeptech"
     ],
-    "url": "https://www.dtcf.de/"
+    "url": "https://www.ibb.de/de/foerderprogramme/berlin-start.html",
+    "description": "A loan program for Berlin-based startups providing favorable financing in conjunction with bank guarantees."
   },
   {
-    "name": "DeepTech & Climate Fonds (DTCF)",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "scale",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
-      "deeptech"
-    ],
-    "url": "https://dtcf.de/"
-  },
-  {
-    "name": "Coparion",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "ppp",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
-      "deeptech",
-      "software"
-    ],
-    "url": "https://www.coparion.vc"
-  },
-  {
-    "name": "KfW Capital",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "scale",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
-      "deeptech",
-      "ai"
-    ],
-    "url": "https://www.kfw-capital.de"
-  },
-  {
-    "name": "Startup Incubator Berlin (SIB)",
-    "type": "incubator",
-    "funding": "equity-free",
+    "name": "Start-up BW Pre-Seed",
+    "provider": "L-Bank",
+    "type": "grant",
+    "funding": "subsidy",
     "stage": "pre-seed",
-    "eligibility": "de-academic",
+    "eligibility": "de-entity",
     "backing": "public",
-    "bmwk": "mandated",
-    "exist": "partner",
-    "focus": [
-      "software",
-      "ai"
-    ],
-    "url": "https://www.startup-incubator.berlin/"
-  },
-  {
-    "name": "SCE Freiraum Ventures",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "seed",
-    "eligibility": "de-academic",
-    "backing": "private",
     "bmwk": "none",
     "exist": "none",
     "focus": [
       "deeptech"
     ],
-    "url": "https://www.sce.de/"
+    "url": "https://www.l-bank.de/produkte/unternehmensfinanzierung/start-up-bw-pre-seed.html",
+    "description": "Interest-free, partly forgivable loans for innovative, growth-oriented startups in Baden-Württemberg requiring a co-investor."
   },
   {
-    "name": "German Accelerator",
-    "type": "accelerator",
+    "name": "Junge Innovatoren",
+    "provider": "State of Baden-Württemberg",
+    "type": "grant",
     "funding": "equity-free",
-    "stage": "scale",
-    "eligibility": "international",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
     "backing": "public",
-    "bmwk": "direct",
+    "bmwk": "none",
     "exist": "none",
     "focus": [
-      "software",
-      "ai",
       "deeptech"
     ],
-    "url": "https://germanaccelerator.com/"
+    "url": "https://www.gruenden.uni-freiburg.de/wordpress/en/angebote/foerderung/junge-innovatoren",
+    "description": "Grant supporting young researchers from universities and research institutions to develop proof-of-concept projects."
   },
   {
-    "name": "Digital Hub Initiative (de:hub)",
-    "type": "incubator",
-    "funding": "subsidy",
-    "stage": "seed",
+    "name": "CyberLab Accelerator",
+    "provider": "CyberLab Karlsruhe",
+    "type": "accelerator",
+    "funding": "zero-equity",
+    "stage": "pre-seed",
     "eligibility": "de-entity",
     "backing": "public",
-    "bmwk": "direct",
+    "bmwk": "none",
     "exist": "partner",
     "focus": [
       "software",
       "ai",
-      "deeptech"
+      "electronics"
     ],
-    "url": "https://www.de-hub.de/"
+    "url": "https://www.cyberlab-karlsruhe.de/en/startup-support/cyberlab-accelerator",
+    "description": "Free-of-charge nine-month accelerator program for IT, AI, IT-security, and smart production startups."
   },
   {
-    "name": "High-Tech Gründerfonds (HTGF)",
+    "name": "Start-up BW Innovation Fonds",
+    "provider": "MBG / L-Bank",
     "type": "vc",
     "funding": "equity",
     "stage": "seed",
     "eligibility": "de-entity",
     "backing": "ppp",
-    "bmwk": "mandated",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "deeptech"
+    ],
+    "url": "https://www.startupbw.de/finanzierung/beteiligungsfinanzierung",
+    "description": "Venture capital fund investing in high-tech startups in life sciences, digital transformation, and industrial innovation."
+  },
+  {
+    "name": "AI Startup Rising (AISR)",
+    "provider": "Hessian Centre for Artificial Intelligence (hessian.AI)",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://hessian.ai",
+    "description": "A comprehensive platform supporting AI startups from research ideation through incubation and acceleration."
+  },
+  {
+    "name": "Lean AI Startup Funding (LAISF)",
+    "provider": "hessian.AI",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "grant",
+    "focus": [
+      "ai"
+    ],
+    "url": "https://hessian.ai/category/ai-startup-rising",
+    "description": "Early-stage funding providing up to 35,000 EUR to help AI startup teams validate their business ideas."
+  },
+  {
+    "name": "HessenFonds",
+    "provider": "WIBank",
+    "type": "vc",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.wibank.de",
+    "description": "Loan-based financing instrument designed to support the liquidity and scaling needs of Hesse-based founders."
+  },
+  {
+    "name": "FLÜGGE",
+    "provider": "Bavarian State Ministry of Economic Affairs, Regional Development and Energy",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "none",
     "exist": "none",
     "focus": [
       "deeptech"
     ],
-    "url": "https://htgf.de/"
+    "url": "https://www.bayern-innovativ.de/en/geschaeftsfelder/projekttraeger/project-sponsor-bavaria/fluegge/fluegge-requirements",
+    "description": "A Bavarian state-wide grant supporting university-based startups in innovation, research, and technology sectors."
+  },
+  {
+    "name": "Bayern Kapital",
+    "provider": "LfA Förderbank Bayern",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://bayernkapital.de/en/",
+    "description": "A state-backed venture capital firm providing equity financing to innovative high-tech startups and scale-ups in Bavaria."
   },
   {
     "name": "EXIST Business Startup Grant",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
     "type": "grant",
     "funding": "equity-free",
     "stage": "pre-seed",
@@ -192,241 +239,24 @@
       "ai",
       "deeptech"
     ],
-    "url": "https://www.exist.de/"
+    "url": "https://exist.de/en",
+    "description": "A federal grant supporting knowledge-intensive startup projects from universities and research institutions to develop business plans and prepare for market entry."
   },
   {
-    "name": "Coparion",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "ppp",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
-      "software",
-      "deeptech"
-    ],
-    "url": "https://www.coparion.vc/"
-  },
-  {
-    "name": "INVEST Grant",
-    "type": "grant",
-    "funding": "subsidy",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "none",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.bmwk.de/"
-  },
-  {
-    "name": "EXIST Startup Grant",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "grant",
-    "focus": [
-      "deeptech"
-    ],
-    "url": "https://exist.de/en"
-  },
-  {
-    "name": "EXIST Startup Factories",
-    "type": "incubator",
-    "funding": "equity-free",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "ppp",
-    "bmwk": "direct",
-    "exist": "partner",
-    "focus": [
-      "deeptech"
-    ],
-    "url": "https://startup-factories.de/en"
-  },
-  {
-    "name": "ESA-BIC Berlin",
-    "type": "incubator",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "none",
-    "focus": [
-      "deeptech",
-      "electronics"
-    ],
-    "url": "https://www.science-startups.berlin/partners-institutions"
-  },
-  {
-    "name": "Starfrica EXIST Incubator",
-    "type": "incubator",
-    "funding": "zero-equity",
-    "stage": "pre-seed",
-    "eligibility": "international",
-    "backing": "public",
-    "bmwk": "none",
-    "exist": "partner",
-    "focus": [
-      "software",
-      "ai"
-    ],
-    "url": "https://starfrica.de/service/exist-incubator"
-  },
-  {
-    "name": "High-Tech Gründerfonds (HTGF)",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "pre-seed",
-    "eligibility": "de-entity",
-    "backing": "ppp",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.htgf.de/en/"
-  },
-  {
-    "name": "EXIST Business Start-up Grant",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "grant",
-    "focus": [
-      "software",
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.exist.de"
-  },
-  {
-    "name": "German Accelerator",
-    "type": "accelerator",
-    "funding": "zero-equity",
-    "stage": "scale",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "none",
-    "focus": [
-      "software",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://germanaccelerator.com"
-  },
-  {
-    "name": "High-Tech Gründerfonds (HTGF)",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "seed",
-    "eligibility": "de-entity",
-    "backing": "ppp",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
-      "electronics",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://htgf.de"
-  },
-  {
-    "name": "Digital Hub Initiative (de:hub)",
-    "type": "incubator",
-    "funding": "zero-equity",
-    "stage": "seed",
-    "eligibility": "international",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "partner",
-    "focus": [
-      "software",
-      "ai",
-      "deeptech"
-    ],
-    "url": "https://www.de-hub.de"
-  },
-  {
-    "name": "DeepTech & Climate Fonds (DTCF)",
-    "type": "vc",
-    "funding": "equity",
-    "stage": "scale",
-    "eligibility": "de-entity",
-    "backing": "public",
-    "bmwk": "mandated",
-    "exist": "none",
-    "focus": [
-      "deeptech",
-      "electronics"
-    ],
-    "url": "https://dtcf.de"
-  },
-  {
-    "name": "StartUpSecure",
+    "name": "Berliner Startup Stipendium",
+    "provider": "Science & Startups (Berlin University Alliance)",
     "type": "grant",
     "funding": "equity-free",
     "stage": "pre-seed",
     "eligibility": "de-academic",
     "backing": "public",
     "bmwk": "none",
-    "exist": "none",
+    "exist": "partner",
     "focus": [
-      "software",
-      "deeptech"
-    ],
-    "url": "https://www.athene-center.de"
-  },
-  {
-    "name": "EXIST Gründerstipendium",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "grant",
-    "focus": [
-      "software",
-      "electronics",
       "ai",
       "deeptech"
     ],
-    "url": "https://www.grantbite.com/en/funding/exist-startup-grant-universities-research"
-  },
-  {
-    "name": "EXIST Forschungstransfer",
-    "type": "grant",
-    "funding": "equity-free",
-    "stage": "pre-seed",
-    "eligibility": "de-academic",
-    "backing": "public",
-    "bmwk": "direct",
-    "exist": "grant",
-    "focus": [
-      "deeptech",
-      "electronics",
-      "ai"
-    ],
-    "url": "https://www.science-startups.berlin/programs/exist-startup-grant"
+    "url": "https://www.science-startups.berlin/programs/exist-startup-grant",
+    "description": "A scholarship program for research-driven startup teams from Berlin universities to develop scalable ventures in strategic technology fields."
   }
 ]
