@@ -1,5 +1,78 @@
 [
   {
+    "name": "Gründungszuschuss",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.foerderdatenbank.de"
+  },
+  {
+    "name": "High-Tech Gründerfonds",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "electronics",
+      "ai"
+    ],
+    "url": "https://www.htgf.de"
+  },
+  {
+    "name": "Startup Incubator Berlin (SIB)",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "partner",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://www.startup-incubator.berlin/category/exist-en?lang=en"
+  },
+  {
+    "name": "DeepTech & Climate Fonds (DTCF)",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.dtcf.de/"
+  },
+  {
+    "name": "DeepTech & Climate Fonds (DTCF)",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://dtcf.de/"
+  },
+  {
     "name": "Coparion",
     "type": "vc",
     "funding": "equity",
