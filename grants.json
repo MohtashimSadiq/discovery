@@ -1,5 +1,111 @@
 [
   {
+    "name": "Berlin Startup Scholarship",
+    "provider": "Startup Incubator Berlin (HWR Berlin)",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.startup-incubator.berlin",
+    "description": "A six-month program providing funding, coaching, and workspace to support academic founding teams in developing their business models."
+  },
+  {
+    "name": "Impact Incubator Climate-Tech",
+    "provider": "Impact Hub Berlin",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://berlin.impacthub.net/program/impact-incubator-climate-tech",
+    "description": "A Berlin-based incubator for climate-tech founders that provides access to the local startup ecosystem and expert mentorship."
+  },
+  {
+    "name": "StarTUp Incubator",
+    "provider": "Technische Universität Berlin",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.tu.berlin/en/topics/entrepreneurship/support-for-start-up-projects",
+    "description": "A milestone-based incubation process lasting 6 to 18 months that supports high-tech startup teams with infrastructure and training."
+  },
+  {
+    "name": "Reaktor.Berlin",
+    "provider": "Reaktor.Berlin",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://reaktor.berlin",
+    "description": "A six-month pre-seed accelerator program for Berlin-based startups offering non-dilutive funding without taking equity."
+  },
+  {
+    "name": "German Accelerator",
+    "provider": "German Accelerator",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "scale",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.germanaccelerator.com",
+    "description": "A flagship program that helps German startups scale internationally by providing access to global markets and expert mentorship."
+  },
+  {
+    "name": "Grace - Accelerate Female Entrepreneurship",
+    "provider": "Grace",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://grace-accelerator.de",
+    "description": "An accelerator program focused on supporting female entrepreneurs with a monthly stipend and business development resources."
+  },
+  {
     "name": "Gründung innovativ",
     "provider": "Investitionsbank des Landes Brandenburg (ILB)",
     "type": "grant",
