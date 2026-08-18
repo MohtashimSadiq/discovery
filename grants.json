@@ -1,5 +1,92 @@
 [
   {
+    "name": "Flämingo Accelerator",
+    "provider": "Flämingo Startup Hub",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://flaemingo-startuphub.com/accelerator",
+    "description": "An equity-free program in Brandenburg offering a one-month residency and six-month hybrid growth phase for startups in mobility, health, and creative industries."
+  },
+  {
+    "name": "EXIST & EXIST Women",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.startup-incubator.berlin",
+    "description": "Federal funding programs designed to support research-based and knowledge-based startups with a dedicated track for female founders."
+  },
+  {
+    "name": "ClimAccelerator",
+    "provider": "EIT Climate-KIC",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://climaccelerator.climate-kic.org",
+    "description": "A European accelerator program based in Berlin providing financial grants and mentorship to cleantech startups focused on climate impact."
+  },
+  {
+    "name": "HessenFonds Innovation Loan",
+    "provider": "StartHub Hessen",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://starthub-hessen.de",
+    "description": "This loan program provides between €100,000 and €10 million for innovation projects with a 70% liability exemption for the participating bank."
+  },
+  {
+    "name": "INVEST – Grant for Venture Capital",
+    "provider": "BMWK",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bmwk.de",
+    "description": "A federal grant program that provides a subsidy to private investors who provide venture capital to innovative startups."
+  },
+  {
     "name": "Starter Scholarship Saar",
     "provider": "Saarland Ministry for Economy, Innovation, Digitalisation and Energy",
     "type": "grant",
