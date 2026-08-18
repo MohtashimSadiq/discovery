@@ -1,5 +1,253 @@
 [
   {
+    "name": "Deutschlandfonds (Startups and Scaleups Pillar)",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/Investment-focus/Deutschlandfonds",
+    "description": "A government-backed framework providing direct co-investments and guarantees to mobilize private capital for German startups and scale-ups."
+  },
+  {
+    "name": "WIN 400",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/Investment-focus/Deutschlandfonds",
+    "description": "A strategic investment program providing 400 million euros into innovative venture capital funds to foster growth and financing capacity in Germany."
+  },
+  {
+    "name": "EIF German Equity",
+    "provider": "European Investment Fund (EIF) & Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.eif.org/press/all/eif-german-equity-boost-for-innovation-and-startups",
+    "description": "A joint initiative providing €1.6 billion to expand venture capital and growth-stage financing for technology-based startups in Germany."
+  },
+  {
+    "name": "KfW StartGeld",
+    "provider": "KfW",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gruenden-Erweitern/Finanzierungsangebote/KfW-StartGeld-(067-068)/",
+    "description": "A loan program designed to support founders and young companies with financing for investments and working capital."
+  },
+  {
+    "name": "Kultur- und Kreativpilot*innen Deutschland",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://kultur-kreativpiloten.de",
+    "description": "An annual federal award that recognizes 32 outstanding companies from the cultural and creative industries, providing them with high-level visibility, networking, and strategic support."
+  },
+  {
+    "name": "KfW Entrepreneur Loan",
+    "provider": "KfW",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
+    "description": "A financing program providing medium to long-term capital for established commercial SMEs and professionals active on the market for at least five years."
+  },
+  {
+    "name": "GründungsBONUS",
+    "provider": "Investitionsbank Berlin (IBB)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ibb.de",
+    "description": "A grant scheme for Berlin-based SMEs and startups to cover up to 50% of eligible operating costs during their first two years."
+  },
+  {
+    "name": "IFB Hamburg Startup Grant",
+    "provider": "Hamburgische Investitions- und Förderbank (IFB Hamburg)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.ifbhh.de",
+    "description": "Provides project-based funding or employee-subsidy models for early-stage startups based in Hamburg to support growth and innovation."
+  },
+  {
+    "name": "ERP Special Fund",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/index-2.html",
+    "description": "A state-backed fund providing capital to venture capital and venture debt funds to improve growth financing for innovative technology companies in Germany."
+  },
+  {
+    "name": "Future Fund (Zukunftsfonds)",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/%C3%9Cber-uns/index-2.html",
+    "description": "A federal initiative managed by KfW Capital to strengthen the capital-intensive growth phase of startups through various investment building blocks."
+  },
+  {
+    "name": "Green Transition Facility",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Pressemitteilungen/2023/07/20230607-launch-of-green-transition-facility-at-kfw-capital.html",
+    "description": "A 100 million euro facility dedicated to supporting venture capital funds that invest in climate and environmental technology startups."
+  },
+  {
+    "name": "Wachstumsfonds II",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/index-2.html",
+    "description": "A one billion euro fund combining private and public capital to provide diversified access to established venture capital managers focused on Germany and Europe."
+  },
+  {
+    "name": "EXIST-Forschungstransfer",
+    "provider": "Bundesministerium für Wirtschaft und Klimaschutz (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.exist.de",
+    "description": "A two-phase grant program providing extensive funding for highly complex, research-based technology projects with long development cycles."
+  },
+  {
+    "name": "DeepTech & Climate Fonds (DTCF)",
+    "provider": "High-Tech Gründerfonds (HTGF)",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "international",
+    "backing": "ppp",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://dtcf.de",
+    "description": "A €1 billion investment fund acting as a long-term anchor investor for capital-intensive deep-tech and climate-tech companies in their growth phase."
+  },
+  {
     "name": "EXIST Research Transfer",
     "provider": "Federal Ministry for Economic Affairs and Climate Action",
     "type": "grant",
