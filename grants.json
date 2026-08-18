@@ -1,5 +1,109 @@
 [
   {
+    "name": "Starter Scholarship Saar",
+    "provider": "Saarland Ministry for Economy, Innovation, Digitalisation and Energy",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://foerdermittelkompass.reflecta.org/grants/starter-stipendium-saar?locale=en",
+    "description": "This program provides innovative Saarland-based startups with a monthly flat-rate allowance of up to €3,000 for up to 12 months to cover living and operating costs."
+  },
+  {
+    "name": "INVEST Grant",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://service.saarland.de/portaldeeplink?tsa_leistung_id=114127204&tsa_oe_id=114145167&tsa_sprache=en",
+    "description": "This federal program incentivizes private business angels by reimbursing 20% to 25% of their equity investments in young, innovative startups."
+  },
+  {
+    "name": "High-Tech Gründerfonds (HTGF)",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action and private investors",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.htgf.de/en/",
+    "description": "Germany's most active early-stage investor providing up to €1M in seed financing for technology startups with follow-on capacity up to €4M."
+  },
+  {
+    "name": "ESA BIC Northern Germany",
+    "provider": "Anwendungszentrum GmbH Oberpfaffenhofen (AZO) and AviaSpace Bremen",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "electronics"
+    ],
+    "url": "https://www.starthaus-bremen.de/en/page/programmes/esa-bic",
+    "description": "A two-year incubation program providing aerospace-related and high-tech startups with office space, mentoring, and access to the European Space Agency network."
+  },
+  {
+    "name": "Startup Preschool Bremen",
+    "provider": "Bridge",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://bridge-online.de/veranstaltungen/startup-preschool-bremen-2026",
+    "description": "An English-language entrepreneurship bootcamp designed to help international founders navigate the German startup ecosystem and validate their business models."
+  },
+  {
+    "name": "First Customer Program",
+    "provider": "Starthaus Bremen",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.startupmigrants.com/upcoming-events/first-customer-accelerator-bremen",
+    "description": "A hands-on accelerator program focused on helping early-stage startups acquire their first paying customers."
+  },
+  {
     "name": "InnoStartBonus",
     "provider": "futureSAX",
     "type": "grant",
