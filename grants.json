@@ -1,5 +1,441 @@
 [
   {
+    "name": "EXIST Research Transfer",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.exist.de",
+    "description": "Provides up to 130,000 Euro to support research-based development work for high-tech spin-offs from universities."
+  },
+  {
+    "name": "Startup Grant (Section 93 SGB III)",
+    "provider": "Federal Employment Agency",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.arbeitsagentur.de",
+    "description": "Provides unemployed founders with a six-month allowance based on previous benefits plus a monthly supplement to support self-employment."
+  },
+  {
+    "name": "COSME Loan Guarantee",
+    "provider": "KfW Bank / European Union",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de",
+    "description": "Provides loan guarantees to facilitate access to debt financing for startups without requiring equity capital as a prerequisite."
+  },
+  {
+    "name": "DBU Green Start-up",
+    "provider": "Deutsche Bundesstiftung Umwelt",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.dbu.de/foerderung/green-start-up",
+    "description": "Offers non-repayable grants to support founders developing environmentally sustainable and innovative business models."
+  },
+  {
+    "name": "ERP-Gründerkredit-Start-Up",
+    "provider": "KfW",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de",
+    "description": "Provides low-interest loans covering up to 100% of financing needs for early-stage startups."
+  },
+  {
+    "name": "INVEST - Zuschuss für Wagniskapital",
+    "provider": "BAFA",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bafa.de",
+    "description": "Grants a subsidy to business angels who invest in innovative young startups to encourage private capital flow."
+  },
+  {
+    "name": "StartUpSecure",
+    "provider": "BMBF",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.forschung-it-sicherheit-kommunikationssysteme.de",
+    "description": "Supports startups and founders bringing innovations from IT security research into practical application."
+  },
+  {
+    "name": "Mikromezzaninfonds Deutschland III",
+    "provider": "Mittelständische Beteiligungsgesellschaften (MBG)",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.mikromezzaninfonds-deutschland.de",
+    "description": "A mezzanine capital program providing silent participations of up to 150,000 Euro to strengthen the equity base of small businesses and startups without requiring collateral or voting rights."
+  },
+  {
+    "name": "Digital Jetzt – Investitionsförderung für KMU",
+    "provider": "Federal Ministry for Economic Affairs and Climate Protection (BMWK)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://www.bmwk.de/Redaktion/DE/Dossier/digital-jetzt.html",
+    "description": "This program provides financial grants to small and medium-sized enterprises for investments in digital technologies and employee training to support business process digitalization."
+  },
+  {
+    "name": "go-inno",
+    "provider": "Federal Ministry for Economic Affairs and Climate Protection (BMWK)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "electronics"
+    ],
+    "url": "https://www.bmwk.de/Redaktion/DE/Artikel/Wirtschaft/go-inno.html",
+    "description": "The program offers funding vouchers to support SMEs in implementing product and process innovations through authorized external consulting services."
+  },
+  {
+    "name": "Development of Digital Technologies",
+    "provider": "Federal Ministry for Economic Affairs and Climate Protection (BMWK)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "deeptech",
+      "software"
+    ],
+    "url": "https://www.bmwk.de/Redaktion/EN/Dossier/digitalisierung.html",
+    "description": "This initiative supports pre-competitive research and development projects to advance digital transformation and strengthen the competitiveness of German startups and SMEs."
+  },
+  {
+    "name": "Distr@l",
+    "provider": "State of Hesse",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "software",
+      "deeptech"
+    ],
+    "url": "https://www.distral-hessen.de/",
+    "description": "A comprehensive funding program supporting startups, SMEs, and research institutions in digital innovation through various funding lines for research and development."
+  },
+  {
+    "name": "INVEST – Venture Capital Grant",
+    "provider": "Federal Office for Economic Affairs and Climate Action (BAFA)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bafa.de/EN/Promotion_Economic_Development_SME/promotion_economic_development_sme_node.html",
+    "description": "This federal program provides non-repayable grants to business angels who invest in innovative German startups to reduce investment risk."
+  },
+  {
+    "name": "Promotion of business consulting for SMEs",
+    "provider": "Federal Office for Economic Affairs and Climate Action (BAFA)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bafa.de/EN/Promotion_Economic_Development_SME/promotion_economic_development_sme_node.html",
+    "description": "This program provides non-repayable grants to cover a significant portion of professional consulting costs for small and medium-sized enterprises and startups."
+  },
+  {
+    "name": "EXIST Start-up Grant",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://exist.de/en/programm/gruendungsstipendium",
+    "description": "A federal grant providing monthly stipends and material costs to students, graduates, and researchers to develop innovative, technology-based business ideas from academia."
+  },
+  {
+    "name": "EXIST Transfer of Research",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.science-startups.berlin/programs/exist-startup-grant",
+    "description": "A funding program supporting high-risk, research-oriented startup projects that have already demonstrated a proof of principle and require further development for market readiness."
+  },
+  {
+    "name": "EXIST-Potentiale",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://exist.de/en/programm/exist-potentiale",
+    "description": "A grant program providing subsidies to universities and research institutes to build or expand sustainable campus entrepreneurship infrastructure and startup ecosystems."
+  },
+  {
+    "name": "AVGS Gründer-Coaching (§ 45 SGB III)",
+    "provider": "Bundesagentur für Arbeit",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.deutschland-startet.de/avgs-coaching-im-vergleich",
+    "description": "A 100% subsidized coaching program for unemployed individuals to receive professional guidance in developing their business plan and preparing for self-employment."
+  },
+  {
+    "name": "EXIST-Gründungsstipendium",
+    "provider": "Bundesministerium für Wirtschaft und Klimaschutz (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/BMWi/exist-gruendungsstipendium.html",
+    "description": "A support program for university-based startups providing living stipends and up to €30,000 for material expenses to help founders transition from research to business."
+  },
+  {
+    "name": "ERP-VC Fund Investments",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/Investment-programs/ERP-VC-Fondsinvestments",
+    "description": "An investment program where KfW Capital acts as a limited partner in venture capital funds to strengthen the capital base for innovative technology-oriented growth companies in Germany."
+  },
+  {
+    "name": "ERP/Future Fund Growth Facility",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/Investment-programs/ERP-Future-Fund-Growth-Facility",
+    "description": "A growth-stage investment facility that provides venture capital and venture debt to funds to bridge the capital supply gap for technology companies in Germany and Europe."
+  },
+  {
+    "name": "WIPANO",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Artikel/Technology/patents.html",
+    "description": "WIPANO provides SMEs and research institutions with a 50% grant of up to €16,500 to support the patenting, utility model, or trademark application process for innovative inventions."
+  },
+  {
+    "name": "SPRIND (Federal Agency for Breakthrough Innovation)",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "ai"
+    ],
+    "url": "https://www.sprind.org",
+    "description": "A federal agency providing large-scale project funding for breakthrough innovations that address significant societal challenges."
+  },
+  {
+    "name": "KfW Startup Loans",
+    "provider": "KfW Development Bank",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de",
+    "description": "A state-owned development bank offering low-interest loans and financing guarantees for technology-driven SMEs and startups."
+  },
+  {
     "name": "Flämingo Accelerator",
     "provider": "Flämingo Startup Hub",
     "type": "accelerator",
