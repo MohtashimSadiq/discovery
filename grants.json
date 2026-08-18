@@ -1,5 +1,96 @@
 [
   {
+    "name": "InnoStartBonus",
+    "provider": "futureSAX",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.futuresax.de",
+    "description": "A lump-sum grant of up to €30,000 combined with professional mentoring for knowledge-intensive ventures in Saxony."
+  },
+  {
+    "name": "ESF-Plus Technology Startup",
+    "provider": "Sächsische Aufbaubank (SAB)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "electronics"
+    ],
+    "url": "https://www.sab.sachsen.de",
+    "description": "This program funds technology-oriented projects with grants ranging from €2,000 to €50,000 at a co-financing rate of up to 90%."
+  },
+  {
+    "name": "Micro-Loan (MKD)",
+    "provider": "Sächsische Aufbaubank (SAB)",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.sab.sachsen.de",
+    "description": "A low-interest loan facility providing up to €250,000 to support investments and working capital for startups in Saxony."
+  },
+  {
+    "name": "Innovation Capital Saxony",
+    "provider": "KfW and Sächsische Aufbaubank (SAB)",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de",
+    "description": "A joint venture equity program providing €1-5 million to growth-oriented companies with innovative business models in Saxony."
+  },
+  {
+    "name": "EXIST Business Startup Grant",
+    "provider": "BMWK",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.exist.de",
+    "description": "A federal grant supporting students, graduates, and scientists from research institutions to develop innovative, technology-oriented business ideas."
+  },
+  {
     "name": "GRW Supplementary Loan Mecklenburg-Vorpommern",
     "provider": "State of Mecklenburg-Vorpommern",
     "type": "loan",
