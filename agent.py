@@ -40,8 +40,6 @@ LOCALE_SEGMENTS = {
 }
 
 def get_path_stem(normalized_url: str) -> str:
-    """Extract the identity-bearing path, stripping locale/noise segments
-    (e.g. /laisf/en and /laisf/de both reduce to 'entrepreneurship/laisf')."""
     if "://" in normalized_url:
         parts = normalized_url.split("://", 1)[1].split("/", 1)
         path = parts[1] if len(parts) > 1 else ""
@@ -65,7 +63,7 @@ def fuzzy_match(a: str, b: str, threshold: int = 80) -> bool:
     return fuzzy_score(a, b) >= threshold
 
 # -------------------------------------------------------------------
-# 2. Pydantic Schema (Taxonomy) — includes "loan" tag options
+# 2. Pydantic Schema (Taxonomy)
 # -------------------------------------------------------------------
 class ProgramItem(BaseModel):
     name: str = Field(description="Official name of the program, grant, accelerator, or entity")
@@ -108,7 +106,7 @@ class MutationBatch(BaseModel):
     mutations: List[QueryMutation]
 
 # -------------------------------------------------------------------
-# 3. Seed Taxonomy — cross-product instead of hardcoded strings
+# 3. Seed Taxonomy
 # -------------------------------------------------------------------
 BUNDESLAENDER = [
     "Baden-Württemberg", "Bavaria", "Berlin", "Brandenburg", "Bremen",
@@ -121,6 +119,53 @@ PROGRAM_TYPES = ["grant", "accelerator", "incubator", "loan"]
 
 SECTOR_MODIFIERS = ["deep tech", "AI", "cleantech", "life sciences", "hardware startup"]
 
+# Specific named federal programs — each tracked separately so none get
+# lost inside one generic catch-all query. EXIST trimmed to 2 entries
+# (core grant + Women/target-group variant) so it isn't structurally
+# over-represented relative to other federal programs.
+NATIONAL_PROGRAMS = [
+    ("national:EXIST-Gruendungsstipendium", "EXIST Gründungsstipendium application requirements 2026"),
+    ("national:EXIST-Women", "EXIST Women 2026 application Germany"),
+    ("national:KfW-StartGeld", "KfW Gründerkredit StartGeld startup loan Germany"),
+    ("national:KfW-Universell", "KfW Gründerkredit Universell startup loan Germany"),
+    ("national:KfW-Capital", "KfW Capital venture capital fund Germany startup"),
+    ("national:Gruendungszuschuss", "Gründungszuschuss Federal Employment Agency startup grant"),
+    ("national:INVEST-Wagniskapital", "INVEST Zuschuss für Wagniskapital Germany venture capital grant"),
+    ("national:ERP-Startfonds", "ERP-Startfonds KfW venture capital Germany startup"),
+    ("national:WIPANO", "WIPANO patent innovation grant Germany startup"),
+    ("national:go-digital", "go-digital BMWK digitalization grant Germany SME"),
+    ("national:High-Tech-Gruenderfonds", "High-Tech Gründerfonds HTGF seed investment Germany"),
+    ("national:Deutschlandfonds", "Deutschlandfonds federal startup investment Germany"),
+    ("national:DTCF", "DeepTech and Climate Fonds Germany startup funding"),
+    ("national:Mikromezzaninfonds", "Mikromezzaninfonds Deutschland startup financing"),
+    ("national:EXIST-Potentiale", "EXIST-Potentiale university startup infrastructure grant Germany"),
+    ("national:BAFA-grants", "BAFA federal grant program startup innovation Germany"),
+    ("national:Kultur-Kreativpiloten", "Kultur- und Kreativpiloten Deutschland federal grant"),
+    ("national:BMWK-Coaching", "Bund Coaching-Programme Gründer Zuschuss Germany"),
+]
+
+# Broad catch-all queries — these exist to surface federal programs that
+# AREN'T on the named list above (the named list can only find what we
+# already know to search for). Higher threshold than named queries since
+# a broad query's results vary run to run and stays useful longer.
+NATIONAL_BROAD = [
+    ("national:broad-1", "list of German federal startup funding programs 2026"),
+    ("national:broad-2", "Bundesförderung Startup Zuschuss Übersicht"),
+    ("national:broad-3", "German government grants for founders not state specific"),
+    ("national:broad-4", "new federal startup funding program Germany 2026"),
+    ("national:broad-5", "Förderdatenbank Bund startup grant"),
+]
+
+# EU-level programs available to German startups — lowest search priority
+EU_PROGRAMS = [
+    ("eu:EIC-Accelerator", "EIC Accelerator European Innovation Council funding Germany"),
+    ("eu:Horizon-Europe", "Horizon Europe startup funding Germany"),
+    ("eu:EIT-Digital", "EIT Digital accelerator funding Germany startup"),
+    ("eu:EIF-VC", "European Investment Fund venture capital Germany startup"),
+    ("eu:Eurostars", "Eurostars programme German startups R&D funding"),
+    ("eu:EU-Innovation-Fund", "EU Innovation Fund cleantech Germany startup"),
+]
+
 def build_seed_queries():
     seeds = []
     for state in BUNDESLAENDER:
@@ -128,9 +173,25 @@ def build_seed_queries():
             seeds.append((f"state:{state}", f"{state} startup {ptype} program Germany"))
     for sector in SECTOR_MODIFIERS:
         seeds.append((f"sector:{sector}", f"Germany {sector} startup funding program"))
-    seeds.append(("national:EXIST", "EXIST Gründungsstipendium Forschungstransfer 2026"))
-    seeds.append(("national:BMWK", "BMWK German federal startup grant program"))
+    seeds.extend(NATIONAL_PROGRAMS)
+    seeds.extend(NATIONAL_BROAD)
+    seeds.extend(EU_PROGRAMS)
     return seeds
+
+def priority_for_category(category: str) -> int:
+    """Lower number = searched first when hit_count is tied."""
+    if category.startswith("national:"):
+        return 0
+    if category.startswith("eu:"):
+        return 2
+    return 1  # state / sector
+
+def threshold_for_category(category: str) -> int:
+    if category.startswith("national:broad"):
+        return 4  # broad queries stay useful longer, less likely to go stale fast
+    if category.startswith("national:") or category.startswith("eu:"):
+        return 2  # specific named programs — exhaust quickly once confirmed
+    return 3  # state/sector
 
 # -------------------------------------------------------------------
 # 4. Composite SQLite Database Engine
@@ -195,24 +256,25 @@ class ProgramDatabase:
                 )
             """)
 
-    def seed_pool_if_empty(self):
+    def seed_pool(self):
+        """Adds any seed query not already present in the pool. Safe to call
+        every run — existing queries (and their hit_count/status) are left
+        untouched; only genuinely new ones get inserted."""
+        seeds = build_seed_queries()
+        added = 0
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT COUNT(*) FROM query_pool")
-            count = cursor.fetchone()[0]
-            if count > 0:
-                return
-            seeds = build_seed_queries()
             for category, query_text in seeds:
-                threshold = 2 if category.startswith("national:") else 3
-                try:
-                    conn.execute(
-                        "INSERT INTO query_pool (query_text, category, threshold) VALUES (?, ?, ?)",
-                        (query_text, category, threshold)
-                    )
-                except sqlite3.IntegrityError:
-                    pass
-            print(f"🌱 Seeded query_pool with {len(seeds)} queries.")
+                threshold = threshold_for_category(category)
+                cursor = conn.execute(
+                    "INSERT OR IGNORE INTO query_pool (query_text, category, threshold) VALUES (?, ?, ?)",
+                    (query_text, category, threshold)
+                )
+                if cursor.rowcount > 0:
+                    added += 1
+        if added:
+            print(f"🌱 Seeded {added} new quer{'y' if added == 1 else 'ies'} into the pool (total seed set: {len(seeds)}).")
+        else:
+            print(f"🌱 Pool already contains all {len(seeds)} seed queries — nothing new to add.")
 
     # -----------------------------------------------------------
     # Fingerprint-based dedup
@@ -243,7 +305,6 @@ class ProgramDatabase:
             name_score = fuzzy_score(norm_name, existing_name)
             provider_score = fuzzy_score(norm_provider, existing_provider)
 
-            # Field agreement: how many taxonomy tags match exactly
             tag_pairs = [
                 (prog.type_tag, e_type), (prog.funding_tag, e_funding),
                 (prog.stage_tag, e_stage), (prog.bmwk_tag, e_bmwk),
@@ -251,28 +312,12 @@ class ProgramDatabase:
             ]
             tag_matches = sum(1 for a, b in tag_pairs if a == b)
 
-            # --- Tier 1: same domain + same path stem = structurally the
-            # same page family (e.g. /laisf/en vs /laisf/de). Name is just
-            # a sanity floor here, not the primary signal.
             if same_stem and name_score >= 50:
                 return True
-
-            # --- Tier 2: field-fingerprint match — name is reasonably close
-            # AND provider matches AND at least 4/5 taxonomy tags agree.
-            # This is the language/domain-independent check: catches
-            # exist.de vs exist.com, or a program mirrored on an aggregator
-            # site, purely from extracted facts rather than URL shape.
             if name_score >= 70 and provider_score >= 70 and tag_matches >= 4:
                 return True
-
-            # --- Tier 3: same domain, DIFFERENT path stem = siblings from
-            # the same org (e.g. laisf vs ai-academy vs incubator-ignition).
-            # Domain gives no bonus here — require a high name bar so
-            # distinct sibling programs don't get merged.
             if same_domain and not same_stem and name_score >= 88:
                 return True
-
-            # --- Tier 4: different domain entirely, name similarity only.
             if not same_domain and name_score >= 80:
                 return True
 
@@ -303,17 +348,21 @@ class ProgramDatabase:
         return True
 
     # ---- Query pool mechanics ----
-    def get_next_batch(self, n=5):
+    def get_next_batch(self, n=12):
+        """Priority order: national queries first, then state/sector, then
+        EU last — within each priority tier, lowest hit_count goes first,
+        with random tie-break among equals."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT id, query_text, category, hit_count, threshold
                 FROM query_pool
                 WHERE status = 'active'
-                ORDER BY hit_count ASC, RANDOM()
-                LIMIT ?
-            """, (n,))
-            return cursor.fetchall()
+            """)
+            rows = cursor.fetchall()
+
+        rows.sort(key=lambda r: (priority_for_category(r[2]), r[3], random.random()))
+        return rows[:n]
 
     def update_pool_stats(self, query_id, added_count):
         with sqlite3.connect(self.db_path) as conn:
@@ -360,7 +409,6 @@ class ProgramDatabase:
 
     # ---- Cleanup ----
     def deduplicate_database(self):
-        """Exact clean_name matches only — fast pass."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
@@ -374,9 +422,6 @@ class ProgramDatabase:
             print(f"  • Purged {deleted} stray duplicate record(s)." if deleted else "  • Database clean.")
 
     def fuzzy_deduplicate_database(self, name_threshold=80, tag_match_min=4):
-        """Full pairwise sweep using the same fingerprint logic (name +
-        provider + tag agreement + path stem), applied retroactively across
-        the whole table. Keeps the earliest-discovered row of each cluster."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
@@ -481,7 +526,22 @@ class ProgramDatabase:
             cursor = conn.cursor()
             cursor.execute("SELECT status, COUNT(*) FROM query_pool GROUP BY status")
             rows = cursor.fetchall()
+            cursor.execute("""
+                SELECT
+                    CASE
+                        WHEN category LIKE 'national:%' THEN 'national'
+                        WHEN category LIKE 'eu:%' THEN 'eu'
+                        ELSE 'state/sector'
+                    END as tier,
+                    status,
+                    COUNT(*)
+                FROM query_pool GROUP BY tier, status
+            """)
+            tier_rows = cursor.fetchall()
         print("\n📦 QUERY POOL STATUS:", dict(rows))
+        print("📦 BY PRIORITY TIER:")
+        for tier, status, count in tier_rows:
+            print(f"    {tier:<14} {status:<10} {count}")
 
 # -------------------------------------------------------------------
 # 5. Discovery Engine
@@ -489,12 +549,11 @@ class ProgramDatabase:
 class GermanEcosystemAgent:
     def __init__(self):
         self.db = ProgramDatabase()
-        self.db.seed_pool_if_empty()
+        self.db.seed_pool()
         self.ai = genai.Client()  # Uses GEMINI_API_KEY
         self.tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
     def search_and_categorize(self, search_query: str, angle_label: str) -> int:
-        """Returns number of NEW (non-duplicate) programs added."""
         print(f"\n🔍 Searching [{angle_label}]: '{search_query}'...")
 
         search_response = self.tavily.search(
@@ -514,11 +573,11 @@ class GermanEcosystemAgent:
         System Role: You are an expert German Venture Capital & Innovation Ecosystem Analyst.
 
         Task: Extract active German startup grants, accelerators, incubators, loans, and VC programs
-        from the web context below. Categorize each program strictly according to the schema.
-        Write a clear, informative one-sentence description for each program suitable for public
-        display on a directory website. If the same organization runs multiple distinct programs,
-        list each as a separate entry with its own specific URL. If no valid programs are present,
-        return an empty list — do not invent entries.
+        (including EU-level programs available to German startups) from the web context below.
+        Categorize each program strictly according to the schema. Write a clear, informative
+        one-sentence description for each program suitable for public display on a directory website.
+        If the same organization runs multiple distinct programs, list each as a separate entry with
+        its own specific URL. If no valid programs are present, return an empty list — do not invent entries.
 
         Tavily AI Executive Summary:
         {tavily_answer}
@@ -596,7 +655,7 @@ class GermanEcosystemAgent:
                 if inserted:
                     print(f"  🌿 Mutated ({category}): '{orig_query}' -> '{mutation.mutated_query}'")
 
-    def run_until_novel_target(self, target_new=5, max_batches=15, batch_size=5):
+    def run_until_novel_target(self, target_new=5, max_batches=15, batch_size=12):
         total_new = 0
         batches_run = 0
 
@@ -618,9 +677,6 @@ class GermanEcosystemAgent:
                 added = self.search_and_categorize(query_text, category)
                 total_new += added
                 self.db.update_pool_stats(query_id, added)
-
-                if total_new >= target_new:
-                    break
 
             batches_run += 1
             print(f"\n— Batch {batches_run} complete. Running total: {total_new}/{target_new} new programs —")
@@ -658,9 +714,9 @@ class GermanEcosystemAgent:
 if __name__ == "__main__":
     agent = GermanEcosystemAgent()
 
-    agent.run_until_novel_target(target_new=5, max_batches=15, batch_size=5)
+    agent.run_until_novel_target(target_new=5, max_batches=15, batch_size=12)
 
-    agent.db.deduplicate_database()               # exact clean_name matches
-    agent.db.maybe_run_fuzzy_sweep(interval_days=0)  # 0 = always run for now
+    agent.db.deduplicate_database()
+    agent.db.maybe_run_fuzzy_sweep(interval_days=0)
     agent.export_to_json()
     agent.db.print_terminal_summary()
