@@ -1,5 +1,270 @@
 [
   {
+    "name": "InnoFounder",
+    "provider": "IFB Hamburg",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://www.ifbhh.de",
+    "description": "A regional program in Hamburg designed to support innovative and knowledge-based startup initiatives with a focus on digital technologies and sustainability."
+  },
+  {
+    "name": "Federal Funding for Energy and Resource Efficiency (EEW)",
+    "provider": "BAFA",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "electronics",
+      "deeptech"
+    ],
+    "url": "https://www.bafa.de/eew",
+    "description": "This program provides direct investment grants for companies to implement energy-efficient technologies and digital energy management solutions."
+  },
+  {
+    "name": "BAFA Business Advisory Services",
+    "provider": "BAFA",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech",
+      "electronics"
+    ],
+    "url": "https://www.bafa.de",
+    "description": "A subsidy program that covers a significant portion of professional consulting fees for young companies and SMEs to support strategic business development."
+  },
+  {
+    "name": "InnoRampUp",
+    "provider": "IFB Innovationsstarter GmbH",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.deutschland-startet.de/foerdermittel",
+    "description": "Provides non-repayable grants of up to 150,000 EUR for innovative, technology-oriented startups."
+  },
+  {
+    "name": "InnoFinTech",
+    "provider": "IFB Innovationsstarter GmbH",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.deutschland-startet.de/foerdermittel",
+    "description": "Offers grants of up to 200,000 EUR specifically for financial technology startups based in Hamburg."
+  },
+  {
+    "name": "ESA-BIC-Programm",
+    "provider": "Cesah",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "electronics"
+    ],
+    "url": "https://www.starthub-hessen.de/de/services/navigator",
+    "description": "Provides up to 60,000 EUR in funding for technology-oriented startups within the space sector."
+  },
+  {
+    "name": "WIPANO (Knowledge and Technology Transfer through Patents and Standards)",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Artikel/Technology/patents.html",
+    "description": "A non-repayable grant program that supports SMEs and research institutions by covering up to 50% of costs associated with patenting, utility model applications, and the development of exploitation concepts."
+  },
+  {
+    "name": "EXIST Start-up Grant (EXIST Gründungsstipendium)",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.exist.de",
+    "description": "This grant supports university-based founders by providing a monthly living allowance and material costs for up to 12 months to develop innovative, knowledge-based business ideas."
+  },
+  {
+    "name": "KfW ERP-Promotional Loan",
+    "provider": "KfW",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.handelskammer-hamburg.de/eng/hauptnavigation/startup/point-single-contact/top-funding-programmes-6825026",
+    "description": "A promotional loan program offering up to 100 percent financing for eligible startup costs with a ceiling of €25 million."
+  },
+  {
+    "name": "Central Innovation Programme (ZIM)",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
+    "description": "A federal R&D grant designed to foster market-driven technology projects within German SMEs."
+  },
+  {
+    "name": "Coparion",
+    "provider": "Federal Government",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.iamexpat.de/career/entrepreneur-germany/start-up-grants-financial-incentives-businesses",
+    "description": "A government-backed investment vehicle providing up to €10 million in staged financing for young, innovative companies."
+  },
+  {
+    "name": "Berliner Startup Stipendium",
+    "provider": "State of Berlin",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.science-startups.berlin/programs/exist-startup-grant",
+    "description": "A regional stipend program supporting early-stage founders with a monthly grant to develop innovative business ideas."
+  },
+  {
+    "name": "Zentrales Innovationsprogramm Mittelstand (ZIM)",
+    "provider": "BMWK",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.zim.de",
+    "description": "A project-based grant program supporting collaborative R&D between SMEs and research institutions to foster market-oriented innovation."
+  },
+  {
+    "name": "Innovation Programme for Business Models (IGP)",
+    "provider": "BMWK",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai"
+    ],
+    "url": "https://www.igp-bmwk.de",
+    "description": "Provides grants to support non-technical, data-driven, or organizational innovations within startups and SMEs."
+  },
+  {
+    "name": "go-inno Innovation Vouchers",
+    "provider": "BMWK",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "deeptech"
+    ],
+    "url": "https://www.bmwk.de",
+    "description": "Offers small businesses financial support for external R&D services to boost their innovative capacity."
+  },
+  {
     "name": "Deutschlandfonds (Startups and Scaleups Pillar)",
     "provider": "KfW Capital",
     "type": "vc",
