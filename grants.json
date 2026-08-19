@@ -1,5 +1,149 @@
 [
   {
+    "name": "Förderung unternehmerischen Know-hows",
+    "provider": "BAFA",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [],
+    "url": "https://www.existenzgruendungsportal.de/Redaktion/DE/BMWK-Infopool/Antworten/Foerderung-Finanzierung/Beratung-Weiterbildung/Coaching-Foerderung-wo-beantragen",
+    "description": "A federal grant program that subsidizes professional coaching for startups to address economic, financial, and organizational challenges within the first five years of operation.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:37.322370"
+  },
+  {
+    "name": "GRW (Gemeinschaftsaufgabe Verbesserung der regionalen Wirtschaftsstruktur)",
+    "provider": "Federal and State Governments",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.iamexpat.de/career/entrepreneur-germany/start-up-grants-financial-incentives-businesses",
+    "description": "A regional investment program offering grants to cover establishment and infrastructure costs to promote economic development.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:22.341787"
+  },
+  {
+    "name": "Employment Agency Start-Up Grant (Gründungszuschuss)",
+    "provider": "Bundesagentur für Arbeit",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.handelskammer-hamburg.de/eng/hauptnavigation/startup/point-single-contact/top-funding-programmes-6825026",
+    "description": "A discretionary grant for unemployed individuals receiving ALG I to support their transition into self-employment.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:22.343623"
+  },
+  {
+    "name": "Hamburg Kredit Mikro",
+    "provider": "IFB Hamburg",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.handelskammer-hamburg.de/eng/hauptnavigation/startup/point-single-contact/top-funding-programmes-6825026",
+    "description": "A micro-loan program for founders and businesses in Hamburg to finance entrepreneurial activities.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:22.348135"
+  },
+  {
+    "name": "BMWK Digital Technologies Innovation Concepts",
+    "provider": "Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "ai",
+      "software"
+    ],
+    "url": "https://www.digitale-technologien.de",
+    "description": "Funds short-term collaborative R&D projects focused on forward-looking digital technologies.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:16.316270"
+  },
+  {
+    "name": "ERP Start-up Loans",
+    "provider": "KfW / Federal Ministry for Economic Affairs and Climate Action (BMWK)",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw.de",
+    "description": "Provides low-interest loans to support business and freelance startups during their initial growth phase.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:16.319466"
+  },
+  {
+    "name": "Future Fund",
+    "provider": "KfW",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
+    "description": "A €10 billion venture capital initiative designed to support forward-looking technology startups across all stages of development.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:49:50.753294"
+  },
+  {
+    "name": "Micro-Mezzanine Fund Germany",
+    "provider": "German Government",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [],
+    "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
+    "description": "A fund providing long-term mezzanine capital to strengthen the equity base of small and new companies.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:49:50.764314"
+  },
+  {
     "name": "InnoFounder",
     "provider": "IFB Hamburg",
     "type": "grant",
@@ -14,7 +158,9 @@
       "ai"
     ],
     "url": "https://www.ifbhh.de",
-    "description": "A regional program in Hamburg designed to support innovative and knowledge-based startup initiatives with a focus on digital technologies and sustainability."
+    "description": "A regional program in Hamburg designed to support innovative and knowledge-based startup initiatives with a focus on digital technologies and sustainability.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Federal Funding for Energy and Resource Efficiency (EEW)",
@@ -31,7 +177,9 @@
       "deeptech"
     ],
     "url": "https://www.bafa.de/eew",
-    "description": "This program provides direct investment grants for companies to implement energy-efficient technologies and digital energy management solutions."
+    "description": "This program provides direct investment grants for companies to implement energy-efficient technologies and digital energy management solutions.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "BAFA Business Advisory Services",
@@ -50,7 +198,9 @@
       "electronics"
     ],
     "url": "https://www.bafa.de",
-    "description": "A subsidy program that covers a significant portion of professional consulting fees for young companies and SMEs to support strategic business development."
+    "description": "A subsidy program that covers a significant portion of professional consulting fees for young companies and SMEs to support strategic business development.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "InnoRampUp",
@@ -66,7 +216,9 @@
       "deeptech"
     ],
     "url": "https://www.deutschland-startet.de/foerdermittel",
-    "description": "Provides non-repayable grants of up to 150,000 EUR for innovative, technology-oriented startups."
+    "description": "Provides non-repayable grants of up to 150,000 EUR for innovative, technology-oriented startups.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "InnoFinTech",
@@ -82,7 +234,9 @@
       "software"
     ],
     "url": "https://www.deutschland-startet.de/foerdermittel",
-    "description": "Offers grants of up to 200,000 EUR specifically for financial technology startups based in Hamburg."
+    "description": "Offers grants of up to 200,000 EUR specifically for financial technology startups based in Hamburg.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ESA-BIC-Programm",
@@ -99,7 +253,9 @@
       "electronics"
     ],
     "url": "https://www.starthub-hessen.de/de/services/navigator",
-    "description": "Provides up to 60,000 EUR in funding for technology-oriented startups within the space sector."
+    "description": "Provides up to 60,000 EUR in funding for technology-oriented startups within the space sector.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "WIPANO (Knowledge and Technology Transfer through Patents and Standards)",
@@ -115,7 +271,9 @@
       "deeptech"
     ],
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Artikel/Technology/patents.html",
-    "description": "A non-repayable grant program that supports SMEs and research institutions by covering up to 50% of costs associated with patenting, utility model applications, and the development of exploitation concepts."
+    "description": "A non-repayable grant program that supports SMEs and research institutions by covering up to 50% of costs associated with patenting, utility model applications, and the development of exploitation concepts.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "EXIST Start-up Grant (EXIST Gründungsstipendium)",
@@ -134,7 +292,9 @@
       "deeptech"
     ],
     "url": "https://www.exist.de",
-    "description": "This grant supports university-based founders by providing a monthly living allowance and material costs for up to 12 months to develop innovative, knowledge-based business ideas."
+    "description": "This grant supports university-based founders by providing a monthly living allowance and material costs for up to 12 months to develop innovative, knowledge-based business ideas.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "KfW ERP-Promotional Loan",
@@ -153,7 +313,9 @@
       "deeptech"
     ],
     "url": "https://www.handelskammer-hamburg.de/eng/hauptnavigation/startup/point-single-contact/top-funding-programmes-6825026",
-    "description": "A promotional loan program offering up to 100 percent financing for eligible startup costs with a ceiling of €25 million."
+    "description": "A promotional loan program offering up to 100 percent financing for eligible startup costs with a ceiling of €25 million.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Central Innovation Programme (ZIM)",
@@ -171,7 +333,9 @@
       "deeptech"
     ],
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
-    "description": "A federal R&D grant designed to foster market-driven technology projects within German SMEs."
+    "description": "A federal R&D grant designed to foster market-driven technology projects within German SMEs.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Coparion",
@@ -190,7 +354,9 @@
       "deeptech"
     ],
     "url": "https://www.iamexpat.de/career/entrepreneur-germany/start-up-grants-financial-incentives-businesses",
-    "description": "A government-backed investment vehicle providing up to €10 million in staged financing for young, innovative companies."
+    "description": "A government-backed investment vehicle providing up to €10 million in staged financing for young, innovative companies.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:45.809082"
   },
   {
     "name": "Berliner Startup Stipendium",
@@ -208,7 +374,9 @@
       "deeptech"
     ],
     "url": "https://www.science-startups.berlin/programs/exist-startup-grant",
-    "description": "A regional stipend program supporting early-stage founders with a monthly grant to develop innovative business ideas."
+    "description": "A regional stipend program supporting early-stage founders with a monthly grant to develop innovative business ideas.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Zentrales Innovationsprogramm Mittelstand (ZIM)",
@@ -227,7 +395,9 @@
       "deeptech"
     ],
     "url": "https://www.zim.de",
-    "description": "A project-based grant program supporting collaborative R&D between SMEs and research institutions to foster market-oriented innovation."
+    "description": "A project-based grant program supporting collaborative R&D between SMEs and research institutions to foster market-oriented innovation.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:22.345187"
   },
   {
     "name": "Innovation Programme for Business Models (IGP)",
@@ -244,7 +414,9 @@
       "ai"
     ],
     "url": "https://www.igp-bmwk.de",
-    "description": "Provides grants to support non-technical, data-driven, or organizational innovations within startups and SMEs."
+    "description": "Provides grants to support non-technical, data-driven, or organizational innovations within startups and SMEs.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:16.314590"
   },
   {
     "name": "go-inno Innovation Vouchers",
@@ -262,7 +434,9 @@
       "deeptech"
     ],
     "url": "https://www.bmwk.de",
-    "description": "Offers small businesses financial support for external R&D services to boost their innovative capacity."
+    "description": "Offers small businesses financial support for external R&D services to boost their innovative capacity.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:16.311214"
   },
   {
     "name": "Deutschlandfonds (Startups and Scaleups Pillar)",
@@ -279,7 +453,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw-capital.de/Investment-focus/Deutschlandfonds",
-    "description": "A government-backed framework providing direct co-investments and guarantees to mobilize private capital for German startups and scale-ups."
+    "description": "A government-backed framework providing direct co-investments and guarantees to mobilize private capital for German startups and scale-ups.",
+    "deadline": "2030",
+    "deadline_checked_at": "2026-08-19T06:50:26.223088"
   },
   {
     "name": "WIN 400",
@@ -297,7 +473,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw-capital.de/Investment-focus/Deutschlandfonds",
-    "description": "A strategic investment program providing 400 million euros into innovative venture capital funds to foster growth and financing capacity in Germany."
+    "description": "A strategic investment program providing 400 million euros into innovative venture capital funds to foster growth and financing capacity in Germany.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:26.224983"
   },
   {
     "name": "EIF German Equity",
@@ -315,7 +493,9 @@
       "deeptech"
     ],
     "url": "https://www.eif.org/press/all/eif-german-equity-boost-for-innovation-and-startups",
-    "description": "A joint initiative providing €1.6 billion to expand venture capital and growth-stage financing for technology-based startups in Germany."
+    "description": "A joint initiative providing €1.6 billion to expand venture capital and growth-stage financing for technology-based startups in Germany.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:49:50.755518"
   },
   {
     "name": "KfW StartGeld",
@@ -334,7 +514,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gruenden-Erweitern/Finanzierungsangebote/KfW-StartGeld-(067-068)/",
-    "description": "A loan program designed to support founders and young companies with financing for investments and working capital."
+    "description": "A loan program designed to support founders and young companies with financing for investments and working capital.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Kultur- und Kreativpilot*innen Deutschland",
@@ -350,7 +532,9 @@
       "software"
     ],
     "url": "https://kultur-kreativpiloten.de",
-    "description": "An annual federal award that recognizes 32 outstanding companies from the cultural and creative industries, providing them with high-level visibility, networking, and strategic support."
+    "description": "An annual federal award that recognizes 32 outstanding companies from the cultural and creative industries, providing them with high-level visibility, networking, and strategic support.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "KfW Entrepreneur Loan",
@@ -369,7 +553,9 @@
       "deeptech"
     ],
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
-    "description": "A financing program providing medium to long-term capital for established commercial SMEs and professionals active on the market for at least five years."
+    "description": "A financing program providing medium to long-term capital for established commercial SMEs and professionals active on the market for at least five years.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "GründungsBONUS",
@@ -387,7 +573,9 @@
       "deeptech"
     ],
     "url": "https://www.ibb.de",
-    "description": "A grant scheme for Berlin-based SMEs and startups to cover up to 50% of eligible operating costs during their first two years."
+    "description": "A grant scheme for Berlin-based SMEs and startups to cover up to 50% of eligible operating costs during their first two years.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "IFB Hamburg Startup Grant",
@@ -405,7 +593,9 @@
       "deeptech"
     ],
     "url": "https://www.ifbhh.de",
-    "description": "Provides project-based funding or employee-subsidy models for early-stage startups based in Hamburg to support growth and innovation."
+    "description": "Provides project-based funding or employee-subsidy models for early-stage startups based in Hamburg to support growth and innovation.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ERP Special Fund",
@@ -423,7 +613,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw-capital.de/index-2.html",
-    "description": "A state-backed fund providing capital to venture capital and venture debt funds to improve growth financing for innovative technology companies in Germany."
+    "description": "A state-backed fund providing capital to venture capital and venture debt funds to improve growth financing for innovative technology companies in Germany.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Future Fund (Zukunftsfonds)",
@@ -441,7 +633,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw-capital.de/%C3%9Cber-uns/index-2.html",
-    "description": "A federal initiative managed by KfW Capital to strengthen the capital-intensive growth phase of startups through various investment building blocks."
+    "description": "A federal initiative managed by KfW Capital to strengthen the capital-intensive growth phase of startups through various investment building blocks.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Green Transition Facility",
@@ -457,7 +651,9 @@
       "deeptech"
     ],
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Pressemitteilungen/2023/07/20230607-launch-of-green-transition-facility-at-kfw-capital.html",
-    "description": "A 100 million euro facility dedicated to supporting venture capital funds that invest in climate and environmental technology startups."
+    "description": "A 100 million euro facility dedicated to supporting venture capital funds that invest in climate and environmental technology startups.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Wachstumsfonds II",
@@ -475,7 +671,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw-capital.de/index-2.html",
-    "description": "A one billion euro fund combining private and public capital to provide diversified access to established venture capital managers focused on Germany and Europe."
+    "description": "A one billion euro fund combining private and public capital to provide diversified access to established venture capital managers focused on Germany and Europe.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "EXIST-Forschungstransfer",
@@ -493,7 +691,9 @@
       "deeptech"
     ],
     "url": "https://www.exist.de",
-    "description": "A two-phase grant program providing extensive funding for highly complex, research-based technology projects with long development cycles."
+    "description": "A two-phase grant program providing extensive funding for highly complex, research-based technology projects with long development cycles.",
+    "deadline": "31. März und 30. September",
+    "deadline_checked_at": "2026-08-19T06:50:03.969539"
   },
   {
     "name": "DeepTech & Climate Fonds (DTCF)",
@@ -510,7 +710,9 @@
       "deeptech"
     ],
     "url": "https://dtcf.de",
-    "description": "A €1 billion investment fund acting as a long-term anchor investor for capital-intensive deep-tech and climate-tech companies in their growth phase."
+    "description": "A €1 billion investment fund acting as a long-term anchor investor for capital-intensive deep-tech and climate-tech companies in their growth phase.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:07.755191"
   },
   {
     "name": "EXIST Research Transfer",
@@ -526,7 +728,9 @@
       "deeptech"
     ],
     "url": "https://www.exist.de",
-    "description": "Provides up to 130,000 Euro to support research-based development work for high-tech spin-offs from universities."
+    "description": "Provides up to 130,000 Euro to support research-based development work for high-tech spin-offs from universities.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Startup Grant (Section 93 SGB III)",
@@ -545,7 +749,9 @@
       "deeptech"
     ],
     "url": "https://www.arbeitsagentur.de",
-    "description": "Provides unemployed founders with a six-month allowance based on previous benefits plus a monthly supplement to support self-employment."
+    "description": "Provides unemployed founders with a six-month allowance based on previous benefits plus a monthly supplement to support self-employment.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "COSME Loan Guarantee",
@@ -564,7 +770,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw.de",
-    "description": "Provides loan guarantees to facilitate access to debt financing for startups without requiring equity capital as a prerequisite."
+    "description": "Provides loan guarantees to facilitate access to debt financing for startups without requiring equity capital as a prerequisite.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "DBU Green Start-up",
@@ -580,7 +788,9 @@
       "deeptech"
     ],
     "url": "https://www.dbu.de/foerderung/green-start-up",
-    "description": "Offers non-repayable grants to support founders developing environmentally sustainable and innovative business models."
+    "description": "Offers non-repayable grants to support founders developing environmentally sustainable and innovative business models.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ERP-Gründerkredit-Start-Up",
@@ -599,7 +809,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw.de",
-    "description": "Provides low-interest loans covering up to 100% of financing needs for early-stage startups."
+    "description": "Provides low-interest loans covering up to 100% of financing needs for early-stage startups.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:45.810708"
   },
   {
     "name": "INVEST - Zuschuss für Wagniskapital",
@@ -616,7 +828,9 @@
       "deeptech"
     ],
     "url": "https://www.bafa.de",
-    "description": "Grants a subsidy to business angels who invest in innovative young startups to encourage private capital flow."
+    "description": "Grants a subsidy to business angels who invest in innovative young startups to encourage private capital flow.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "StartUpSecure",
@@ -634,7 +848,9 @@
       "deeptech"
     ],
     "url": "https://www.forschung-it-sicherheit-kommunikationssysteme.de",
-    "description": "Supports startups and founders bringing innovations from IT security research into practical application."
+    "description": "Supports startups and founders bringing innovations from IT security research into practical application.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Mikromezzaninfonds Deutschland III",
@@ -653,7 +869,9 @@
       "deeptech"
     ],
     "url": "https://www.mikromezzaninfonds-deutschland.de",
-    "description": "A mezzanine capital program providing silent participations of up to 150,000 Euro to strengthen the equity base of small businesses and startups without requiring collateral or voting rights."
+    "description": "A mezzanine capital program providing silent participations of up to 150,000 Euro to strengthen the equity base of small businesses and startups without requiring collateral or voting rights.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:45.805419"
   },
   {
     "name": "Digital Jetzt – Investitionsförderung für KMU",
@@ -670,7 +888,9 @@
       "ai"
     ],
     "url": "https://www.bmwk.de/Redaktion/DE/Dossier/digital-jetzt.html",
-    "description": "This program provides financial grants to small and medium-sized enterprises for investments in digital technologies and employee training to support business process digitalization."
+    "description": "This program provides financial grants to small and medium-sized enterprises for investments in digital technologies and employee training to support business process digitalization.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "go-inno",
@@ -687,7 +907,9 @@
       "electronics"
     ],
     "url": "https://www.bmwk.de/Redaktion/DE/Artikel/Wirtschaft/go-inno.html",
-    "description": "The program offers funding vouchers to support SMEs in implementing product and process innovations through authorized external consulting services."
+    "description": "The program offers funding vouchers to support SMEs in implementing product and process innovations through authorized external consulting services.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Development of Digital Technologies",
@@ -705,7 +927,9 @@
       "software"
     ],
     "url": "https://www.bmwk.de/Redaktion/EN/Dossier/digitalisierung.html",
-    "description": "This initiative supports pre-competitive research and development projects to advance digital transformation and strengthen the competitiveness of German startups and SMEs."
+    "description": "This initiative supports pre-competitive research and development projects to advance digital transformation and strengthen the competitiveness of German startups and SMEs.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Distr@l",
@@ -723,7 +947,9 @@
       "deeptech"
     ],
     "url": "https://www.distral-hessen.de/",
-    "description": "A comprehensive funding program supporting startups, SMEs, and research institutions in digital innovation through various funding lines for research and development."
+    "description": "A comprehensive funding program supporting startups, SMEs, and research institutions in digital innovation through various funding lines for research and development.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "INVEST – Venture Capital Grant",
@@ -742,7 +968,9 @@
       "deeptech"
     ],
     "url": "https://www.bafa.de/EN/Promotion_Economic_Development_SME/promotion_economic_development_sme_node.html",
-    "description": "This federal program provides non-repayable grants to business angels who invest in innovative German startups to reduce investment risk."
+    "description": "This federal program provides non-repayable grants to business angels who invest in innovative German startups to reduce investment risk.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:31.603626"
   },
   {
     "name": "Promotion of business consulting for SMEs",
@@ -761,7 +989,9 @@
       "deeptech"
     ],
     "url": "https://www.bafa.de/EN/Promotion_Economic_Development_SME/promotion_economic_development_sme_node.html",
-    "description": "This program provides non-repayable grants to cover a significant portion of professional consulting costs for small and medium-sized enterprises and startups."
+    "description": "This program provides non-repayable grants to cover a significant portion of professional consulting costs for small and medium-sized enterprises and startups.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "EXIST Start-up Grant",
@@ -780,7 +1010,9 @@
       "deeptech"
     ],
     "url": "https://exist.de/en/programm/gruendungsstipendium",
-    "description": "A federal grant providing monthly stipends and material costs to students, graduates, and researchers to develop innovative, technology-based business ideas from academia."
+    "description": "A federal grant providing monthly stipends and material costs to students, graduates, and researchers to develop innovative, technology-based business ideas from academia.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:22.338047"
   },
   {
     "name": "EXIST Transfer of Research",
@@ -799,7 +1031,9 @@
       "deeptech"
     ],
     "url": "https://www.science-startups.berlin/programs/exist-startup-grant",
-    "description": "A funding program supporting high-risk, research-oriented startup projects that have already demonstrated a proof of principle and require further development for market readiness."
+    "description": "A funding program supporting high-risk, research-oriented startup projects that have already demonstrated a proof of principle and require further development for market readiness.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:49:50.759055"
   },
   {
     "name": "EXIST-Potentiale",
@@ -818,7 +1052,9 @@
       "deeptech"
     ],
     "url": "https://exist.de/en/programm/exist-potentiale",
-    "description": "A grant program providing subsidies to universities and research institutes to build or expand sustainable campus entrepreneurship infrastructure and startup ecosystems."
+    "description": "A grant program providing subsidies to universities and research institutes to build or expand sustainable campus entrepreneurship infrastructure and startup ecosystems.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "AVGS Gründer-Coaching (§ 45 SGB III)",
@@ -837,7 +1073,9 @@
       "deeptech"
     ],
     "url": "https://www.deutschland-startet.de/avgs-coaching-im-vergleich",
-    "description": "A 100% subsidized coaching program for unemployed individuals to receive professional guidance in developing their business plan and preparing for self-employment."
+    "description": "A 100% subsidized coaching program for unemployed individuals to receive professional guidance in developing their business plan and preparing for self-employment.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:37.325160"
   },
   {
     "name": "EXIST-Gründungsstipendium",
@@ -856,7 +1094,9 @@
       "deeptech"
     ],
     "url": "https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/BMWi/exist-gruendungsstipendium.html",
-    "description": "A support program for university-based startups providing living stipends and up to €30,000 for material expenses to help founders transition from research to business."
+    "description": "A support program for university-based startups providing living stipends and up to €30,000 for material expenses to help founders transition from research to business.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:50.655799"
   },
   {
     "name": "ERP-VC Fund Investments",
@@ -875,7 +1115,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw-capital.de/Investment-programs/ERP-VC-Fondsinvestments",
-    "description": "An investment program where KfW Capital acts as a limited partner in venture capital funds to strengthen the capital base for innovative technology-oriented growth companies in Germany."
+    "description": "An investment program where KfW Capital acts as a limited partner in venture capital funds to strengthen the capital base for innovative technology-oriented growth companies in Germany.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:55.552934"
   },
   {
     "name": "ERP/Future Fund Growth Facility",
@@ -894,7 +1136,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw-capital.de/Investment-programs/ERP-Future-Fund-Growth-Facility",
-    "description": "A growth-stage investment facility that provides venture capital and venture debt to funds to bridge the capital supply gap for technology companies in Germany and Europe."
+    "description": "A growth-stage investment facility that provides venture capital and venture debt to funds to bridge the capital supply gap for technology companies in Germany and Europe.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:55.554734"
   },
   {
     "name": "WIPANO",
@@ -910,7 +1154,9 @@
       "deeptech"
     ],
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Artikel/Technology/patents.html",
-    "description": "WIPANO provides SMEs and research institutions with a 50% grant of up to €16,500 to support the patenting, utility model, or trademark application process for innovative inventions."
+    "description": "WIPANO provides SMEs and research institutions with a 50% grant of up to €16,500 to support the patenting, utility model, or trademark application process for innovative inventions.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "SPRIND (Federal Agency for Breakthrough Innovation)",
@@ -927,7 +1173,9 @@
       "ai"
     ],
     "url": "https://www.sprind.org",
-    "description": "A federal agency providing large-scale project funding for breakthrough innovations that address significant societal challenges."
+    "description": "A federal agency providing large-scale project funding for breakthrough innovations that address significant societal challenges.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "KfW Startup Loans",
@@ -946,7 +1194,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw.de",
-    "description": "A state-owned development bank offering low-interest loans and financing guarantees for technology-driven SMEs and startups."
+    "description": "A state-owned development bank offering low-interest loans and financing guarantees for technology-driven SMEs and startups.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Flämingo Accelerator",
@@ -963,7 +1213,9 @@
       "ai"
     ],
     "url": "https://flaemingo-startuphub.com/accelerator",
-    "description": "An equity-free program in Brandenburg offering a one-month residency and six-month hybrid growth phase for startups in mobility, health, and creative industries."
+    "description": "An equity-free program in Brandenburg offering a one-month residency and six-month hybrid growth phase for startups in mobility, health, and creative industries.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "EXIST & EXIST Women",
@@ -979,7 +1231,9 @@
       "deeptech"
     ],
     "url": "https://www.startup-incubator.berlin",
-    "description": "Federal funding programs designed to support research-based and knowledge-based startups with a dedicated track for female founders."
+    "description": "Federal funding programs designed to support research-based and knowledge-based startups with a dedicated track for female founders.",
+    "deadline": "25 January 2026",
+    "deadline_checked_at": "2026-08-19T06:50:50.657803"
   },
   {
     "name": "ClimAccelerator",
@@ -995,7 +1249,9 @@
       "deeptech"
     ],
     "url": "https://climaccelerator.climate-kic.org",
-    "description": "A European accelerator program based in Berlin providing financial grants and mentorship to cleantech startups focused on climate impact."
+    "description": "A European accelerator program based in Berlin providing financial grants and mentorship to cleantech startups focused on climate impact.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "HessenFonds Innovation Loan",
@@ -1014,7 +1270,9 @@
       "deeptech"
     ],
     "url": "https://starthub-hessen.de",
-    "description": "This loan program provides between €100,000 and €10 million for innovation projects with a 70% liability exemption for the participating bank."
+    "description": "This loan program provides between €100,000 and €10 million for innovation projects with a 70% liability exemption for the participating bank.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "INVEST – Grant for Venture Capital",
@@ -1033,7 +1291,9 @@
       "deeptech"
     ],
     "url": "https://www.bmwk.de",
-    "description": "A federal grant program that provides a subsidy to private investors who provide venture capital to innovative startups."
+    "description": "A federal grant program that provides a subsidy to private investors who provide venture capital to innovative startups.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:22.339794"
   },
   {
     "name": "Starter Scholarship Saar",
@@ -1051,7 +1311,9 @@
       "deeptech"
     ],
     "url": "https://foerdermittelkompass.reflecta.org/grants/starter-stipendium-saar?locale=en",
-    "description": "This program provides innovative Saarland-based startups with a monthly flat-rate allowance of up to €3,000 for up to 12 months to cover living and operating costs."
+    "description": "This program provides innovative Saarland-based startups with a monthly flat-rate allowance of up to €3,000 for up to 12 months to cover living and operating costs.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "INVEST Grant",
@@ -1069,7 +1331,9 @@
       "deeptech"
     ],
     "url": "https://service.saarland.de/portaldeeplink?tsa_leistung_id=114127204&tsa_oe_id=114145167&tsa_sprache=en",
-    "description": "This federal program incentivizes private business angels by reimbursing 20% to 25% of their equity investments in young, innovative startups."
+    "description": "This federal program incentivizes private business angels by reimbursing 20% to 25% of their equity investments in young, innovative startups.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "High-Tech Gründerfonds (HTGF)",
@@ -1088,7 +1352,9 @@
       "deeptech"
     ],
     "url": "https://www.htgf.de/en/",
-    "description": "Germany's most active early-stage investor providing up to €1M in seed financing for technology startups with follow-on capacity up to €4M."
+    "description": "Germany's most active early-stage investor providing up to €1M in seed financing for technology startups with follow-on capacity up to €4M.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:45.807432"
   },
   {
     "name": "ESA BIC Northern Germany",
@@ -1105,7 +1371,9 @@
       "electronics"
     ],
     "url": "https://www.starthaus-bremen.de/en/page/programmes/esa-bic",
-    "description": "A two-year incubation program providing aerospace-related and high-tech startups with office space, mentoring, and access to the European Space Agency network."
+    "description": "A two-year incubation program providing aerospace-related and high-tech startups with office space, mentoring, and access to the European Space Agency network.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Startup Preschool Bremen",
@@ -1121,7 +1389,9 @@
       "software"
     ],
     "url": "https://bridge-online.de/veranstaltungen/startup-preschool-bremen-2026",
-    "description": "An English-language entrepreneurship bootcamp designed to help international founders navigate the German startup ecosystem and validate their business models."
+    "description": "An English-language entrepreneurship bootcamp designed to help international founders navigate the German startup ecosystem and validate their business models.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "First Customer Program",
@@ -1137,7 +1407,9 @@
       "software"
     ],
     "url": "https://www.startupmigrants.com/upcoming-events/first-customer-accelerator-bremen",
-    "description": "A hands-on accelerator program focused on helping early-stage startups acquire their first paying customers."
+    "description": "A hands-on accelerator program focused on helping early-stage startups acquire their first paying customers.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "InnoStartBonus",
@@ -1155,7 +1427,9 @@
       "deeptech"
     ],
     "url": "https://www.futuresax.de",
-    "description": "A lump-sum grant of up to €30,000 combined with professional mentoring for knowledge-intensive ventures in Saxony."
+    "description": "A lump-sum grant of up to €30,000 combined with professional mentoring for knowledge-intensive ventures in Saxony.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ESF-Plus Technology Startup",
@@ -1172,7 +1446,9 @@
       "electronics"
     ],
     "url": "https://www.sab.sachsen.de",
-    "description": "This program funds technology-oriented projects with grants ranging from €2,000 to €50,000 at a co-financing rate of up to 90%."
+    "description": "This program funds technology-oriented projects with grants ranging from €2,000 to €50,000 at a co-financing rate of up to 90%.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Micro-Loan (MKD)",
@@ -1191,7 +1467,9 @@
       "deeptech"
     ],
     "url": "https://www.sab.sachsen.de",
-    "description": "A low-interest loan facility providing up to €250,000 to support investments and working capital for startups in Saxony."
+    "description": "A low-interest loan facility providing up to €250,000 to support investments and working capital for startups in Saxony.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Innovation Capital Saxony",
@@ -1209,7 +1487,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw.de",
-    "description": "A joint venture equity program providing €1-5 million to growth-oriented companies with innovative business models in Saxony."
+    "description": "A joint venture equity program providing €1-5 million to growth-oriented companies with innovative business models in Saxony.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "EXIST Business Startup Grant",
@@ -1228,7 +1508,9 @@
       "deeptech"
     ],
     "url": "https://www.exist.de",
-    "description": "A federal grant supporting students, graduates, and scientists from research institutions to develop innovative, technology-oriented business ideas."
+    "description": "A federal grant supporting students, graduates, and scientists from research institutions to develop innovative, technology-oriented business ideas.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:49:50.757466"
   },
   {
     "name": "GRW Supplementary Loan Mecklenburg-Vorpommern",
@@ -1247,7 +1529,9 @@
       "deeptech"
     ],
     "url": "https://www.grantbite.com/en/funding/grw-supplementary-loan-mecklenburg-vorpommern",
-    "description": "This program provides project-specific loans of up to €5 million for commercial and infrastructure ventures that meet regional development criteria."
+    "description": "This program provides project-specific loans of up to €5 million for commercial and infrastructure ventures that meet regional development criteria.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ERP Start-up Loan Universell",
@@ -1266,7 +1550,9 @@
       "deeptech"
     ],
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
-    "description": "A federal financing track offering up to €25 million in low-interest loans for larger-scale start-up projects and expansion."
+    "description": "A federal financing track offering up to €25 million in low-interest loans for larger-scale start-up projects and expansion.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Triathlon Incubator",
@@ -1284,7 +1570,9 @@
       "software"
     ],
     "url": "https://www.uds-triathlon.de/en/start-ups",
-    "description": "A comprehensive on-campus incubator providing tech founders with intensive coaching, patent support, and infrastructure to convert research into spin-offs."
+    "description": "A comprehensive on-campus incubator providing tech founders with intensive coaching, patent support, and infrastructure to convert research into spin-offs.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "L-Booster",
@@ -1301,7 +1589,9 @@
       "software"
     ],
     "url": "https://www.southwestx.eu",
-    "description": "A three-month growth sprint for early-stage startups offering intensive validation support and up to €25,000 in non-dilutive funding."
+    "description": "A three-month growth sprint for early-stage startups offering intensive validation support and up to €25,000 in non-dilutive funding.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Startup Launchpad Saar",
@@ -1318,7 +1608,9 @@
       "ai"
     ],
     "url": "https://www.southwestx.eu",
-    "description": "A structured founder program designed to guide early-stage teams from initial idea to a validated venture concept."
+    "description": "A structured founder program designed to guide early-stage teams from initial idea to a validated venture concept.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Saarland Transformation Fund",
@@ -1336,7 +1628,9 @@
       "ai"
     ],
     "url": "https://www.hks.harvard.edu/centers/wiener/programs/economy/policyworks/case-study-saarland-transformation-fund",
-    "description": "An equity-based startup fund providing seed capital and venture support to emerging companies driving industrial and technological change in Saarland."
+    "description": "An equity-based startup fund providing seed capital and venture support to emerging companies driving industrial and technological change in Saarland.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Sozialinnovator Hessen",
@@ -1352,7 +1646,9 @@
       "software"
     ],
     "url": "https://sozialinnovator.de/",
-    "description": "A six-month curriculum and funding program providing up to €2,500 per month to support the launch or scaling of social enterprises in Hesse."
+    "description": "A six-month curriculum and funding program providing up to €2,500 per month to support the launch or scaling of social enterprises in Hesse.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Hessen Ideen Scholarship",
@@ -1368,7 +1664,9 @@
       "deeptech"
     ],
     "url": "https://hessen-ideen.de/english",
-    "description": "A six-month scholarship program providing €2,500 monthly and coaching for university-based early-stage, knowledge-based business ideas."
+    "description": "A six-month scholarship program providing €2,500 monthly and coaching for university-based early-stage, knowledge-based business ideas.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Hessen10",
@@ -1384,7 +1682,9 @@
       "software"
     ],
     "url": "https://hessen10.de/",
-    "description": "A five-month growth program designed to help the region’s most promising startups scale faster through intensive support."
+    "description": "A five-month growth program designed to help the region’s most promising startups scale faster through intensive support.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "TQ Accelerator Impact",
@@ -1400,7 +1700,9 @@
       "software"
     ],
     "url": "https://techquartier.com/",
-    "description": "A six-day intensive program for late-stage impact-oriented founders in Frankfurt to strengthen investor readiness and networks."
+    "description": "A six-day intensive program for late-stage impact-oriented founders in Frankfurt to strengthen investor readiness and networks.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "AI Startup Rising",
@@ -1417,7 +1719,9 @@
       "deeptech"
     ],
     "url": "https://hessian.ai/entrepreneurship",
-    "description": "An AI-focused acceleration track for research-based startups providing market-entry support and access to EXIST funding."
+    "description": "An AI-focused acceleration track for research-based startups providing market-entry support and access to EXIST funding.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Accelerator Frankfurt",
@@ -1434,7 +1738,9 @@
       "ai"
     ],
     "url": "https://acceleratorfrankfurt.com/",
-    "description": "An independent go-to-market program providing strategic guidance for startups in fintech, cybersecurity, and B2B digital sectors."
+    "description": "An independent go-to-market program providing strategic guidance for startups in fintech, cybersecurity, and B2B digital sectors.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "PANDO. Ventures",
@@ -1451,7 +1757,9 @@
       "electronics"
     ],
     "url": "https://pando.ventures/",
-    "description": "An accelerator and company builder providing hands-on guidance and seed capital for early-stage founders in internet and network security."
+    "description": "An accelerator and company builder providing hands-on guidance and seed capital for early-stage founders in internet and network security.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "AI NATION Accelerator",
@@ -1468,7 +1776,9 @@
       "deeptech"
     ],
     "url": "https://www.ai-nation.de/accelerator",
-    "description": "A six-month growth program for high-potential AI teams focusing on product-market fit, go-to-market strategies, and scaling."
+    "description": "A six-month growth program for high-potential AI teams focusing on product-market fit, go-to-market strategies, and scaling.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Berlin Startup Scholarship",
@@ -1486,7 +1796,9 @@
       "deeptech"
     ],
     "url": "https://www.startup-incubator.berlin",
-    "description": "A six-month program providing funding, coaching, and workspace to support academic founding teams in developing their business models."
+    "description": "A six-month program providing funding, coaching, and workspace to support academic founding teams in developing their business models.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Impact Incubator Climate-Tech",
@@ -1502,7 +1814,9 @@
       "deeptech"
     ],
     "url": "https://berlin.impacthub.net/program/impact-incubator-climate-tech",
-    "description": "A Berlin-based incubator for climate-tech founders that provides access to the local startup ecosystem and expert mentorship."
+    "description": "A Berlin-based incubator for climate-tech founders that provides access to the local startup ecosystem and expert mentorship.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "StarTUp Incubator",
@@ -1521,7 +1835,9 @@
       "deeptech"
     ],
     "url": "https://www.tu.berlin/en/topics/entrepreneurship/support-for-start-up-projects",
-    "description": "A milestone-based incubation process lasting 6 to 18 months that supports high-tech startup teams with infrastructure and training."
+    "description": "A milestone-based incubation process lasting 6 to 18 months that supports high-tech startup teams with infrastructure and training.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Reaktor.Berlin",
@@ -1539,7 +1855,9 @@
       "deeptech"
     ],
     "url": "https://reaktor.berlin",
-    "description": "A six-month pre-seed accelerator program for Berlin-based startups offering non-dilutive funding without taking equity."
+    "description": "A six-month pre-seed accelerator program for Berlin-based startups offering non-dilutive funding without taking equity.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "German Accelerator",
@@ -1557,7 +1875,9 @@
       "deeptech"
     ],
     "url": "https://www.germanaccelerator.com",
-    "description": "A flagship program that helps German startups scale internationally by providing access to global markets and expert mentorship."
+    "description": "A flagship program that helps German startups scale internationally by providing access to global markets and expert mentorship.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Grace - Accelerate Female Entrepreneurship",
@@ -1574,7 +1894,9 @@
       "ai"
     ],
     "url": "https://grace-accelerator.de",
-    "description": "An accelerator program focused on supporting female entrepreneurs with a monthly stipend and business development resources."
+    "description": "An accelerator program focused on supporting female entrepreneurs with a monthly stipend and business development resources.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Gründung innovativ",
@@ -1592,7 +1914,9 @@
       "deeptech"
     ],
     "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/gruendung-innovativ/",
-    "description": "This program provides grants to support innovative start-ups and social enterprises in Brandenburg with costs related to consulting, personnel, and equipment."
+    "description": "This program provides grants to support innovative start-ups and social enterprises in Brandenburg with costs related to consulting, personnel, and equipment.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ProFit Brandenburg",
@@ -1610,7 +1934,9 @@
       "deeptech"
     ],
     "url": "https://www.ilb.de/de/wirtschaft/zuschuesse/profit-brandenburg/",
-    "description": "ProFit Brandenburg supports innovative R&D projects and market launches for SMEs and research institutions through a combination of grants and loans."
+    "description": "ProFit Brandenburg supports innovative R&D projects and market launches for SMEs and research institutions through a combination of grants and loans.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Berlin Start",
@@ -1629,7 +1955,9 @@
       "deeptech"
     ],
     "url": "https://www.ibb.de/en/foerderprogramme/berlin-start.html",
-    "description": "Berlin Start offers favorable, low-interest loans to SMEs and start-ups in the Berlin region, often combined with a guarantee from the Bürgschaftsbank."
+    "description": "Berlin Start offers favorable, low-interest loans to SMEs and start-ups in the Berlin region, often combined with a guarantee from the Bürgschaftsbank.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "GuW Thüringen",
@@ -1647,7 +1975,9 @@
       "deeptech"
     ],
     "url": "https://www.aufbaubank.de/",
-    "description": "A dedicated loan scheme for Thuringian startups and growth-stage companies offering up to 100% financing for investment and operating costs."
+    "description": "A dedicated loan scheme for Thuringian startups and growth-stage companies offering up to 100% financing for investment and operating costs.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ERP Start-Up Loan Startgeld",
@@ -1666,7 +1996,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gr%C3%BCndung-Nachfolge/F%C3%B6rderprodukte/KfW-StartGeld-(067-068)/",
-    "description": "A low-interest loan program providing up to €100,000 to support small-scale startups and young companies in their initial years."
+    "description": "A low-interest loan program providing up to €100,000 to support small-scale startups and young companies in their initial years.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-08-19T06:50:55.551173"
   },
   {
     "name": "Gründungszuschuss",
@@ -1685,7 +2017,9 @@
       "deeptech"
     ],
     "url": "https://www.arbeitsagentur.de/",
-    "description": "A grant program supporting recipients of unemployment benefits who are transitioning into self-employment."
+    "description": "A grant program supporting recipients of unemployment benefits who are transitioning into self-employment.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-08-19T06:50:37.326660"
   },
   {
     "name": "ERP Venture Capital Programme",
@@ -1702,7 +2036,9 @@
       "deeptech"
     ],
     "url": "https://www.kfw.de/",
-    "description": "A program assisting SMEs and venture capital companies by providing fresh venture capital for innovative growth projects."
+    "description": "A program assisting SMEs and venture capital companies by providing fresh venture capital for innovative growth projects.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ego.-START",
@@ -1720,7 +2056,9 @@
       "deeptech"
     ],
     "url": "https://www.ib-sachsen-anhalt.de",
-    "description": "A state-funded grant program in Saxony-Anhalt providing non-repayable support for personnel and operational costs for technology-based startups during the pre-launch phase."
+    "description": "A state-funded grant program in Saxony-Anhalt providing non-repayable support for personnel and operational costs for technology-based startups during the pre-launch phase.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ego.-Gründungstransfer",
@@ -1737,7 +2075,9 @@
       "ai"
     ],
     "url": "https://www.ib-sachsen-anhalt.de",
-    "description": "A specialized funding stream designed to facilitate the transfer of research results from universities into market-ready companies in Saxony-Anhalt."
+    "description": "A specialized funding stream designed to facilitate the transfer of research results from universities into market-ready companies in Saxony-Anhalt.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ego.-INKUBATOR",
@@ -1754,7 +2094,9 @@
       "software"
     ],
     "url": "https://www.ib-sachsen-anhalt.de",
-    "description": "An incubator program focused on supporting the development of innovative startups originating from Saxony-Anhalt's academic institutions."
+    "description": "An incubator program focused on supporting the development of innovative startups originating from Saxony-Anhalt's academic institutions.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "MBG Silent and Open Participations",
@@ -1772,7 +2114,9 @@
       "electronics"
     ],
     "url": "https://www.mbg-sachsen-anhalt.de",
-    "description": "Provides equity-substitute financing through silent or open participations ranging from 25,000 to 2.5 million euros for startups and growth-stage companies."
+    "description": "Provides equity-substitute financing through silent or open participations ranging from 25,000 to 2.5 million euros for startups and growth-stage companies.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Technology Start-up Grant (Saxony)",
@@ -1790,7 +2134,9 @@
       "ai"
     ],
     "url": "https://www.futuresax.de",
-    "description": "A grant program for science-based startups in Saxony to support the establishment of innovative companies in promising technology sectors."
+    "description": "A grant program for science-based startups in Saxony to support the establishment of innovative companies in promising technology sectors.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "GuW-BW Start-up and Growth Financing",
@@ -1809,7 +2155,9 @@
       "deeptech"
     ],
     "url": "https://www.grantbite.com/en/funding/guw-bw-start-up-growth-financing",
-    "description": "This program provides interest-subsidized loans to support business start-ups, acquisitions, and expansion projects for companies and freelancers in Baden-Württemberg."
+    "description": "This program provides interest-subsidized loans to support business start-ups, acquisitions, and expansion projects for companies and freelancers in Baden-Württemberg.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Start-up BW Pre-Seed",
@@ -1828,7 +2176,9 @@
       "deeptech"
     ],
     "url": "https://campusfounders.de/startups/pre-seed-bw",
-    "description": "A financial support program for innovative, growth-focused startups in Baden-Württemberg that offers interest-free funding with potential for equity conversion."
+    "description": "A financial support program for innovative, growth-focused startups in Baden-Württemberg that offers interest-free funding with potential for equity conversion.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "Start-up BW Venture",
@@ -1847,7 +2197,9 @@
       "deeptech"
     ],
     "url": "https://www.startupbw.de/international/invest-in-the-start-up-laend",
-    "description": "A co-investment fund designed to support venture capitalists investing in local Baden-Württemberg startups."
+    "description": "A co-investment fund designed to support venture capitalists investing in local Baden-Württemberg startups.",
+    "deadline": null,
+    "deadline_checked_at": null
   },
   {
     "name": "ESA BIC BW Convertible Loan",
@@ -1863,6 +2215,8 @@
       "deeptech"
     ],
     "url": "https://www.esa-bic-bw.de/network/investments",
-    "description": "An investment program for innovative startups in Baden-Württemberg providing convertible loans of up to 200,000 Euro."
+    "description": "An investment program for innovative startups in Baden-Württemberg providing convertible loans of up to 200,000 Euro.",
+    "deadline": null,
+    "deadline_checked_at": null
   }
 ]
