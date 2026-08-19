@@ -6,24 +6,29 @@
   <title>German Startup Funding & Ecosystem Directory</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen">
-  <div class="max-w-7xl mx-auto px-4 py-8">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+  <div class="max-w-7xl mx-auto px-4 py-8 w-full">
     <header class="mb-8 text-center">
       <h1 class="text-4xl font-bold text-slate-900 mb-2">German Startup Program Finder</h1>
-      <p class="text-slate-600">Automated directory of active grants, accelerators, incubators, and VC funds.</p>
+      <p class="text-slate-600 mb-2">Automated directory of active grants, accelerators, incubators, and VC funds.</p>
+      <!-- User Local Time Display -->
+      <div id="user-time" class="inline-block bg-slate-200 text-slate-800 text-xs font-semibold px-3 py-1 rounded-full shadow-inner">
+        Loading local time...
+      </div>
     </header>
 
-    <!-- Filters Bar -->
+    <!-- Filters & Counters Bar -->
     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-8 space-y-4">
       <input type="text" id="search" placeholder="Search by program name..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
       
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <select id="filter-type" class="p-2 border border-slate-300 rounded-lg text-sm">
-          <option value="">All Types (Grants, Accelerators...)</option>
+          <option value="">All Types (Grants, VCs...)</option>
           <option value="grant">type:grant</option>
           <option value="accelerator">type:accelerator</option>
           <option value="incubator">type:incubator</option>
           <option value="vc">type:vc</option>
+          <option value="loan">type:loan</option>
         </select>
 
         <select id="filter-funding" class="p-2 border border-slate-300 rounded-lg text-sm">
@@ -32,6 +37,7 @@
           <option value="zero-equity">funding:zero-equity</option>
           <option value="equity">funding:equity</option>
           <option value="subsidy">funding:subsidy</option>
+          <option value="loan">funding:loan</option>
         </select>
 
         <select id="filter-stage" class="p-2 border border-slate-300 rounded-lg text-sm">
@@ -48,14 +54,47 @@
           <option value="none">bmwk:none</option>
         </select>
       </div>
+
+      <!-- Live Program Counters -->
+      <div id="counters-bar" class="pt-4 border-t border-slate-100 flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
+        <!-- Counters dynamically rendered via JavaScript -->
+      </div>
     </div>
 
     <!-- Cards Grid -->
     <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
 
+  <!-- Footer with Contact Links and Attribution -->
+  <footer class="bg-white border-t border-slate-200 py-8 mt-12 w-full">
+    <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
+      <div class="flex flex-wrap justify-center items-center gap-6 text-sm font-medium">
+        <a href="https://www.linkedin.com/in/mohtashim-sadiq/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition">
+          LinkedIn Profile
+        </a>
+        <a href="https://www.instagram.com/mohtashimsadiq/" target="_blank" rel="noopener noreferrer" class="text-pink-600 hover:text-pink-800 transition">
+          Instagram
+        </a>
+        <a href="https://cal.com/mohtashim-sadiq-sphz0o" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 transition">
+          Book an Appointment
+        </a>
+      </div>
+      <p class="text-sm text-slate-500 font-medium">Made by Mohtashim Sadiq</p>
+    </div>
+  </footer>
+
   <script>
     let programs = [];
+
+    // Live User Time Functionality
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const dateString = now.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+      document.getElementById('user-time').innerText = `Your Time: ${dateString} — ${timeString}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
     async function loadPrograms() {
       try {
@@ -65,6 +104,33 @@
       } catch (err) {
         document.getElementById('grid').innerHTML = '<p class="text-red-500">Run the GitHub Action agent first to generate grants.json.</p>';
       }
+    }
+
+    function updateCounters(filteredPrograms) {
+      const counts = {
+        total: filteredPrograms.length,
+        grant: 0,
+        accelerator: 0,
+        incubator: 0,
+        vc: 0,
+        loan: 0
+      };
+
+      filteredPrograms.forEach(p => {
+        if (counts[p.type] !== undefined) {
+          counts[p.type]++;
+        }
+      });
+
+      const countersContainer = document.getElementById('counters-bar');
+      countersContainer.innerHTML = `
+        <span class="bg-slate-100 text-slate-800 px-3 py-1 rounded-md border border-slate-200">Total: ${counts.total}</span>
+        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-md border border-blue-200">Grants: ${counts.grant}</span>
+        <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-md border border-purple-200">Accelerators: ${counts.accelerator}</span>
+        <span class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-md border border-emerald-200">Incubators: ${counts.incubator}</span>
+        <span class="bg-amber-50 text-amber-700 px-3 py-1 rounded-md border border-amber-200">VCs: ${counts.vc}</span>
+        <span class="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-md border border-indigo-200">Loans: ${counts.loan}</span>
+      `;
     }
 
     function render() {
@@ -83,12 +149,14 @@
         return matchesSearch && matchesType && matchesFunding && matchesStage && matchesBmwk;
       });
 
+      updateCounters(filtered);
+
       const grid = document.getElementById('grid');
       grid.innerHTML = filtered.map(p => `
         <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-lg text-slate-900 mb-2">${p.name}</h3>
-            <div class="flex flex-wrap gap-1.5 mb-4 text-xs font-medium">
+            <div class="flex flex-wrap gap-1.5 mb-3 text-xs font-medium">
               <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded">type:${p.type}</span>
               <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded">funding:${p.funding}</span>
               <span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded">stage:${p.stage}</span>
@@ -97,7 +165,12 @@
             </div>
             <p class="text-slate-600 text-sm mb-4">${p.description}</p>
           </div>
-          <a href="${p.url}" target="_blank" class="mt-4 block text-center bg-slate-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-slate-800">View Details & Apply ↗</a>
+          <div>
+            <div class="text-xs text-slate-500 font-medium pt-2 border-t border-slate-100 mb-3">
+              📅 Deadline: <span class="text-slate-800 font-semibold">${p.deadline ? p.deadline : 'Not stated'}</span>
+            </div>
+            <a href="${p.url}" target="_blank" class="block text-center bg-slate-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-slate-800 transition">View Details & Apply ↗</a>
+          </div>
         </div>
       `).join('');
     }
