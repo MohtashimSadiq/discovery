@@ -4,7 +4,7 @@ import json
 import sqlite3
 import random
 from datetime import datetime
-from typing import List, Literal
+from typing import List, Literal, Optional
 from urllib.parse import urlparse
 from pydantic import BaseModel, Field
 from google import genai
@@ -19,7 +19,7 @@ except ImportError:
     print("⚠️  rapidfuzz not installed — falling back to substring dedup. Run: pip install rapidfuzz")
 
 # -------------------------------------------------------------------
-# 1. Helper Functions for String Normalization & Fuzzy Deduplication
+# 1. Helper Functions
 # -------------------------------------------------------------------
 def clean_string(text: str) -> str:
     return re.sub(r'[^a-zA-Z0-9]', '', text).lower()
@@ -70,6 +70,13 @@ class ProgramItem(BaseModel):
     provider: str = Field(description="Managing organization, university, state agency, or fund")
     url: str = Field(description="Direct official link to the program or application page")
     description: str = Field(description="Brief single-sentence overview of the offer")
+    deadline: str = Field(
+        description=(
+            "Application deadline or cycle info, in whatever form the source states it "
+            "(e.g. '04.03.2026', 'March 2026', 'rolling', 'ongoing', 'next call Q3 2026'). "
+            "If the source gives no deadline information at all, use 'not stated'."
+        )
+    )
 
     type_tag: Literal["grant", "accelerator", "incubator", "vc", "loan"] = Field(
         description="Program Structure: grant, accelerator, incubator, vc, or loan"
@@ -119,10 +126,6 @@ PROGRAM_TYPES = ["grant", "accelerator", "incubator", "loan"]
 
 SECTOR_MODIFIERS = ["deep tech", "AI", "cleantech", "life sciences", "hardware startup"]
 
-# Specific named federal programs — each tracked separately so none get
-# lost inside one generic catch-all query. EXIST trimmed to 2 entries
-# (core grant + Women/target-group variant) so it isn't structurally
-# over-represented relative to other federal programs.
 NATIONAL_PROGRAMS = [
     ("national:EXIST-Gruendungsstipendium", "EXIST Gründungsstipendium application requirements 2026"),
     ("national:EXIST-Women", "EXIST Women 2026 application Germany"),
@@ -144,10 +147,6 @@ NATIONAL_PROGRAMS = [
     ("national:BMWK-Coaching", "Bund Coaching-Programme Gründer Zuschuss Germany"),
 ]
 
-# Broad catch-all queries — these exist to surface federal programs that
-# AREN'T on the named list above (the named list can only find what we
-# already know to search for). Higher threshold than named queries since
-# a broad query's results vary run to run and stays useful longer.
 NATIONAL_BROAD = [
     ("national:broad-1", "list of German federal startup funding programs 2026"),
     ("national:broad-2", "Bundesförderung Startup Zuschuss Übersicht"),
@@ -156,7 +155,6 @@ NATIONAL_BROAD = [
     ("national:broad-5", "Förderdatenbank Bund startup grant"),
 ]
 
-# EU-level programs available to German startups — lowest search priority
 EU_PROGRAMS = [
     ("eu:EIC-Accelerator", "EIC Accelerator European Innovation Council funding Germany"),
     ("eu:Horizon-Europe", "Horizon Europe startup funding Germany"),
@@ -179,19 +177,18 @@ def build_seed_queries():
     return seeds
 
 def priority_for_category(category: str) -> int:
-    """Lower number = searched first when hit_count is tied."""
     if category.startswith("national:"):
         return 0
     if category.startswith("eu:"):
         return 2
-    return 1  # state / sector
+    return 1
 
 def threshold_for_category(category: str) -> int:
     if category.startswith("national:broad"):
-        return 4  # broad queries stay useful longer, less likely to go stale fast
+        return 4
     if category.startswith("national:") or category.startswith("eu:"):
-        return 2  # specific named programs — exhaust quickly once confirmed
-    return 3  # state/sector
+        return 2
+    return 3
 
 # -------------------------------------------------------------------
 # 4. Composite SQLite Database Engine
@@ -205,13 +202,6 @@ class ProgramDatabase:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
 
-            cursor.execute("PRAGMA table_info(programs)")
-            columns = [info[1] for info in cursor.fetchall()]
-            required_columns = {"clean_name", "clean_provider", "path_stem"}
-            if columns and not required_columns.issubset(set(columns)):
-                print("🔄 Updating SQLite schema (programs) — missing columns detected, rebuilding table...")
-                cursor.execute("DROP TABLE programs")
-
             conn.execute("""
                 CREATE TABLE IF NOT EXISTS programs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -223,6 +213,8 @@ class ProgramDatabase:
                     normalized_url TEXT,
                     path_stem TEXT,
                     description TEXT,
+                    deadline TEXT,
+                    deadline_checked_at TIMESTAMP,
                     type_tag TEXT,
                     funding_tag TEXT,
                     stage_tag TEXT,
@@ -234,6 +226,21 @@ class ProgramDatabase:
                     discovered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             """)
+
+            # Additive migration: add any columns missing from an older
+            # schema version instead of dropping the table (which would
+            # destroy already-discovered programs).
+            cursor.execute("PRAGMA table_info(programs)")
+            existing_columns = {info[1] for info in cursor.fetchall()}
+
+            required_columns = {
+                "clean_name": "TEXT", "clean_provider": "TEXT", "path_stem": "TEXT",
+                "deadline": "TEXT", "deadline_checked_at": "TIMESTAMP",
+            }
+            for col_name, col_type in required_columns.items():
+                if col_name not in existing_columns:
+                    print(f"🔧 Adding missing column '{col_name}' to programs table...")
+                    cursor.execute(f"ALTER TABLE programs ADD COLUMN {col_name} {col_type}")
 
             conn.execute("""
                 CREATE TABLE IF NOT EXISTS query_pool (
@@ -257,9 +264,6 @@ class ProgramDatabase:
             """)
 
     def seed_pool(self):
-        """Adds any seed query not already present in the pool. Safe to call
-        every run — existing queries (and their hit_count/status) are left
-        untouched; only genuinely new ones get inserted."""
         seeds = build_seed_queries()
         added = 0
         with sqlite3.connect(self.db_path) as conn:
@@ -277,9 +281,11 @@ class ProgramDatabase:
             print(f"🌱 Pool already contains all {len(seeds)} seed queries — nothing new to add.")
 
     # -----------------------------------------------------------
-    # Fingerprint-based dedup
+    # Fingerprint-based dedup — now returns the matched row's id (or None)
+    # so the caller can refresh deadline info on rediscovery instead of
+    # just silently skipping.
     # -----------------------------------------------------------
-    def is_duplicate(self, prog: ProgramItem) -> bool:
+    def find_duplicate_id(self, prog: ProgramItem) -> Optional[int]:
         norm_url = normalize_url(prog.url)
         norm_domain = get_domain(norm_url)
         norm_stem = get_path_stem(norm_url)
@@ -289,13 +295,13 @@ class ProgramDatabase:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                SELECT clean_name, clean_provider, normalized_url, path_stem,
+                SELECT id, clean_name, clean_provider, normalized_url, path_stem,
                        type_tag, funding_tag, stage_tag, bmwk_tag, exist_tag
                 FROM programs
             """)
             all_rows = cursor.fetchall()
 
-        for (existing_name, existing_provider, existing_url, existing_stem,
+        for (row_id, existing_name, existing_provider, existing_url, existing_stem,
              e_type, e_funding, e_stage, e_bmwk, e_exist) in all_rows:
 
             existing_domain = get_domain(existing_url) if existing_url else ""
@@ -313,18 +319,33 @@ class ProgramDatabase:
             tag_matches = sum(1 for a, b in tag_pairs if a == b)
 
             if same_stem and name_score >= 50:
-                return True
+                return row_id
             if name_score >= 70 and provider_score >= 70 and tag_matches >= 4:
-                return True
+                return row_id
             if same_domain and not same_stem and name_score >= 88:
-                return True
+                return row_id
             if not same_domain and name_score >= 80:
-                return True
+                return row_id
 
-        return False
+        return None
+
+    def refresh_deadline(self, row_id: int, deadline: str):
+        """Called on rediscovery of an existing program — updates the
+        deadline and stamps when it was last checked, so the website can
+        judge staleness from deadline_checked_at."""
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute("""
+                UPDATE programs SET deadline = ?, deadline_checked_at = ? WHERE id = ?
+            """, (deadline, datetime.utcnow().isoformat(), row_id))
 
     def insert_program(self, prog: ProgramItem) -> bool:
-        if self.is_duplicate(prog):
+        """Returns True if a NEW row was inserted. If the program already
+        exists, its deadline is refreshed in place instead, and this
+        returns False (counts as a duplicate for novelty tracking, but the
+        deadline data still gets updated)."""
+        existing_id = self.find_duplicate_id(prog)
+        if existing_id is not None:
+            self.refresh_deadline(existing_id, prog.deadline)
             return False
 
         norm_url = normalize_url(prog.url)
@@ -336,22 +357,21 @@ class ProgramDatabase:
             conn.execute("""
                 INSERT INTO programs (
                     name, clean_name, provider, clean_provider, url, normalized_url,
-                    path_stem, description, type_tag, funding_tag, stage_tag,
-                    eligibility_tag, backing_tag, bmwk_tag, exist_tag, focus_tags
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    path_stem, description, deadline, deadline_checked_at,
+                    type_tag, funding_tag, stage_tag, eligibility_tag,
+                    backing_tag, bmwk_tag, exist_tag, focus_tags
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 prog.name, norm_name, prog.provider, norm_provider, prog.url, norm_url,
-                stem, prog.description, prog.type_tag, prog.funding_tag, prog.stage_tag,
-                prog.eligibility_tag, prog.backing_tag, prog.bmwk_tag, prog.exist_tag,
+                stem, prog.description, prog.deadline, datetime.utcnow().isoformat(),
+                prog.type_tag, prog.funding_tag, prog.stage_tag, prog.eligibility_tag,
+                prog.backing_tag, prog.bmwk_tag, prog.exist_tag,
                 ",".join(prog.focus_tags)
             ))
         return True
 
     # ---- Query pool mechanics ----
     def get_next_batch(self, n=12):
-        """Priority order: national queries first, then state/sector, then
-        EU last — within each priority tier, lowest hit_count goes first,
-        with random tie-break among equals."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
@@ -502,7 +522,8 @@ class ProgramDatabase:
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT name, provider, type_tag, funding_tag, stage_tag, eligibility_tag,
-                       backing_tag, bmwk_tag, exist_tag, focus_tags, url, description
+                       backing_tag, bmwk_tag, exist_tag, focus_tags, url, description,
+                       deadline, deadline_checked_at
                 FROM programs ORDER BY discovered_at DESC
             """)
             return cursor.fetchall()
@@ -513,11 +534,13 @@ class ProgramDatabase:
         print(f"📊 LIVE DATABASE DIRECTORY ({len(programs)} TOTAL ACTIVE PROGRAMS)")
         print("=" * 80)
         for idx, row in enumerate(programs, 1):
-            name, provider, type_tag, funding_tag, stage_tag, eligibility_tag, backing_tag, bmwk_tag, exist_tag, focus, url, desc = row
+            (name, provider, type_tag, funding_tag, stage_tag, eligibility_tag, backing_tag,
+             bmwk_tag, exist_tag, focus, url, desc, deadline, checked_at) = row
             tags_str = f"type:{type_tag} | funding:{funding_tag} | stage:{stage_tag} | bmwk:{bmwk_tag} | exist:{exist_tag} | focus:{focus}"
             print(f"\n[{idx}] {name} ({provider})")
             print(f"    Tags: {tags_str}")
             print(f"    URL:  {url}")
+            print(f"    Deadline: {deadline}  (checked: {checked_at})")
             print(f"    Info: {desc}")
         print("\n" + "=" * 80)
 
@@ -576,6 +599,8 @@ class GermanEcosystemAgent:
         (including EU-level programs available to German startups) from the web context below.
         Categorize each program strictly according to the schema. Write a clear, informative
         one-sentence description for each program suitable for public display on a directory website.
+        Extract the application deadline exactly as the source states it (a date, a month/quarter,
+        "rolling", "ongoing", etc.) — if no deadline is mentioned anywhere in the source, use "not stated".
         If the same organization runs multiple distinct programs, list each as a separate entry with
         its own specific URL. If no valid programs are present, return an empty list — do not invent entries.
 
@@ -602,11 +627,11 @@ class GermanEcosystemAgent:
         for program in extracted_data.programs:
             if self.db.insert_program(program):
                 tags_str = f"type:{program.type_tag} | funding:{program.funding_tag} | stage:{program.stage_tag} | bmwk:{program.bmwk_tag} | exist:{program.exist_tag}"
-                print(f"  ✅ Appended: {program.name} ({program.provider})")
+                print(f"  ✅ Appended: {program.name} ({program.provider}) — deadline: {program.deadline}")
                 print(f"     Tags -> [{tags_str}]")
                 added += 1
             else:
-                print(f"  ⏭️ Skipped (Duplicate): {program.name}")
+                print(f"  ⏭️ Skipped (Duplicate, deadline refreshed): {program.name} — deadline: {program.deadline}")
                 duplicates += 1
 
         print(f"  --> '{angle_label}': {added} added | {duplicates} duplicates")
@@ -696,13 +721,16 @@ class GermanEcosystemAgent:
         programs = self.db.list_all_programs()
         data = []
         for row in programs:
-            name, provider, type_tag, funding_tag, stage_tag, eligibility_tag, backing_tag, bmwk_tag, exist_tag, focus, url, desc = row
+            (name, provider, type_tag, funding_tag, stage_tag, eligibility_tag, backing_tag,
+             bmwk_tag, exist_tag, focus, url, desc, deadline, checked_at) = row
             data.append({
                 "name": name, "provider": provider, "type": type_tag, "funding": funding_tag,
                 "stage": stage_tag, "eligibility": eligibility_tag, "backing": backing_tag,
                 "bmwk": bmwk_tag, "exist": exist_tag,
                 "focus": focus.split(",") if focus else [],
-                "url": url, "description": desc
+                "url": url, "description": desc,
+                "deadline": deadline,
+                "deadline_checked_at": checked_at
             })
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
