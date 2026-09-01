@@ -1,5 +1,215 @@
 [
   {
+    "name": "ERP Regional Aid Programme",
+    "provider": "KfW",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "deeptech"
+    ],
+    "url": "https://www.bundeswirtschaftsministerium.de",
+    "description": "Provides venture capital of up to €150,000 for investments and projects located in structurally weak regions of Germany.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:10:01.008089"
+  },
+  {
+    "name": "Hessen MikroCrowd",
+    "provider": "WIBank",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://foerdermittelkompass.reflecta.org/grants/hessen-mikrocrowd-1",
+    "description": "A hybrid funding model combining crowdfunding with microloans from €3,000 to €35,000 for growth and business acquisitions in Hesse.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:10:01.010685"
+  },
+  {
+    "name": "HessenFonds Small Loan",
+    "provider": "WIBank",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://starthub-hessen.de",
+    "description": "A loan program for innovative projects in Hesse offering between €35,000 and €300,000 with partly subsidised interest rates and no standard collateral.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:10:00.998441"
+  },
+  {
+    "name": "Synthesis Startup Incubator",
+    "provider": "Constructor University Bremen",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://ai.ozyegin.edu.tr/en/announcements/30526/synthesis-startup-incubator-program",
+    "description": "An eight-week, equity-free incubator program offering mentorship, prototyping facilities, and up to €100,000 in potential funding for deep-tech and software ventures.",
+    "deadline": "30.05.2024",
+    "deadline_checked_at": "2026-09-01T13:09:44.670393"
+  },
+  {
+    "name": "Formatera Startup Incubator",
+    "provider": "Formatera",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "international",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://gmbh-ug.com/startup-incubator",
+    "description": "A charity-based program providing international entrepreneurs with company registration support, business advice, and networking to launch ventures in Germany.",
+    "deadline": "15th September and 15th February",
+    "deadline_checked_at": "2026-09-01T13:09:44.673142"
+  },
+  {
+    "name": "Murf Startup Incubator Program",
+    "provider": "Murf AI",
+    "type": "incubator",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "international",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "ai"
+    ],
+    "url": "https://help.murf.ai/murf-startup-incubator-program",
+    "description": "An incubator providing early-stage companies with extended API credits, technical support, and co-marketing opportunities for AI voice integration.",
+    "deadline": "31.01.2025",
+    "deadline_checked_at": "2026-09-01T13:09:44.678247"
+  },
+  {
+    "name": "KfW StartGeld (ERP Startup Loan)",
+    "provider": "KfW Bankengruppe",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [],
+    "url": "https://stripe.com/resources/more/kfw-loans-for-businesses-in-germany",
+    "description": "A federal loan program offering up to €100,000 for founders and young SMEs to cover startup costs and working capital.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:36.255871"
+  },
+  {
+    "name": "TRIP Startup Support",
+    "provider": "TRIP",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://trip.community/en",
+    "description": "TRIP offers a supportive startup community, mentoring, and access to industry partners, alongside guidance for the Thuringian Start-up Bonus of up to €42,000.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:25.005814"
+  },
+  {
+    "name": "German Micro-Mezzanine Fund",
+    "provider": "Federal Ministry for Economic Affairs and Energy",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software",
+      "electronics",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://som.yale.edu/blog/germany-provides-public-funding-for-recapitalization-and-startup-equity",
+    "description": "This fund provides venture capital of up to €50,000 for a ten-year period, or up to €150,000 for special target groups, to support startup financing.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:25.013138"
+  },
+  {
+    "name": "Startup Innovativ",
+    "provider": "Rhineland-Palatinate Ministry of Economy",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.grantbite.com/en/funding/startup-innovativ-rhineland-palatinate-funding",
+    "description": "A competitive grant program offering up to 100,000 euros for knowledge-based and innovative startups founded within the last three years.",
+    "deadline": "rolling",
+    "deadline_checked_at": "2026-09-01T13:09:19.165798"
+  },
+  {
+    "name": "Beratungszuschuss für Existenzgründung und Unternehmensnachfolge",
+    "provider": "Rhineland-Palatinate Ministry of Economy",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.freie-berufe.com/en/coaching/vorgruendungscoaching/rheinland-pfalz",
+    "description": "An advisory grant covering 50% of external consultancy fees up to 400 euros per day for startups and business succession projects.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:19.168762"
+  },
+  {
     "name": "Lean AI Startup Funding (LAISF)",
     "provider": "Hessian.AI",
     "type": "grant",
@@ -486,7 +696,7 @@
     "url": "https://www.grantbite.com/funding?q=Thuringia+startups",
     "description": "A long-term, low-interest loan program for Thuringian companies to fund innovation, digitization, and expansion projects.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-28T19:55:09.203014"
+    "deadline_checked_at": "2026-09-01T13:09:25.002642"
   },
   {
     "name": "Project A Ventures",
@@ -824,7 +1034,7 @@
     "url": "https://gruendungswerft.de/",
     "description": "A non-profit initiative providing mentorship, networking, and shared workspaces to build a statewide startup ecosystem in Mecklenburg-Vorpommern.",
     "deadline": "rolling",
-    "deadline_checked_at": "2026-08-28T19:56:14.747109"
+    "deadline_checked_at": "2026-09-01T13:09:30.961532"
   },
   {
     "name": "Start-Up Brandenburg Accelerator",
@@ -1336,7 +1546,7 @@
     "url": "https://techfounders.com/",
     "description": "A 20-week accelerator program supporting startups in automotive, robotics, clean-tech, and big data through corporate partnerships.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-28T19:56:20.823756"
+    "deadline_checked_at": "2026-09-01T13:10:12.189235"
   },
   {
     "name": "boOst Startup Factory",
@@ -1714,7 +1924,7 @@
     "url": "https://startupoekosystem.com/listing/technostartup-mv",
     "description": "A 12-month regional accelerator program providing tailor-made training, mentorship, and seed funding of up to €25,000 for early-stage technology startups.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-28T19:56:14.749587"
+    "deadline_checked_at": "2026-09-01T13:09:30.964019"
   },
   {
     "name": "Migrant Founders Accelerator",
@@ -1752,7 +1962,7 @@
     "url": "https://leadsports.com",
     "description": "A global accelerator program that sources and funds early-stage startups operating in the sports and health technology sectors.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-23T08:29:36.248873"
+    "deadline_checked_at": "2026-09-01T13:10:12.200735"
   },
   {
     "name": "AI NATION Grant",
@@ -1902,8 +2112,8 @@
     ],
     "url": "https://startupoffice.rlp.de/en/startup-office",
     "description": "A low-interest financing instrument for startups and freelancers in Rhineland-Palatinate providing loans up to 200,000 euros with KfW risk assumption.",
-    "deadline": "6.5.2026",
-    "deadline_checked_at": "2026-08-27T18:53:56.263267"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:36.251890"
   },
   {
     "name": "NRW.BANK Gründung und Wachstum",
@@ -2018,7 +2228,7 @@
     "url": "https://www.exist.de/",
     "description": "A federal funding program designed to support technology-oriented and knowledge-based startups emerging from universities and research institutions.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-27T18:53:48.620645"
+    "deadline_checked_at": "2026-09-01T13:09:54.750054"
   },
   {
     "name": "Metropolitan Region Hamburg Funding Fund",
@@ -2164,7 +2374,7 @@
     "url": "https://seedblink.com/blog/2024-12-19-top-10-accelerators-and-startup-programs-in-germany",
     "description": "A 12-week program focused on validating business models and achieving investor readiness for early-stage startups.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-29T13:40:07.048896"
+    "deadline_checked_at": "2026-09-01T13:10:06.493082"
   },
   {
     "name": "Start.in.RLP",
@@ -2180,7 +2390,7 @@
     "url": "https://startupoffice.rlp.de/en/startup-office",
     "description": "A founding stipend providing 1,000 euros per month for up to twelve months alongside virtual accelerator support for early-stage founders.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:53.726422"
+    "deadline_checked_at": "2026-09-01T13:09:54.752479"
   },
   {
     "name": "GATEWAY49",
@@ -2423,7 +2633,7 @@
     "url": "https://trip.community/en",
     "description": "An accelerator program offering coaching, networking, and access to pitch events for innovative startups in Thuringia.",
     "deadline": "October 15th",
-    "deadline_checked_at": "2026-08-28T19:56:20.819784"
+    "deadline_checked_at": "2026-09-01T13:10:12.184673"
   },
   {
     "name": "Gründungszuschuss (Startup Grant)",
@@ -2696,8 +2906,8 @@
     ],
     "url": "https://europe.startupguide.com/ecosystem/kiel",
     "description": "An early-stage equity fund that co-invests alongside private capital in innovative young companies based in the Schleswig-Holstein region.",
-    "deadline": "ongoing",
-    "deadline_checked_at": "2026-08-29T13:39:51.568495"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:36.260344"
   },
   {
     "name": "Mecklenburg-Vorpommern Start-up Grant",
@@ -2775,7 +2985,7 @@
     "url": "https://www.gruenden.nrw/en/angebote-nach-zielgruppen/gruenden-nrw-high-tech",
     "description": "An incubation program for space-related startups offering up to €50,000 in funding alongside management support and workshops.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:15.435361"
+    "deadline_checked_at": "2026-09-01T13:10:16.993679"
   },
   {
     "name": "ProVeg Incubator",
@@ -2793,7 +3003,7 @@
     "url": "https://bebensee.it/en/blog/10-startup-programs-in-germany/index.html",
     "description": "A specialized incubator for plant-based and cultured food startups offering personalized mentoring and investor networking.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:37:11.806673"
+    "deadline_checked_at": "2026-09-01T13:10:12.196818"
   },
   {
     "name": "Start-up Center.NRW",
@@ -2811,8 +3021,8 @@
     ],
     "url": "https://www.efre.nrw/en/easy-to-make/find-support/start-centernrw",
     "description": "A funding competition for universities to establish startup centers and foster an entrepreneurial culture for academic spin-offs.",
-    "deadline": "December 9, 2024",
-    "deadline_checked_at": "2026-08-30T13:36:15.439322"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:10:16.995913"
   },
   {
     "name": "ESA Business Accelerator Germany (ESA BIC Northern Germany)",
@@ -2963,7 +3173,7 @@
     "url": "https://startup.nds.de/en/startup-centres",
     "description": "A state-backed program offering venture capital, mentoring, and internationalization support for startups in Lower Saxony.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-20T08:38:56.950139"
+    "deadline_checked_at": "2026-09-01T13:09:13.441003"
   },
   {
     "name": "RootCamp",
@@ -2981,7 +3191,7 @@
     "url": "https://root.camp/",
     "description": "An agrifood-tech innovation hub in Hanover providing support to startups across all growth stages.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-28T19:56:20.831190"
+    "deadline_checked_at": "2026-09-01T13:10:12.202784"
   },
   {
     "name": "XPRENEURS Incubator",
@@ -3037,7 +3247,7 @@
     "url": "https://www.spinlab.co/",
     "description": "A six-month hybrid accelerator program supporting early-stage startups in the energy, smart city, and health tech sectors with seed funding and network access.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-29T13:40:07.054597"
+    "deadline_checked_at": "2026-09-01T13:10:12.193668"
   },
   {
     "name": "Technologiegründerfonds Sachsen (TGFS)",
@@ -3188,7 +3398,7 @@
     "url": "https://www.lifescience-bw.de",
     "description": "A 12-month accelerator program for pre-seed and seed-stage biotech, medtech, and digital health startups to optimize their development and market entry.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-29T13:40:07.038839"
+    "deadline_checked_at": "2026-09-01T13:10:06.497992"
   },
   {
     "name": "CyberLab Accelerator",
@@ -3208,7 +3418,7 @@
     "url": "https://www.cyberlab-karlsruhe.de/en/startup-support/cyberlab-accelerator",
     "description": "The IT accelerator of Baden-Württemberg providing mentorship, coworking, and infrastructure for startups in IT, AI, cybersecurity, and smart production.",
     "deadline": "22.10.2026",
-    "deadline_checked_at": "2026-08-29T13:40:07.042748"
+    "deadline_checked_at": "2026-09-01T13:10:06.495838"
   },
   {
     "name": "Campus Founders Digital Innovation & AI Co-Creation",
@@ -3263,7 +3473,7 @@
     "url": "https://www.helmholtz-hzi.de/en/media-center/newsroom/news-detail/ibt-lower-saxony-niedersachsens-startup-inkubator-fuer-biomedizinische-innovation-kommt-ins-rollen",
     "description": "A biomedical incubator providing funding and support to transform research ideas into successful spin-outs.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-29T13:39:56.987243"
+    "deadline_checked_at": "2026-09-01T13:09:13.431846"
   },
   {
     "name": "Future Greentech Incubator",
@@ -3300,7 +3510,7 @@
     "url": "https://bebensee.it/en/blog/10-startup-programs-in-germany/index.html",
     "description": "A six-month intensive coaching and coworking programme for startups in digital, energy, health, and AI sectors.",
     "deadline": "March and September",
-    "deadline_checked_at": "2026-08-29T13:39:57.126601"
+    "deadline_checked_at": "2026-09-01T13:09:13.434470"
   },
   {
     "name": "RootCamp Incubation Programme",
@@ -3318,7 +3528,7 @@
     "url": "https://www.root.camp/startup-incubation-program",
     "description": "An incubation programme based in Lower Saxony offering non-dilutive grants to qualifying startups.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-28T19:55:42.793688"
+    "deadline_checked_at": "2026-09-01T13:09:13.438782"
   },
   {
     "name": "STEP USA Lower Saxony/Bremen",
@@ -3392,7 +3602,7 @@
     "url": "https://www.gruenden.nrw/en/angebote-nach-zielgruppen/gruenden-nrw-high-tech",
     "description": "A state-level grant of 10,000 euros for international tech startups to cover coworking and consulting costs when entering the German market.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:15.431341"
+    "deadline_checked_at": "2026-09-01T13:10:16.986088"
   },
   {
     "name": "HIGH-TECH.NRW",
@@ -3411,7 +3621,7 @@
     "url": "https://www.gruenden.nrw/en/angebote-nach-zielgruppen/gruenden-nrw-high-tech",
     "description": "An accelerator program providing customized support for early-stage deep-tech and hardware startups based on research.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:15.425653"
+    "deadline_checked_at": "2026-09-01T13:10:16.991124"
   },
   {
     "name": "NRW.SeedCap",
@@ -3650,7 +3860,7 @@
     "url": "https://www.nca.vc",
     "description": "A six-month acceleration program focused on helping commerce startups achieve product-market fit through corporate partnerships and expert support.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-29T13:39:51.585061"
+    "deadline_checked_at": "2026-09-01T13:10:12.191420"
   },
   {
     "name": "Business-Angel-Zuschuss",
@@ -4305,8 +4515,8 @@
     ],
     "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gruenden-Erweitern/Finanzierungsangebote/KfW-StartGeld-(067-068)/",
     "description": "A loan program designed to support founders and young companies with financing for investments and working capital.",
-    "deadline": null,
-    "deadline_checked_at": null
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-09-01T13:09:54.747806"
   },
   {
     "name": "Kultur- und Kreativpilot*innen Deutschland",
@@ -4345,7 +4555,7 @@
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
     "description": "A financing program providing medium to long-term capital for established commercial SMEs and professionals active on the market for at least five years.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-28T19:55:09.207004"
+    "deadline_checked_at": "2026-09-01T13:09:36.258111"
   },
   {
     "name": "GründungsBONUS",
@@ -4886,7 +5096,7 @@
     "url": "https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/BMWi/exist-gruendungsstipendium.html",
     "description": "A support program for university-based startups providing living stipends and up to €30,000 for material expenses to help founders transition from research to business.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:38.030991"
+    "deadline_checked_at": "2026-09-01T13:10:16.989029"
   },
   {
     "name": "ERP-VC Fund Investments",
@@ -5005,7 +5215,7 @@
     "url": "https://flaemingo-startuphub.com/accelerator",
     "description": "An equity-free program in Brandenburg offering a one-month residency and six-month hybrid growth phase for startups in mobility, health, and creative industries.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-27T18:54:06.113865"
+    "deadline_checked_at": "2026-09-01T13:09:49.530368"
   },
   {
     "name": "EXIST & EXIST Women",
@@ -5023,7 +5233,7 @@
     "url": "https://www.startup-incubator.berlin",
     "description": "Federal funding programs designed to support research-based and knowledge-based startups with a dedicated track for female founders.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-27T18:54:06.134807"
+    "deadline_checked_at": "2026-09-01T13:09:49.537443"
   },
   {
     "name": "ClimAccelerator",
@@ -5041,7 +5251,7 @@
     "url": "https://climaccelerator.climate-kic.org",
     "description": "A European accelerator program based in Berlin providing financial grants and mentorship to cleantech startups focused on climate impact.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:37:00.403957"
+    "deadline_checked_at": "2026-09-01T13:09:30.972113"
   },
   {
     "name": "HessenFonds Innovation Loan",
@@ -5062,7 +5272,7 @@
     "url": "https://starthub-hessen.de",
     "description": "This loan program provides between €100,000 and €10 million for innovation projects with a 70% liability exemption for the participating bank.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-28T19:55:50.936303"
+    "deadline_checked_at": "2026-09-01T13:10:01.000628"
   },
   {
     "name": "INVEST – Grant for Venture Capital",
@@ -5083,7 +5293,7 @@
     "url": "https://www.bmwk.de",
     "description": "A federal grant program that provides a subsidy to private investors who provide venture capital to innovative startups.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:24.597999"
+    "deadline_checked_at": "2026-09-01T13:09:19.174021"
   },
   {
     "name": "Starter Scholarship Saar",
@@ -5143,8 +5353,8 @@
     ],
     "url": "https://www.htgf.de/en/",
     "description": "Germany's most active early-stage investor providing up to €1M in seed financing for technology startups with follow-on capacity up to €4M.",
-    "deadline": "ongoing",
-    "deadline_checked_at": "2026-08-28T19:55:56.594931"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:19.172351"
   },
   {
     "name": "ESA BIC Northern Germany",
@@ -5162,8 +5372,8 @@
     ],
     "url": "https://www.starthaus-bremen.de/en/page/programmes/esa-bic",
     "description": "A two-year incubation program providing aerospace-related and high-tech startups with office space, mentoring, and access to the European Space Agency network.",
-    "deadline": "16 August 2026",
-    "deadline_checked_at": "2026-08-25T08:41:59.101358"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:09:44.667946"
   },
   {
     "name": "Startup Preschool Bremen",
@@ -5180,8 +5390,8 @@
     ],
     "url": "https://bridge-online.de/veranstaltungen/startup-preschool-bremen-2026",
     "description": "An English-language entrepreneurship bootcamp designed to help international founders navigate the German startup ecosystem and validate their business models.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:38.034396"
+    "deadline": "June 2026",
+    "deadline_checked_at": "2026-09-01T13:09:44.664930"
   },
   {
     "name": "First Customer Program",
@@ -5300,7 +5510,7 @@
     "url": "https://www.exist.de",
     "description": "A federal grant supporting students, graduates, and scientists from research institutions to develop innovative, technology-oriented business ideas.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:24.596349"
+    "deadline_checked_at": "2026-09-01T13:09:19.170561"
   },
   {
     "name": "GRW Supplementary Loan Mecklenburg-Vorpommern",
@@ -5341,8 +5551,8 @@
     ],
     "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Dossier/financing-for-start-ups-company-growth-and-innovations.html",
     "description": "A federal financing track offering up to €25 million in low-interest loans for larger-scale start-up projects and expansion.",
-    "deadline": "ongoing",
-    "deadline_checked_at": "2026-08-28T19:55:28.883130"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:10:01.005499"
   },
   {
     "name": "Triathlon Incubator",
@@ -5588,7 +5798,7 @@
     "url": "https://www.startup-incubator.berlin",
     "description": "A six-month program providing funding, coaching, and workspace to support academic founding teams in developing their business models.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:42.975786"
+    "deadline_checked_at": "2026-09-01T13:09:49.535607"
   },
   {
     "name": "Impact Incubator Climate-Tech",
@@ -5647,7 +5857,7 @@
     "url": "https://reaktor.berlin",
     "description": "A six-month pre-seed accelerator program for Berlin-based startups offering non-dilutive funding without taking equity.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:37:00.533259"
+    "deadline_checked_at": "2026-09-01T13:09:49.533932"
   },
   {
     "name": "German Accelerator",
@@ -5667,7 +5877,7 @@
     "url": "https://www.germanaccelerator.com",
     "description": "A flagship program that helps German startups scale internationally by providing access to global markets and expert mentorship.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:37:11.812186"
+    "deadline_checked_at": "2026-09-01T13:10:12.186664"
   },
   {
     "name": "Grace - Accelerate Female Entrepreneurship",
@@ -5787,8 +5997,8 @@
     ],
     "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Gr%C3%BCndung-Nachfolge/F%C3%B6rderprodukte/KfW-StartGeld-(067-068)/",
     "description": "A low-interest loan program providing up to €100,000 to support small-scale startups and young companies in their initial years.",
-    "deadline": "ongoing",
-    "deadline_checked_at": "2026-08-30T13:36:38.029107"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-01T13:10:01.002268"
   },
   {
     "name": "Gründungszuschuss",
@@ -5968,7 +6178,7 @@
     "url": "https://campusfounders.de/startups/pre-seed-bw",
     "description": "A financial support program for innovative, growth-focused startups in Baden-Württemberg that offers interest-free funding with potential for equity conversion.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:48.043032"
+    "deadline_checked_at": "2026-09-01T13:10:06.501388"
   },
   {
     "name": "Start-up BW Venture",
