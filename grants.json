@@ -1,5 +1,154 @@
 [
   {
+    "name": "EIC Pathfinder",
+    "provider": "European Innovation Council",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-pathfinder_en",
+    "description": "A funding program supporting collaborative research and innovation projects for early-stage breakthrough technologies with high potential for market disruption.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:01:01.214143"
+  },
+  {
+    "name": "InvestEU Fund",
+    "provider": "European Commission",
+    "type": "loan",
+    "funding": "loan",
+    "stage": "scale",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "deeptech"
+    ],
+    "url": "https://investeu.europa.eu",
+    "description": "A market-based instrument providing funding for sustainable infrastructure, research, innovation, and digitalization projects.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:55.560186"
+  },
+  {
+    "name": "Research Fund on Coal and Steel (RFCS)",
+    "provider": "European Commission",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/research-fund-coal-and-steel-rfcs_en",
+    "description": "Co-finances research and innovation projects specifically focused on the coal and steel sectors for universities and companies.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:55.563182"
+  },
+  {
+    "name": "EIT Raw Materials Booster Call",
+    "provider": "European Institute of Innovation and Technology",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://eitrawmaterials.eu",
+    "description": "Provides small-scale grant funding to support startups in the raw materials sector.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:55.565944"
+  },
+  {
+    "name": "EIT Raw Materials Accelerator",
+    "provider": "European Institute of Innovation and Technology",
+    "type": "accelerator",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://eitrawmaterials.eu",
+    "description": "An accelerator program designed to support early-stage startups in the raw materials value chain.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:55.569379"
+  },
+  {
+    "name": "European Tech Champions Initiative (ETCI)",
+    "provider": "European Investment Fund (EIF) and EIB Group",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.eif.org/flagship-initiatives/european-tech-champions-initiative/overview",
+    "description": "A €3.75 billion fund-of-funds that invests in large-scale venture capital and private equity funds to support the growth of European technology scale-ups.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:48.916024"
+  },
+  {
+    "name": "EIC Fund",
+    "provider": "European Innovation Council (EIC)",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://eic.ec.europa.eu/eic-fund_en",
+    "description": "The venture capital investment arm of the EIC providing patient capital to bridge the gap between public and private financing for European deeptech startups and scaleups.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:48.919578"
+  },
+  {
+    "name": "High-Tech Strategy 2025",
+    "provider": "Federal Ministry of Education and Research (BMBF)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "mandated",
+    "exist": "none",
+    "focus": [
+      "deeptech",
+      "ai",
+      "electronics"
+    ],
+    "url": "https://www.bmftr.bund.de/EN/Research/InternationalAffairs/Europe/HorizonEurope/horizoneurope.html",
+    "description": "A comprehensive national framework providing R&D support and sector-specific funding to strengthen innovation in health, climate, and digital transformation.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:38.098665"
+  },
+  {
     "name": "EIT Digital Venture Program",
     "provider": "EIT Digital",
     "type": "incubator",
@@ -17,7 +166,7 @@
     "url": "https://thefoundation.gr/innovation-platform/our-accelerators/eit-digital-venture-program",
     "description": "A multi-stage program providing mentoring, incubation, and financial prizes to help early-stage teams refine their MVP and prepare for seed-stage investment.",
     "deadline": "June 18th, 2025",
-    "deadline_checked_at": "2026-09-06T12:00:16.421081"
+    "deadline_checked_at": "2026-09-07T14:00:43.103745"
   },
   {
     "name": "Co-Creation Accelerator 2026-2027",
@@ -53,8 +202,8 @@
     ],
     "url": "https://eit-culture-creativity.eu/your-opportunities/calls-funding/financial-support-startups-and-scaleups-shape-acceleration-scale",
     "description": "Financial support programs providing funding for startups and scaleups to accelerate growth and scale operations within the cultural and creative sectors.",
-    "deadline": "Mid-December 2026",
-    "deadline_checked_at": "2026-09-06T12:00:16.426660"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:43.106610"
   },
   {
     "name": "KfW ERP Starter Loan",
@@ -111,7 +260,7 @@
     "url": "https://eugmc.eu/eic-accelerator",
     "description": "A specialized investment scheme offering equity support between €10 million and €30 million to scale up strategic technologies in Europe.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-09-06T12:00:00.486660"
+    "deadline_checked_at": "2026-09-07T14:00:55.572261"
   },
   {
     "name": "EIC Pre-Accelerator",
@@ -189,8 +338,8 @@
     ],
     "url": "https://www.eurekanetwork.org/programmes-and-calls/eurostars",
     "description": "Eurostars is a collaborative international R&D funding program that supports innovative SMEs in developing market-oriented products, processes, and services through cross-border consortia.",
-    "deadline": "Twice per year",
-    "deadline_checked_at": "2026-09-06T11:59:49.627296"
+    "deadline": "10 September 2026",
+    "deadline_checked_at": "2026-09-07T14:01:06.585674"
   },
   {
     "name": "IT Inkubator GmbH",
@@ -2242,8 +2391,8 @@
     ],
     "url": "https://www.kfw.de",
     "description": "A loan program providing low-interest financing for large-scale hardware and innovation projects.",
-    "deadline": "19 February 2026",
-    "deadline_checked_at": "2026-09-06T12:00:05.931576"
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-07T14:00:55.556814"
   },
   {
     "name": "Horizon Europe",
@@ -3369,7 +3518,7 @@
     "url": "https://www.euacc.ai/countries/de",
     "description": "A program that provides national co-financing for high-rated Horizon Europe EIC proposals that were not funded due to budget constraints.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-09-02T12:36:45.987355"
+    "deadline_checked_at": "2026-09-07T14:00:38.059523"
   },
   {
     "name": "WFB Innovation Support",
@@ -4655,8 +4804,8 @@
     ],
     "url": "https://digitalhub.de",
     "description": "A 12-week accelerator program in the Rhineland region focused on validating business models and achieving investor readiness for digital startups.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-09-06T12:00:16.418134"
+    "deadline": "06/09/2026",
+    "deadline_checked_at": "2026-09-07T14:00:43.099001"
   },
   {
     "name": "VentureVilla Accelerator",
@@ -5346,7 +5495,7 @@
     "url": "https://www.eif.org/press/all/eif-german-equity-boost-for-innovation-and-startups",
     "description": "A joint initiative providing €1.6 billion to expand venture capital and growth-stage financing for technology-based startups in Germany.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-08-24T08:47:49.931170"
+    "deadline_checked_at": "2026-09-07T14:00:48.912598"
   },
   {
     "name": "KfW StartGeld",
@@ -5863,7 +6012,7 @@
     "url": "https://exist.de/en/programm/gruendungsstipendium",
     "description": "A federal grant providing monthly stipends and material costs to students, graduates, and researchers to develop innovative, technology-based business ideas from academia.",
     "deadline": "ongoing",
-    "deadline_checked_at": "2026-09-05T11:40:39.055142"
+    "deadline_checked_at": "2026-09-07T14:00:38.052104"
   },
   {
     "name": "EXIST Transfer of Research",
@@ -6101,8 +6250,8 @@
     ],
     "url": "https://climaccelerator.climate-kic.org",
     "description": "A European accelerator program based in Berlin providing financial grants and mentorship to cleantech startups focused on climate impact.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-09-06T12:00:11.188314"
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-09-07T14:01:01.210732"
   },
   {
     "name": "HessenFonds Innovation Loan",
