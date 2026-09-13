@@ -1,5 +1,170 @@
 [
   {
+    "name": "WIPANO Patent Funding",
+    "provider": "German Federal Ministry of Economics and Climate Action (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.myathena.de/en/innovation-promotion/wipano-patent-funding",
+    "description": "A grant program supporting SMEs and research institutions by reimbursing 50% of costs associated with patenting, utility model applications, and commercialization strategies.",
+    "deadline": "October 2027",
+    "deadline_checked_at": "2026-09-13T13:09:39.405198"
+  },
+  {
+    "name": "EXIST-Forschungstransfer Phase II",
+    "provider": "BMWK",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "deeptech",
+      "ai"
+    ],
+    "url": "https://exist.de/en/programm/forschungstransfer/antragsstellung",
+    "description": "A follow-up grant for newly established technology-oriented companies to finance market entry and business operations after completing Phase I.",
+    "deadline": "March 31, August 31, and November 30 each year",
+    "deadline_checked_at": "2026-09-13T13:09:26.628255"
+  },
+  {
+    "name": "EXIST - Existenzgründungen aus der Wissenschaft",
+    "provider": "Bundesministerium für Wirtschaft und Klimaschutz (BMWK)",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "pre-seed",
+    "eligibility": "de-academic",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "grant",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.exist.de/",
+    "description": "A federal funding program supporting technology-oriented and knowledge-based business start-ups emerging from academic research.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-13T13:09:20.721435"
+  },
+  {
+    "name": "Women TechEU",
+    "provider": "European Commission",
+    "type": "grant",
+    "funding": "equity-free",
+    "stage": "seed",
+    "eligibility": "international",
+    "backing": "public",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://womentecheurope.eu",
+    "description": "A European initiative providing €75,000 in non-dilutive grants and business support to women-led deep-tech startups.",
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-09-13T13:09:03.851217"
+  },
+  {
+    "name": "Growth Fund Germany (Wachstumsfonds Deutschland)",
+    "provider": "KfW Capital",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "ppp",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software",
+      "ai",
+      "deeptech"
+    ],
+    "url": "https://www.kfw-capital.de/Investment-programs",
+    "description": "A venture capital fund of funds supported by public and private investors that invests in VC funds to mobilize capital for high-growth technology companies.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-13T13:08:51.907342"
+  },
+  {
+    "name": "Cherry Ventures",
+    "provider": "Cherry Ventures",
+    "type": "vc",
+    "funding": "equity",
+    "stage": "seed",
+    "eligibility": "international",
+    "backing": "private",
+    "bmwk": "none",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.cherry.vc",
+    "description": "An early-stage venture capital fund based in Berlin that invests in seed and series A phases with a focus on the software industry.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-13T13:08:51.930933"
+  },
+  {
+    "name": "Förderung von Unternehmensberatungen für KMU",
+    "provider": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "software"
+    ],
+    "url": "https://www.bafa.de/DE/Wirtschaft/Beratung_Finanzierung/Unternehmensberatung/unternehmensberatung_node.html",
+    "description": "Dieses Programm unterstützt kleine und mittlere Unternehmen mit einem Zuschuss zu den Kosten für externe Beratungen zu wirtschaftlichen, finanziellen, personellen und organisatorischen Fragen.",
+    "deadline": "31.12.2026",
+    "deadline_checked_at": "2026-09-13T13:08:40.985890"
+  },
+  {
+    "name": "Bundesförderung für effiziente Gebäude (BEG) - Einzelmaßnahmen",
+    "provider": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "electronics"
+    ],
+    "url": "https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/Einzelmassnahmen/einzelmassnahmen_node.html",
+    "description": "Das Programm bietet Zuschüsse für energetische Sanierungsmaßnahmen an Gebäuden, einschließlich Dämmung, Anlagentechnik und Energieberatung zur Steigerung der Energieeffizienz.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-13T13:08:40.989036"
+  },
+  {
+    "name": "Bundesförderung für Energie- und Ressourceneffizienz in der Wirtschaft",
+    "provider": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)",
+    "type": "grant",
+    "funding": "subsidy",
+    "stage": "scale",
+    "eligibility": "de-entity",
+    "backing": "public",
+    "bmwk": "direct",
+    "exist": "none",
+    "focus": [
+      "deeptech"
+    ],
+    "url": "https://www.bafa.de/DE/Energie/Energieeffizienz_in_der_Wirtschaft/energieeffizienz_in_der_wirtschaft_node.html",
+    "description": "Dieses Förderprogramm unterstützt Unternehmen bei Investitionen in energie- und ressourceneffiziente Technologien zur Senkung von CO2-Emissionen und Steigerung der Wettbewerbsfähigkeit.",
+    "deadline": "not stated",
+    "deadline_checked_at": "2026-09-13T13:08:40.995343"
+  },
+  {
     "name": "EIC Pathfinder",
     "provider": "European Innovation Council",
     "type": "grant",
@@ -772,7 +937,7 @@
     "url": "https://www.kfw-capital.de",
     "description": "A federal financing initiative providing capital for first-of-a-kind funds targeting deep-tech scale-ups.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-09-04T12:33:25.297310"
+    "deadline_checked_at": "2026-09-13T13:08:51.904407"
   },
   {
     "name": "High-Tech Start-Up Fund (HTGF)",
@@ -1242,8 +1407,8 @@
     ],
     "url": "https://www.grace-accelerator.de/en/grace-berlin-accelerator.html",
     "description": "An eight-month full-time program for women-led startups offering a monthly stipend, intensive coaching, and peer support.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-09-02T12:35:34.003500"
+    "deadline": "22-Sep-2026",
+    "deadline_checked_at": "2026-09-13T13:09:03.853822"
   },
   {
     "name": "Startup Incubator Berlin (HWR)",
@@ -4955,8 +5120,8 @@
     ],
     "url": "https://www.foerderdatenbank.de",
     "description": "A public-risk-sharing loan program designed to support startup activities, company successions, and young companies through bank-based financing.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-08-19T08:37:15.221111"
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-09-13T13:09:35.148903"
   },
   {
     "name": "Gründerstipendium NRW",
@@ -5356,7 +5521,7 @@
     "url": "https://www.iamexpat.de/career/entrepreneur-germany/start-up-grants-financial-incentives-businesses",
     "description": "A government-backed investment vehicle providing up to €10 million in staged financing for young, innovative companies.",
     "deadline": "not stated",
-    "deadline_checked_at": "2026-09-02T12:37:47.962524"
+    "deadline_checked_at": "2026-09-13T13:08:51.909666"
   },
   {
     "name": "Berliner Startup Stipendium",
@@ -5474,8 +5639,8 @@
     ],
     "url": "https://www.kfw-capital.de/Investment-focus/Deutschlandfonds",
     "description": "A strategic investment program providing 400 million euros into innovative venture capital funds to foster growth and financing capacity in Germany.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-08-19T06:50:26.224983"
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-09-13T13:08:34.510532"
   },
   {
     "name": "EIF German Equity",
@@ -5692,8 +5857,8 @@
     ],
     "url": "https://www.exist.de",
     "description": "A two-phase grant program providing extensive funding for highly complex, research-based technology projects with long development cycles.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-08-30T13:36:38.032725"
+    "deadline": "March 31, August 31, and November 30 each year",
+    "deadline_checked_at": "2026-09-13T13:09:26.625341"
   },
   {
     "name": "DeepTech & Climate Fonds (DTCF)",
@@ -5810,8 +5975,8 @@
     ],
     "url": "https://www.kfw.de",
     "description": "Provides low-interest loans covering up to 100% of financing needs for early-stage startups.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-08-19T06:50:45.810708"
+    "deadline": "ongoing",
+    "deadline_checked_at": "2026-09-13T13:09:35.126202"
   },
   {
     "name": "INVEST - Zuschuss für Wagniskapital",
@@ -5829,8 +5994,8 @@
     ],
     "url": "https://www.bafa.de",
     "description": "Grants a subsidy to business angels who invest in innovative young startups to encourage private capital flow.",
-    "deadline": null,
-    "deadline_checked_at": null
+    "deadline": "31.12.2026",
+    "deadline_checked_at": "2026-09-13T13:09:20.718437"
   },
   {
     "name": "StartUpSecure",
@@ -6095,8 +6260,8 @@
     ],
     "url": "https://www.foerderdatenbank.de/FDB/Content/DE/Foerderprogramm/Bund/BMWi/exist-gruendungsstipendium.html",
     "description": "A support program for university-based startups providing living stipends and up to €30,000 for material expenses to help founders transition from research to business.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-09-06T11:59:14.140597"
+    "deadline": "rolling",
+    "deadline_checked_at": "2026-09-13T13:09:26.630218"
   },
   {
     "name": "ERP-VC Fund Investments",
@@ -6232,8 +6397,8 @@
     ],
     "url": "https://www.startup-incubator.berlin",
     "description": "Federal funding programs designed to support research-based and knowledge-based startups with a dedicated track for female founders.",
-    "deadline": "not stated",
-    "deadline_checked_at": "2026-09-06T11:59:26.929575"
+    "deadline": "September 30, 2026 and September 30, 2027",
+    "deadline_checked_at": "2026-09-13T13:09:26.632135"
   },
   {
     "name": "ClimAccelerator",
