@@ -3,12 +3,14 @@ import re
 import json
 import sqlite3
 import random
+import time
 from datetime import datetime
 from typing import List, Literal, Optional
 from urllib.parse import urlparse
 from pydantic import BaseModel, Field
 from google import genai
 from google.genai import types
+from google.genai.errors import ClientError, ServerError
 from tavily import TavilyClient
 
 try:
@@ -61,6 +63,21 @@ def fuzzy_score(a: str, b: str) -> int:
 
 def fuzzy_match(a: str, b: str, threshold: int = 80) -> bool:
     return fuzzy_score(a, b) >= threshold
+
+def call_gemini_with_backoff(client, max_retries=5, base_delay=8, **kwargs):
+    """Wraps client.models.generate_content with rate-limit-aware retry/backoff."""
+    for attempt in range(max_retries):
+        try:
+            return client.models.generate_content(**kwargs)
+        except (ClientError, ServerError) as e:
+            status = getattr(e, "code", None) or getattr(e, "status_code", None)
+            is_rate_or_overload = status in (429, 503) or "RESOURCE_EXHAUSTED" in str(e) or "UNAVAILABLE" in str(e)
+            if is_rate_or_overload and attempt < max_retries - 1:
+                wait = base_delay * (2 ** attempt)
+                print(f"  ⏳ Rate limited / overloaded — waiting {wait}s (attempt {attempt + 1}/{max_retries})...")
+                time.sleep(wait)
+                continue
+            raise
 
 # -------------------------------------------------------------------
 # 2. Pydantic Schema (Taxonomy)
@@ -611,7 +628,8 @@ class GermanEcosystemAgent:
         {web_snippets}
         """
 
-        response = self.ai.models.generate_content(
+        response = call_gemini_with_backoff(
+            self.ai,
             model="gemini-3.1-flash-lite",
             contents=prompt,
             config=types.GenerateContentConfig(
@@ -620,6 +638,7 @@ class GermanEcosystemAgent:
                 temperature=0.0
             )
         )
+        time.sleep(4.5)  # keeps us under 15 RPM even if every call returns instantly
 
         extracted_data: ProgramList = response.parsed
 
@@ -662,7 +681,8 @@ class GermanEcosystemAgent:
             {base_list}
             """
 
-            response = self.ai.models.generate_content(
+            response = call_gemini_with_backoff(
+                self.ai,
                 model="gemini-3.1-flash-lite",
                 contents=prompt,
                 config=types.GenerateContentConfig(
@@ -671,6 +691,7 @@ class GermanEcosystemAgent:
                     temperature=0.7
                 )
             )
+            time.sleep(4.5)
 
             mutation_data: MutationBatch = response.parsed
             for (qid, orig_query, category), mutation in zip(chunk, mutation_data.mutations):
@@ -680,7 +701,7 @@ class GermanEcosystemAgent:
                 if inserted:
                     print(f"  🌿 Mutated ({category}): '{orig_query}' -> '{mutation.mutated_query}'")
 
-    def run_until_novel_target(self, target_new=5, max_batches=15, batch_size=12):
+    def run_until_novel_target(self, target_new=5, max_batches=15, batch_size=8):
         total_new = 0
         batches_run = 0
 
@@ -742,7 +763,7 @@ class GermanEcosystemAgent:
 if __name__ == "__main__":
     agent = GermanEcosystemAgent()
 
-    agent.run_until_novel_target(target_new=5, max_batches=15, batch_size=12)
+    agent.run_until_novel_target(target_new=5, max_batches=15, batch_size=8)
 
     agent.db.deduplicate_database()
     agent.db.maybe_run_fuzzy_sweep(interval_days=0)
